@@ -1,8 +1,5 @@
 import React, { Component } from "react";
-import FlexWrapper from "../common/FlexWrapper";
 import base from "../db/config";
-import styled from "styled-components";
-import AnimationContainer from "../components/AnimationContainer";
 import { TextXl, TextMed, TextSm } from "../common/Fonts";
 import { SignupForm } from "../common/SignupForm";
 
@@ -33,16 +30,12 @@ export default class SignupPage extends Component {
   render() {
     const { text } = this.state;
     return (
-      <FlexWrapper>
-        <AnimationContainer
-          toggle={this.startAnimation.bind(this)}
-          isToggled={this.state.toggle}
-        />
+      <div>
         <TextXl>{text.title}</TextXl>
         <SignupForm />
         <TextSm>{text.contact}</TextSm>
         <TextSm>{text.legal}</TextSm>
-      </FlexWrapper>
+      </div>
     );
   }
 }

@@ -1,7 +1,5 @@
 import React, { Component, Fragment } from "react";
-import styled from "styled-components";
 import base from "../db/config";
-import ParallaxPage from "../components/ParallaxPage";
 
 export default class AboutPage extends Component {
   constructor(props) {
@@ -25,7 +23,7 @@ export default class AboutPage extends Component {
   render() {
     const { text } = this.state;
     return (
-      <ParallaxPage text={text}/>
+      <div>{text}</div>
     );
   }
 }  

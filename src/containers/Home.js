@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-import FlexWrapper from "../common/FlexWrapper";
-import AnimationContainer from "../components/AnimationContainer";
 import { TextXl, TextMed, TextSm } from "../common/Fonts";
 import base from "../db/config";
 import { SignupForm } from "../common/SignupForm";
@@ -33,11 +31,7 @@ export default class HomePage extends Component {
   render() {
     const { text } = this.state;
     return (
-      <FlexWrapper>
-        <AnimationContainer
-          toggle={this.startAnimation.bind(this)}
-          isToggled={this.state.toggle}
-        />
+      <div>
         <TextXl style={{ marginBottom: 0 }}>{text.title}</TextXl>
         <TextMed style={{ color: "darkgray" }}>{text.subhead}</TextMed>
         <SignupForm />
@@ -46,7 +40,7 @@ export default class HomePage extends Component {
             {"Read More"}
           </NextButton>
         </Link>
-      </FlexWrapper>
+      </div>
     );
   }
 }

@@ -5,12 +5,7 @@
 3. `npm run start` to run it locally.
 
 ## How to use the template
-If you want to change text or images, these are where you should look
-- `AnimationContainer.js` for animating logo. Pass svg path as a prop
-```
-<AnimationContainer before={BEFORE} after={AFTER}/>
-```
-- `ParallaxPage.js` for parallax page. The component expects json object. The schema is like below. Modify this component and the parent container states if you want different data structure.
+
 ```
 ... Home page 
 
@@ -32,7 +27,6 @@ If you want to change text or images, these are where you should look
 
 ```
 - `Navigation.js` modify this file if you want to customize navigation UI. The route paths are passed down from `App.js`
-- `FlexWrapper.js` is a flex wrapper. It accepts `direction`, `justify`, `align`, `marginTop` as a prop.
 - `SignupForm.js` where signup form UI and mailchimp API hook is
 - `Fonts.js` fonts
 
