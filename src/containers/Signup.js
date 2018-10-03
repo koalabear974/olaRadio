@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import base from "../db/config";
+import styled from "styled-components";
 import { TextXl, TextMed, TextSm } from "../common/Fonts";
 import { SignupForm } from "../common/SignupForm";
 

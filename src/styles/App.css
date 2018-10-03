@@ -1,0 +1,12 @@
+.AppContainer {
+    display: flex;
+    flex:1;
+    background: red;
+}
+
+.AppContainer__sideBar {
+    background: white;
+    flex: 0 0 30vw;
+    display: flex;
+    flex-direction: column;
+}
