@@ -9,4 +9,5 @@
     flex: 0 0 30vw;
     display: flex;
     flex-direction: column;
+    padding: 0px 3vw;
 }

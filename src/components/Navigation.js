@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import PropTypes from "prop-types";
 import uuidv1 from "uuid/v1";
-import {Link} from "react-router-dom";
+import {NavLink} from "react-router-dom";
 
 import "./../styles/components/Navigation.css";
 
@@ -17,18 +17,14 @@ export default class Navigation extends Component {
         return (
             <nav className={'NavigationBar'}>
                 {pageArray.map(page => (
-                    <li
-                        className={'NavigationBar__li'}
+                    <NavLink
+                        className={'NavigationBar__link'}
+                        activeClassName={'NavigationBar__link--active'}
+                        to={"/" + page.path}
                         key={uuidv1()}
                     >
-                        <Link
-                            className={'NavigationBar__link'}
-                            to={"/" + page}
-                            active={page === currentPage}
-                        >
-                            <span>{page}</span>
-                        </Link>
-                    </li>
+                        <span>{page.text}</span>
+                    </NavLink>
                 ))}
             </nav>
         );

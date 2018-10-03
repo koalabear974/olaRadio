@@ -1,5 +1,7 @@
 import React, {Component} from "react";
 import PropTypes from "prop-types";
+import { FaSearch } from 'react-icons/fa';
+
 
 import "./../styles/components/SearchBar.css";
 
@@ -14,9 +16,7 @@ export default class SearchBar extends Component {
                     className={'SearchBar__input'}
                     type="text"
                 />
-                <span className={'SearchBar__icon'}>
-                    X
-                </span>
+                <FaSearch className={'SearchBar__icon'} />
             </div>
         );
     }

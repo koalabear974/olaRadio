@@ -15,7 +15,10 @@ export default class Logo extends Component {
                     className={'LogoContainer__link'}
                     to={'/'}
                 >
-                    <span className={'LogoContainer__logo'}>OLA</span>
+                    <img
+                        className={'LogoContainer__logo'}
+                        src={'images/logo.png'}
+                    />
                 </Link>
             </div>
         );

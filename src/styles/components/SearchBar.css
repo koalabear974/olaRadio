@@ -1,11 +1,17 @@
 .SearchBar {
-
+    display: flex;
+    flex: 0 0 40px;
+    align-items: center;
+    border-bottom: 2px solid black;
 }
 
 .SearchBar__input {
-
+    flex: 1;
+    height: 38px;
+    border: 0;
 }
 
 .SearchBar__icon {
-
+    flex: 0 0 30px;
+    font-size: 20px;
 }
