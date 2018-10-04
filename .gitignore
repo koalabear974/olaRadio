@@ -27,3 +27,5 @@ yarn-error.log*
 .idea
 
 public/images/ignore/
+
+\.firebase/
