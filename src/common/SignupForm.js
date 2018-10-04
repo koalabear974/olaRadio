@@ -1,5 +1,5 @@
 import React from "react";
-import MailchimpSubscribe from "react-mailchimp-subscribe";
+// import MailchimpSubscribe from "react-mailchimp-subscribe";
 import styled from "styled-components";
 
 const FormStyle = styled.div`
@@ -32,6 +32,6 @@ const url =
 
 export const SignupForm = () => (
   <FormStyle>
-    <MailchimpSubscribe url={url} />
+    {/*<MailchimpSubscribe url={url} />*/}
   </FormStyle>
 );
