@@ -16,6 +16,7 @@ import Dons from "./containers/Dons"
 import VideoLive from "./containers/VideoLive"
 import Info from "./containers/Info"
 import Contact from "./containers/Contact"
+import Admin from "./containers/Admin"
 import NotFoundPage from "./containers/NotFoundPage";
 
 import "./styles/App.css";
@@ -71,6 +72,7 @@ export default class App extends Component {
                     <Route path="/VideoLive" component={VideoLive} />
                     <Route path="/Info" component={Info} />
                     <Route path="/Contact" component={Contact} />
+                    <Route path="/Admin" component={Admin} />
                     <Route component={NotFoundPage}/>
                 </Switch>
                 </Body>

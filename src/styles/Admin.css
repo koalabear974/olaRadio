@@ -1,0 +1,46 @@
+.Admin {
+    display: flex;
+    flex: 1;
+    max-width: 70vw;
+}
+
+.Admin__container {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    padding: 1em;
+    max-width: 100%;
+}
+
+.Admin__navbar {
+    flex: 0;
+}
+
+.Admin__current {
+    display: flex;
+    flex: 1;
+    padding: 1em;
+    max-width: 100%;
+}
+
+.CategoryAdminComponent {
+    display: block;
+    flex: 1;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.CategoryAdminComponent__button {
+    margin-left: 1em;
+}
+
+.EmissionAdminComponent {
+    display: block;
+    flex: 1;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.CategoryAdminComponent__form, .EmissionAdminComponent__form {
+    margin-top: 2em;
+}
