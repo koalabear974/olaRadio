@@ -19,7 +19,7 @@ export default class Admin extends Component {
         this.password = 'e7ee777deaff95f2c168a88c4c82b3d6531553bc';
 
         this.state = {
-            isVerified: true,
+            isVerified: false,
             passwordValue: "",
             selectedItem: "Emission",
         };
