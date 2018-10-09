@@ -1,5 +1,4 @@
 import React, {Component, Fragment} from "react";
-import base from "../db/config";
 import Sha1 from "../helpers/sha1";
 
 import CategoryAdminComponent from "../components/admin/CategoryAdminComponent";
