@@ -1,6 +1,8 @@
 import React, {Component} from "react";
 import Emission from "./Emission";
 
+import "../../styles/components/Emission.css"
+
 export default class EmissionList extends Component {
     constructor(props) {
         super(props);
