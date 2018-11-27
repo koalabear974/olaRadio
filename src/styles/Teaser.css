@@ -1,0 +1,45 @@
+.AppContainer {
+    display: flex;
+    flex:1;
+}
+
+.AppContainer__teaser {
+    display: flex;
+    flex: 1;
+    position: relative;
+}
+
+.Teaser {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.Teaser__logo {
+    width: 30vw;
+    height: auto;
+}
+
+.Teaser__text {
+    margin-top: 10vw;
+}
+
+.TurnTable {
+    height: 40vw;
+    width: 40vw;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: rotate(0deg);
+    transform-origin: top left;
+}
+
+.TurnTable__disk {
+    height: 20vw;
+    width: 120vw;
+    margin-left: -20vw;
+    margin-top: -11.5vw;
+    border: 1.5vw solid black;
+}
