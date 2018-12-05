@@ -4,5 +4,5 @@ import App from './App';
 import Teaser from './Teaser';
 import registerServiceWorker from './registerServiceWorker';
 
-ReactDOM.render(<Teaser />, document.getElementById('root'));
+ReactDOM.render(<App />, document.getElementById('root'));
 registerServiceWorker();
