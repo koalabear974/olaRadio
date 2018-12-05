@@ -22,7 +22,7 @@ import NotFoundPage from "./containers/NotFoundPage";
 import "./styles/App.css";
 
 import {Body} from "./common/Fonts";
-import SearchBar from "./components/SearchBar";
+import RadioBox from "./components/RadioBox";
 import Logo from "./components/Logo";
 
 const pages = [
@@ -51,7 +51,7 @@ export default class App extends Component {
                 <Body className={'AppContainer'}>
                 <div className={'AppContainer__sideBar'}>
                     <Logo />
-                    <SearchBar />
+                    <RadioBox />
                     <Navigation
                         pageArray={pages}
                         currentPage={this.state.currentPage}
