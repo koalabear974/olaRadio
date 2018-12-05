@@ -29,10 +29,13 @@
 .RadioBox .Emission__sub-container {
     flex: 0 0 25px;
     display: flex;
+    flex-wrap: nowrap;
+    max-width: 100%;
 }
 
 .RadioBox .Emission__subtitle {
     flex: 1;
+    min-width: 0;
 }
 
 .RadioBox .Emission__date {

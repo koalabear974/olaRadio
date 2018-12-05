@@ -10,10 +10,10 @@
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
     "react-icons": "^3.1.0",
-    "react-native-text-ticker": "^0.13.0",
     "react-router-dom": "^4.3.1",
     "react-scripts": "^2.1.1",
     "react-spring": "^5.3.18",
+    "react-text-marquee": "^1.0.1",
     "styled-components": "^3.3.3",
     "typeface-open-sans": "0.0.54",
     "uuid": "^3.3.2"
@@ -31,7 +31,6 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "@babel/plugin-proposal-class-properties": "^7.2.1",
     "babel-cli": "^6.26.0"
   }
 }
