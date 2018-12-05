@@ -17,7 +17,7 @@ export default class Logo extends Component {
                 >
                     <img
                         className={'LogoContainer__logo'}
-                        src={'images/logo.png'}
+                        src={'images/logo_black.svg'}
                     />
                 </Link>
             </div>
