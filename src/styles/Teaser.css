@@ -1,12 +1,36 @@
 .AppContainer {
     display: flex;
     flex:1;
+    position: relative;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none;
+
+    /*font-family: sonarbold;*/
+    /*src: url("/fonts/Sonar/Sonar-Bold.woff2") format('woff'2);*/
 }
+
+.AppContainer__footer {
+    position: absolute;
+    float: right;
+    bottom: 0.3vw;
+    right: 0.5vw;
+    font-size: 0.6em;
+}
+
 
 .AppContainer__teaser {
     display: flex;
     flex: 1;
     position: relative;
+    overflow: hidden;
+    max-height: 100vh;
+    height: 100vh;
+    max-width: 100vw;
+    width: 100vw;
 }
 
 .Teaser {
@@ -34,12 +58,28 @@
     left: 50%;
     transform: rotate(0deg);
     transform-origin: top left;
+    z-index: -10;
 }
 
 .TurnTable__disk {
     height: 20vw;
-    width: 120vw;
+    width: 200vw;
     margin-left: -20vw;
     margin-top: -11.5vw;
     border: 1.5vw solid black;
+}
+
+.Teaser__links {
+
+}
+
+.Teaser__icon {
+    font-size: 2em;
+    cursor: pointer;
+    margin: 3px;
+}
+
+.Teaser__link {
+    text-decoration: none;
+    color: inherit;
 }

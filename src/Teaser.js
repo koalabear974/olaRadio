@@ -29,6 +29,10 @@ export default class App extends Component {
                         <Redirect from="*" to="/" />
                     </Switch>
                 </div>
+
+                <footer className={'AppContainer__footer'}>
+                    © Ola Radio 2018
+                </footer>
                 </Body>
             </Router>
         );
