@@ -1,0 +1,6 @@
+.MainPage {
+    flex: 1;
+    display: flex;
+    border: 8px solid black;
+    min-height: 200px;
+}

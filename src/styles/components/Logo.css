@@ -11,4 +11,5 @@
 
 .LogoContainer__logo {
     width: 20vw;
+    max-width: 200px;
 }

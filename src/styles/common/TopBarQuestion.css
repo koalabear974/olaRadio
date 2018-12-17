@@ -1,0 +1,5 @@
+.TopBarQuestion {
+    display: flex;
+    flex: 0 0 40px;
+    align-items: center;
+}

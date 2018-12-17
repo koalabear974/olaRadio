@@ -1,6 +1,19 @@
 .Home {
     display: flex;
     flex: 1;
-    flex-direction: column;
+    flex-wrap: wrap;
     padding: 1em 0;
+    padding-right: 1em;
+}
+
+.Home__secondTitle {
+    text-transform: uppercase;
+}
+
+.Home__mainPage {
+    flex: 1 1 100%;
+}
+
+.Home__bottom {
+    flex: 1 1 100%;
 }

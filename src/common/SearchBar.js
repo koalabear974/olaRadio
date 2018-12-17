@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { FaSearch } from 'react-icons/fa';
 
 
-import "./../styles/components/SearchBar.css";
+import "../styles/common/SearchBar.css";
 
 export default class SearchBar extends Component {
     static propTypes = {

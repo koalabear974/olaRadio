@@ -3,24 +3,27 @@ import Sha1 from "../helpers/sha1";
 
 import CategoryAdminComponent from "../components/admin/CategoryAdminComponent";
 import EmissionAdminComponent from "../components/admin/EmissionAdminComponent";
+import QuestionAdminComponent from "../components/admin/QuestionAdminComponent";
 
 import "./../styles/Admin.css";
 
 const Components = {
     CategoryAdminComponent: CategoryAdminComponent,
-    EmissionAdminComponent: EmissionAdminComponent
+    EmissionAdminComponent: EmissionAdminComponent,
+    QuestionAdminComponent: QuestionAdminComponent,
 };
 
 export default class Admin extends Component {
     constructor(props) {
         super(props);
 
+        // The Website password
         this.password = 'e7ee777deaff95f2c168a88c4c82b3d6531553bc';
 
         this.state = {
-            isVerified: false,
+            isVerified: true,
             passwordValue: "",
-            selectedItem: "Emission",
+            selectedItem: "Question",
         };
 
         this.onPasswordSubmit = this.onPasswordSubmit.bind(this);
@@ -41,7 +44,6 @@ export default class Admin extends Component {
     }
 
     changeCurrentItem(item) {
-        console.log(item);
         this.setState({selectedItem: item});
     }
 
@@ -62,6 +64,11 @@ export default class Admin extends Component {
                                     className="pure-menu-item"
                                     onClick={() => this.changeCurrentItem("Emission")}>
                                     <a href="#" className="pure-menu-link">Emissions</a>
+                                </li>
+                                <li
+                                    className="pure-menu-item"
+                                    onClick={() => this.changeCurrentItem("Question")}>
+                                    <a href="#" className="pure-menu-link">Questions</a>
                                 </li>
                             </ul>
                         </nav>

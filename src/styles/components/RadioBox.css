@@ -4,7 +4,6 @@
     border: 8px solid black;
     flex-wrap: wrap;
     flex-direction: column;
-    width: 170px;
 }
 
 .RadioBox__head {

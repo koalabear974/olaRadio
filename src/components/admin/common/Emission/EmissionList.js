@@ -1,5 +1,4 @@
 import React, {Component} from "react";
-import _ from "lodash";
 
 export default class EmissionList extends Component {
     constructor(props) {

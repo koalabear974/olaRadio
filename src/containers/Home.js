@@ -3,6 +3,7 @@ import base from "../db/config";
 import EmissionList from "../components/Emission/EmissionList";
 
 import "../styles/Home.css"
+import MainPage from "../components/MainPage/MainPage";
 
 export default class HomePage extends Component {
     constructor(props) {
@@ -33,13 +34,18 @@ export default class HomePage extends Component {
     render() {
         return (
             <div className={'Home'}>
-                <EmissionList
-                    emissions={this.state.emissions}
+                <MainPage
+                    className={'Home__mainPage'}
                 />
-                <h1>Second title</h1>
-                <EmissionList
-                    emissions={this.state.emissions}
-                />
+                <div className={'Home__bottom'}>
+                    <h2 className={'Home__secondTitle'}>
+                        Derniers enregistrements
+                    </h2>
+                    <EmissionList
+                        className={'Home__EmissionList'}
+                        emissions={this.state.emissions}
+                    />
+                </div>
             </div>
         );
     }
