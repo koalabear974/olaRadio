@@ -1,4 +1,4 @@
-import React, {Component, Fragment} from "react";
+import React, {Component} from "react";
 import Sha1 from "../helpers/sha1";
 
 import CategoryAdminComponent from "../components/admin/CategoryAdminComponent";
@@ -58,17 +58,17 @@ export default class Admin extends Component {
                                 <li
                                     className="pure-menu-item"
                                     onClick={() => this.changeCurrentItem("Category")}>
-                                    <a href="#" className="pure-menu-link">Catégories d'émissions</a>
+                                    <span className="pure-menu-link">Catégories d'émissions</span>
                                 </li>
                                 <li
                                     className="pure-menu-item"
                                     onClick={() => this.changeCurrentItem("Emission")}>
-                                    <a href="#" className="pure-menu-link">Emissions</a>
+                                    <span className="pure-menu-link">Emissions</span>
                                 </li>
                                 <li
                                     className="pure-menu-item"
                                     onClick={() => this.changeCurrentItem("Question")}>
-                                    <a href="#" className="pure-menu-link">Questions</a>
+                                    <span className="pure-menu-link">Questions</span>
                                 </li>
                             </ul>
                         </nav>

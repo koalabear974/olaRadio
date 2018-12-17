@@ -8,11 +8,16 @@ export default class MainPage extends Component {
         super(props);
 
         this.state = {
+            questions: {},
+            activeQuestion: {},
         };
     }
 
+    componentDidMount() {
+    }
+
     render() {
-        const emissionsArray = this.props.emissions;
+
         return (
             <div className={'MainPage'}>
                 <TopBarQuestion

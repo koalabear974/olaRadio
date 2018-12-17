@@ -1,5 +1,4 @@
-import React, { Component, Fragment } from "react";
-import base from "../db/config";
+import React, { Component} from "react";
 
 export default class Dons extends Component {
     constructor(props) {

@@ -1,6 +1,5 @@
-import React, {Component, Fragment} from "react";
+import React, {Component} from "react";
 import base from "../../db/config";
-import {FaPlus} from "react-icons/fa/index";
 import _ from "lodash";
 import EmissionForm from "./common/Emission/EmissionForm";
 import EmissionList from "./common/Emission/EmissionList";

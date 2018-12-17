@@ -1,6 +1,6 @@
 .NavigationBar {
     list-style: none;
-    padding: 20px 0px;
+    padding: 20px 0;
     text-transform: uppercase;
     font-weight: bold;
     display: flex;
@@ -15,7 +15,7 @@
 .NavigationBar__link {
     color: black;
     text-decoration: none;
-    margin: 15px 0px;
+    margin: 15px 0;
 }
 
 .NavigationBar__link--active {

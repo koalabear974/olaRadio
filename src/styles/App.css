@@ -9,7 +9,7 @@
     max-width: 320px;
     display: flex;
     flex-direction: column;
-    padding: 0px 3vw;
+    padding: 0 3vw;
 }
 
 .AppContainer__sideBar--mobile {

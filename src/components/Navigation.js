@@ -13,7 +13,7 @@ export default class Navigation extends Component {
     };
 
     render() {
-        const {pageArray, currentPage} = this.props;
+        let { pageArray } = this.props;
         return (
             <nav className={'NavigationBar'}>
                 {pageArray.map(page => (

@@ -2,8 +2,7 @@
     display: flex;
     flex: 1;
     flex-wrap: wrap;
-    padding: 1em 0;
-    padding-right: 1em;
+    padding: 1em 1em 1em 0;
 }
 
 .Home__secondTitle {

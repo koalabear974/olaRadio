@@ -1,5 +1,4 @@
 import React, {Component} from "react";
-import _ from "lodash";
 import {FaEdit} from "react-icons/fa/index";
 import PropTypes from "prop-types";
 

@@ -1,5 +1,4 @@
 import React, {Component} from "react";
-import PropTypes from "prop-types";
 import base from "../../db/config";
 import QuestionForm from "./common/Question/QuestionForm";
 import QuestionList from "./common/Question/QuestionList";
