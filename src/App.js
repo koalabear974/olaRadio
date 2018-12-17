@@ -22,7 +22,6 @@ import NotFoundPage from "./containers/NotFoundPage";
 
 import "./styles/App.css";
 
-import {Body} from "./common/Fonts";
 import RadioBox from "./components/RadioBox";
 import Logo from "./components/Logo";
 
@@ -40,12 +39,12 @@ class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            currentPage: "",
+            currentPage: "Home",
             isMobile: false,
         };
     }
 
-    componentDidMount() {
+    componentWillMount() {
         this.props.media({ minWidth: 768 }, () => {
             this.setState({
                 isMobile: false
@@ -112,10 +111,10 @@ class App extends Component {
 
         return (
             <Router>
-                <Body className={'AppContainer' + ( isMobile ? ' AppContainer--mobile' : '')}>
+                <div className={'AppContainer' + ( isMobile ? ' AppContainer--mobile' : '')}>
                     { sideBar }
                     { appBody }
-                </Body>
+                </div>
             </Router>
         );
     }

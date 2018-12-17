@@ -131,7 +131,6 @@ export default class EmissionForm extends Component {
                         onChange={this.handleChange}
                     />
                     <textarea
-                        type="text"
                         className={'pure-input-1-2'}
                         name="contenu"
                         placeholder={"Contenu"}

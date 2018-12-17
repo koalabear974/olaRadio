@@ -25,7 +25,7 @@ export default class RadioBox extends Component {
                         />
 
                     </header>
-                    <body className={'Emission__sub-container'}>
+                    <article className={'Emission__sub-container'}>
                         <div className={'Emission__subtitle'}>
                             <Marquee
                                 hoverToStop={true}
@@ -38,7 +38,7 @@ export default class RadioBox extends Component {
                         <footer className={'Emission__date'}>
                             - date
                         </footer>
-                    </body>
+                    </article>
                 </article>
 
                 <div className={'RadioBox__player'}>
