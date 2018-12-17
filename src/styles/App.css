@@ -19,6 +19,14 @@
 .flex {
     display: flex;
 }
+.hidden {
+    display: none;
+}
+.order0 {order:0}
+.order1 {order:1}
+.order2 {order:2}
+.order3 {order:3}
+
 .pure-checkbox.flex {
     display: flex;
 }

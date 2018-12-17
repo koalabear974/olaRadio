@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 
 export default class QuestionList extends Component {
     static propTypes = {
-        questions: PropTypes.arrayOf(Object),
+        questions: PropTypes.object,
         handleEditClick: PropTypes.func
     };
 

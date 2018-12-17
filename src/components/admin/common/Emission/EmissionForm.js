@@ -5,7 +5,7 @@ import _ from "lodash";
 
 export default class EmissionForm extends Component {
     static propTypes = {
-        editEmission: PropTypes.Object,
+        editEmission: PropTypes.object,
         handleSubmit: PropTypes.func
     };
 

@@ -6,36 +6,47 @@ import "../styles/Home.css"
 import MainPage from "../components/MainPage/MainPage";
 
 export default class HomePage extends Component {
-    constructor(props) {
+  constructor(props) {
         super(props);
 
         this.state = {
             categories: {},
             emissions: {},
+            questions: {},
         };
     }
 
-    componentWillMount() {
-        this.emissionsRef = base.syncState('emissions', {
+    componentDidMount() {
+        base.fetch('emissions', {
             context: this,
-            state: 'emissions'
+            then(data) {
+                this.setState({emissions: data});
+            }
         });
-        this.categoriesRef = base.syncState('categories', {
+        base.fetch('categories', {
             context: this,
-            state: 'categories'
+            then(data) {
+                this.setState({categories: data});
+            }
         });
-    }
-
-    componentWillUnmount() {
-        base.removeBinding(this.emissionsRef);
-        base.removeBinding(this.categoriesRef);
+        base.fetch('questions', {
+            context: this,
+            then(data) {
+                this.setState({questions: data});
+                console.log('data');
+            }
+        });
     }
 
     render() {
         return (
             <div className={'Home'}>
                 <MainPage
+                    key={'MainPage'}
                     className={'Home__mainPage'}
+                    emissions={this.state.emissions}
+                    categories={this.state.categories}
+                    questions={this.state.questions}
                 />
                 <div className={'Home__bottom'}>
                     <h2 className={'Home__secondTitle'}>

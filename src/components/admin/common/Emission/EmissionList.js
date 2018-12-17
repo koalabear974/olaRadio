@@ -1,7 +1,13 @@
 import React, {Component} from "react";
 import {FaEdit} from "react-icons/fa/index";
+import PropTypes from "prop-types";
 
 export default class EmissionList extends Component {
+    static propTypes = {
+        categories: PropTypes.object,
+        handleEditClick: PropTypes.func
+    };
+
     constructor(props) {
         super(props);
 

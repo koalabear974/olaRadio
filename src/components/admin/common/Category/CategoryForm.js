@@ -5,7 +5,7 @@ import _ from "lodash";
 
 export default class CategoryForm extends Component {
     static propTypes = {
-        editCategory: PropTypes.Object,
+        editCategory: PropTypes.object,
         handleSubmit: PropTypes.func
     };
 

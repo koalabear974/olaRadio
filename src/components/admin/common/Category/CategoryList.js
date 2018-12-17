@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 
 export default class CategoryList extends Component {
     static propTypes = {
-        categories: PropTypes.arrayOf(Object),
+        categories: PropTypes.object,
         handleEditClick: PropTypes.func
     };
 

@@ -6,7 +6,7 @@ import InputTextArray from "../forms/InputTextArray";
 
 export default class QuestionForm extends Component {
     static propTypes = {
-        editQuestion: PropTypes.Object,
+        editQuestion: PropTypes.object,
         handleSubmit: PropTypes.func
     };
 

@@ -1,6 +1,7 @@
 .MainPage {
     flex: 1;
     display: flex;
+    flex-direction: column;
     border: 8px solid black;
     min-height: 200px;
 }

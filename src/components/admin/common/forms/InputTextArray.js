@@ -5,10 +5,10 @@ import {FaMinus} from "react-icons/fa/index";
 
 export default class InputTextArray extends Component {
     static propTypes = {
-        label: PropTypes.String,
-        name: PropTypes.String,
-        placeholder: PropTypes.String,
-        values: PropTypes.Array,
+        label: PropTypes.string,
+        name: PropTypes.string,
+        placeholder: PropTypes.string,
+        values: PropTypes.arrayOf(PropTypes.string),
         onChange: PropTypes.func
     };
 
