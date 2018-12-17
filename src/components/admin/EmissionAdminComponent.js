@@ -11,11 +11,12 @@ export default class EmissionAdminComponent extends Component {
         this.state = {
             categories: {},
             emissions: {},
-            currentEmission: {},
+            editEmission: {},
         };
 
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleEditClick = this.handleEditClick.bind(this);
+        this.handleDelete = this.handleDelete.bind(this);
     }
 
     componentWillMount() {
@@ -43,20 +44,29 @@ export default class EmissionAdminComponent extends Component {
 
         this.setState({
             emissions: emissions,
-            currentEmission: {},
+            editEmission: {},
         });
     }
 
 
     handleEditClick(key) {
         this.setState({
-            currentEmission: this.state.emissions[key]
+            editEmission: this.state.emissions[key]
+        });
+    }
+
+    handleDelete(id) {
+        base.remove('emissions/'+id);
+        let emissions = _.omit(this.state.emissions, [id]);
+        this.setState({
+            emissions: emissions,
+            editEmission: {},
         });
     }
 
     render() {
         const emissionsArray = this.state.emissions;
-        const currentEmission = this.state.currentEmission;
+        const editEmission = this.state.editEmission;
         const categoriesArray = this.state.categories;
 
         if (_.isEmpty(categoriesArray)) {
@@ -73,8 +83,9 @@ export default class EmissionAdminComponent extends Component {
 
                 <EmissionForm
                     categories={categoriesArray}
-                    editEmission={currentEmission}
+                    editEmission={editEmission}
                     handleSubmit={this.handleSubmit}
+                    handleDelete={this.handleDelete}
                 />
             </div>
         );

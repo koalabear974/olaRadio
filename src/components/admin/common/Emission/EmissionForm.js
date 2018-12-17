@@ -1,12 +1,13 @@
 import React, {Component} from "react";
-import {FaEdit, FaPlus} from "react-icons/fa/index";
+import {FaEdit, FaMinus, FaPlus} from "react-icons/fa/index";
 import PropTypes from "prop-types";
 import _ from "lodash";
 
 export default class EmissionForm extends Component {
     static propTypes = {
         editEmission: PropTypes.object,
-        handleSubmit: PropTypes.func
+        handleSubmit: PropTypes.func,
+        handleDelete: PropTypes.func,
     };
 
     constructor(props) {
@@ -38,6 +39,7 @@ export default class EmissionForm extends Component {
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleDelete = this.handleDelete.bind(this);
     }
 
     handleSubmit(event) {
@@ -89,6 +91,22 @@ export default class EmissionForm extends Component {
         curValue[name] = value;
         this.setState({
             emission: curValue
+        });
+    }
+
+    handleDelete(event) {
+        event.preventDefault();
+        let id = this.state.emission.id;
+        this.props.handleDelete(id);
+        this.setState({
+            emission: {
+                name: "",
+                categories: [],
+                contenu: "",
+                image: "",
+                id: '',
+            },
+            isEdit: false,
         });
     }
 
@@ -147,11 +165,24 @@ export default class EmissionForm extends Component {
                     />
                 </fieldset>
                 <button
-                    className={'EmissionAdminComponent__button pure-button pure-button-primary pure-input-1-2'}
+                    className={
+                        'pure-button pure-button-primary ' +
+                        (this.state.isEdit ? 'pure-input-1-4' : 'pure-input-1-2')
+                    }
                     type="submit"
                 >
                     {this.state.isEdit ? <FaEdit/> : <FaPlus/>}
                 </button>
+                    {
+                        this.state.isEdit ? (
+                            <button
+                                className={'button-error pure-button pure-input-1-4'}
+                                onClick={this.handleDelete}
+                            >
+                                <FaMinus />
+                            </button>
+                        ) : ''
+                    }
             </form>
         );
     }

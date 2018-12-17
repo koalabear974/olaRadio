@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import base from "../../db/config";
 import QuestionForm from "./common/Question/QuestionForm";
 import QuestionList from "./common/Question/QuestionList";
+import _ from "lodash";
 
 
 export default class QuestionAdminComponent extends Component {
@@ -13,11 +14,12 @@ export default class QuestionAdminComponent extends Component {
 
         this.state = {
             questions: {},
-            currentQuestion: {},
+            editQuestion: {},
         };
 
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleEditClick = this.handleEditClick.bind(this);
+        this.handleDelete = this.handleDelete.bind(this);
     }
 
     componentWillMount() {
@@ -43,19 +45,28 @@ export default class QuestionAdminComponent extends Component {
 
         this.setState({
             questions: questions,
-            currentQuestion: {},
+            editQuestion: {},
+        });
+    }
+
+    handleDelete(id) {
+        base.remove('questions/'+id);
+        let questions = _.omit(this.state.questions, [id]);
+        this.setState({
+            questions: questions,
+            editQuestion: {},
         });
     }
 
     handleEditClick(key) {
         this.setState({
-            currentQuestion: this.state.questions[key]
+            editQuestion: this.state.questions[key]
         });
     }
 
     render() {
         const questionsArray = this.state.questions;
-        const currentQuestion = this.state.currentQuestion;
+        const editQuestion = this.state.editQuestion;
         return (
             <div className="QuestionAdminComponent">
                 <QuestionList
@@ -64,8 +75,9 @@ export default class QuestionAdminComponent extends Component {
                 />
 
                 <QuestionForm
-                    editQuestion={currentQuestion}
+                    editQuestion={editQuestion}
                     handleSubmit={this.handleSubmit}
+                    handleDelete={this.handleDelete}
                 />
             </div>
         );

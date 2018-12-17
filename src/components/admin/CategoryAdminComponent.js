@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import base from "../../db/config";
 import CategoryForm from "./common/Category/CategoryForm";
 import CategoryList from "./common/Category/CategoryList";
+import _ from "lodash";
 
 export default class CategoryAdminComponent extends Component {
     constructor(props) {
@@ -9,11 +10,12 @@ export default class CategoryAdminComponent extends Component {
 
         this.state = {
             categories: {},
-            currentCategory: {},
+            editCategory: {},
         };
 
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleEditClick = this.handleEditClick.bind(this);
+        this.handleDelete = this.handleDelete.bind(this);
     }
 
     componentWillMount() {
@@ -37,19 +39,27 @@ export default class CategoryAdminComponent extends Component {
 
         this.setState({
             categories: categories,
-            currentCategory: {},
+            editCategory: {},
         });
     }
 
+    handleDelete(id) {
+        base.remove('categories/'+id);
+        let categories = _.omit(this.state.categories, [id]);
+        this.setState({
+            categories: categories,
+            editCategory: {},
+        });
+    }
     handleEditClick(key) {
         this.setState({
-            currentCategory: this.state.categories[key]
+            editCategory: this.state.categories[key]
         });
     }
 
     render() {
         const categoriesArray = this.state.categories;
-        let currentCategory = this.state.currentCategory;
+        let editCategory = this.state.editCategory;
 
         return (
             <div className="CategoryAdminComponent">
@@ -59,8 +69,9 @@ export default class CategoryAdminComponent extends Component {
                 />
 
                 <CategoryForm
-                    editCategory={currentCategory}
+                    editCategory={editCategory}
                     handleSubmit={this.handleSubmit}
+                    handleDelete={this.handleDelete}
                 />
             </div>
         );
