@@ -12,9 +12,11 @@ export default class EmissionAdminComponent extends Component {
         this.state = {
             categories: {},
             emissions: {},
+            currentEmission: {},
         };
 
-        this.addEmission = this.addEmission.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleEditClick = this.handleEditClick.bind(this);
     }
 
     componentWillMount() {
@@ -33,20 +35,29 @@ export default class EmissionAdminComponent extends Component {
         base.removeBinding(this.categoriesRef);
     }
 
-    addEmission(emission) {
+    handleSubmit(emission) {
         const emissions = {...this.state.emissions};
-        const id = Date.now();
+        const id = emission.id ? emission.id : Date.now();
         let curEmission = emission;
         curEmission['id'] = id;
         emissions[id] = curEmission;
 
         this.setState({
             emissions: emissions,
+            currentEmission: {},
+        });
+    }
+
+
+    handleEditClick(key) {
+        this.setState({
+            currentEmission: this.state.emissions[key]
         });
     }
 
     render() {
         const emissionsArray = this.state.emissions;
+        const currentEmission = this.state.currentEmission;
         const categoriesArray = this.state.categories;
 
         if (_.isEmpty(categoriesArray)) {
@@ -58,11 +69,13 @@ export default class EmissionAdminComponent extends Component {
                 <EmissionList
                     categories={categoriesArray}
                     emissions={emissionsArray}
+                    handleEditClick={this.handleEditClick}
                 />
 
                 <EmissionForm
                     categories={categoriesArray}
-                    addEmission={this.addEmission}
+                    editEmission={currentEmission}
+                    handleSubmit={this.handleSubmit}
                 />
             </div>
         );

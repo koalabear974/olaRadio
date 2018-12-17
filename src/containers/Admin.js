@@ -23,7 +23,7 @@ export default class Admin extends Component {
         this.state = {
             isVerified: true,
             passwordValue: "",
-            selectedItem: "Question",
+            selectedItem: "Emission",
         };
 
         this.onPasswordSubmit = this.onPasswordSubmit.bind(this);

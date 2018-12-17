@@ -1,27 +1,68 @@
 import React, {Component} from "react";
-import {FaPlus} from "react-icons/fa/index";
+import {FaEdit, FaPlus} from "react-icons/fa/index";
+import PropTypes from "prop-types";
+import _ from "lodash";
 
 export default class CategoryForm extends Component {
+    static propTypes = {
+        editCategory: PropTypes.Object,
+        handleSubmit: PropTypes.func
+    };
+
     constructor(props) {
         super(props);
 
         this.state = {
             category: {
                 name: "",
+                id: '',
             },
+            isEdit: false,
         };
 
+        if (!_.isEmpty(this.props.editCategory)) {
+            this.state = {
+                category: {
+                    name: this.props.editCategory.name,
+                    id: this.props.editCategory.id,
+                },
+                isEdit: true,
+            };
+        }
+
         this.handleChange = this.handleChange.bind(this);
-        this.onCategoryAdd = this.onCategoryAdd.bind(this);
+        this.onCategorySubmit = this.onCategorySubmit.bind(this);
     }
 
-    onCategoryAdd(event) {
+    onCategorySubmit(event) {
         event.preventDefault();
-        this.props.addCategory(this.state.category);
+        this.props.handleSubmit(this.state.category);
+        this.setState({
+            category: {
+                name: "",
+                id: "",
+            },
+            isEdit: false,
+        })
     }
 
     handleChange(event) {
-        this.setState({category: {name: event.target.value}});
+        const target = event.target;
+        let curValue = this.state.category;
+        curValue[target.name] = target.value;
+        this.setState({category: curValue});
+    }
+
+    componentDidUpdate() {
+        if (!_.isEmpty(this.props.editCategory) && this.props.editCategory.id !== this.state.category.id) {
+            this.setState({
+                category: {
+                    name: this.props.editCategory.name,
+                    id: this.props.editCategory.id,
+                },
+                isEdit: true,
+            });
+        }
     }
 
     render() {
@@ -30,7 +71,7 @@ export default class CategoryForm extends Component {
         return (
             <form
                 className="CategoryAdminComponent__form pure-form"
-                onSubmit={this.onCategoryAdd}
+                onSubmit={this.onCategorySubmit}
             >
                 <fieldset>
                     <legend>Ajouter une catégorie</legend>
@@ -45,7 +86,7 @@ export default class CategoryForm extends Component {
                         className={'CategoryAdminComponent__button pure-button pure-button-primary'}
                         type="submit"
                     >
-                        <FaPlus className="CategoryAdminComponent__add"/>
+                        {this.state.isEdit ? <FaEdit/> : <FaPlus/>}
                     </button>
                 </fieldset>
             </form>

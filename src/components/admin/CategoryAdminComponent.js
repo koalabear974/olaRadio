@@ -9,9 +9,11 @@ export default class CategoryAdminComponent extends Component {
 
         this.state = {
             categories: {},
+            currentCategory: {},
         };
 
-        this.addCategory = this.addCategory.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleEditClick = this.handleEditClick.bind(this);
     }
 
     componentWillMount() {
@@ -25,28 +27,40 @@ export default class CategoryAdminComponent extends Component {
         base.removeBinding(this.categoriesRef);
     }
 
-    addCategory(category) {
+    handleSubmit(category) {
         const categories = {...this.state.categories};
-        const id = Date.now();
+        const id = category.id ? category.id : Date.now();
         categories[id] = {
             id: id,
             name: category.name,
         };
 
-        this.setState({categories});
+        this.setState({
+            categories: categories,
+            currentCategory: {},
+        });
+    }
+
+    handleEditClick(key) {
+        this.setState({
+            currentCategory: this.state.categories[key]
+        });
     }
 
     render() {
         const categoriesArray = this.state.categories;
+        let currentCategory = this.state.currentCategory;
 
         return (
             <div className="CategoryAdminComponent">
                 <CategoryList
                     categories={categoriesArray}
+                    handleEditClick={this.handleEditClick}
                 />
 
                 <CategoryForm
-                    addCategory={this.addCategory}
+                    editCategory={currentCategory}
+                    handleSubmit={this.handleSubmit}
                 />
             </div>
         );

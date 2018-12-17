@@ -1,7 +1,14 @@
 import React, {Component} from "react";
-import {FaPlus} from "react-icons/fa/index";
+import {FaEdit, FaPlus} from "react-icons/fa/index";
+import PropTypes from "prop-types";
+import _ from "lodash";
 
 export default class EmissionForm extends Component {
+    static propTypes = {
+        editEmission: PropTypes.Object,
+        handleSubmit: PropTypes.func
+    };
+
     constructor(props) {
         super(props);
 
@@ -11,16 +18,56 @@ export default class EmissionForm extends Component {
                 categories: [],
                 contenu: "",
                 image: "",
+                id: '',
             },
+            isEdit: false,
         };
 
+        if (!_.isEmpty(this.props.editEmission)) {
+            this.state = {
+                emission: {
+                    name: this.props.editEmission.name,
+                    categories: this.props.editEmission.categories,
+                    contenu: this.props.editEmission.contenu,
+                    image: this.props.editEmission.image,
+                    id: this.props.editEmission.id,
+                },
+                isEdit: true,
+            };
+        }
+
         this.handleChange = this.handleChange.bind(this);
-        this.onEmissionAdd = this.onEmissionAdd.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    onEmissionAdd(event) {
+    handleSubmit(event) {
         event.preventDefault();
-        this.props.addEmission(this.state.emission);
+        this.props.handleSubmit(this.state.emission);
+        this.setState({
+            emission: {
+                name: "",
+                categories: [],
+                contenu: "",
+                image: "",
+                id: '',
+            },
+            isEdit: false,
+        });
+    }
+
+    componentDidUpdate() {
+        if (!_.isEmpty(this.props.editEmission) && this.props.editEmission.id !== this.state.emission.id) {
+            this.setState({
+                emission: {
+                    name: this.props.editEmission.name,
+                    categories: this.props.editEmission.categories,
+                    contenu: this.props.editEmission.contenu,
+                    image: this.props.editEmission.image,
+                    id: this.props.editEmission.id,
+                },
+                isEdit: true,
+            });
+        }
     }
 
     handleChange(event) {
@@ -47,10 +94,11 @@ export default class EmissionForm extends Component {
 
     render() {
         let categoriesArray = this.props.categories;
+        let curEmission = this.state.emission;
         return (
             <form
                 className="EmissionAdminComponent__form pure-form"
-                onSubmit={this.onEmissionAdd}
+                onSubmit={this.handleSubmit}
             >
                 <legend>Ajouter une émission</legend>
 
@@ -58,7 +106,7 @@ export default class EmissionForm extends Component {
                     multiple
                     name="categories"
                     className={'pure-input-1-2'}
-                    value={this.state.emission.categories}
+                    value={curEmission.categories}
                     onChange={this.handleChange}
                 >
                     {Object.keys(categoriesArray).map(function(key) {
@@ -79,7 +127,7 @@ export default class EmissionForm extends Component {
                         className={'pure-input-1-2'}
                         name="name"
                         placeholder={"Nom"}
-                        value={this.state.emission.name}
+                        value={curEmission.name}
                         onChange={this.handleChange}
                     />
                     <textarea
@@ -87,7 +135,7 @@ export default class EmissionForm extends Component {
                         className={'pure-input-1-2'}
                         name="contenu"
                         placeholder={"Contenu"}
-                        value={this.state.emission.contenu}
+                        value={curEmission.contenu}
                         onChange={this.handleChange}
                     />
                     <input
@@ -95,7 +143,7 @@ export default class EmissionForm extends Component {
                         className={'pure-input-1-2'}
                         name="image"
                         placeholder={"Image"}
-                        value={this.state.emission.image}
+                        value={curEmission.image}
                         onChange={this.handleChange}
                     />
                 </fieldset>
@@ -103,7 +151,7 @@ export default class EmissionForm extends Component {
                     className={'EmissionAdminComponent__button pure-button pure-button-primary pure-input-1-2'}
                     type="submit"
                 >
-                    <FaPlus className="EmissionAdminComponent__add"/>
+                    {this.state.isEdit ? <FaEdit/> : <FaPlus/>}
                 </button>
             </form>
         );
