@@ -120,7 +120,7 @@ export default class Admin extends Component {
                             {
                                 _.isEmpty(this.state.errors) ?
                                     "" :
-                                    <legend>{this.state.errors}</legend>
+                                    <legend className={'pure-form--error'}>{this.state.errors}</legend>
                             }
                             <fieldset>
                                 <input

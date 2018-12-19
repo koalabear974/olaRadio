@@ -3,6 +3,19 @@
     flex:1;
 }
 
+.AppContainer__body {
+    display: flex;
+    flex:1;
+}
+
+.AppContainer__body--mobile {
+    flex-direction: column;
+}
+
+.AppContainer__body--mobile > * {
+    flex: 0 0 auto
+}
+
 .AppContainer__sideBar {
     background: white;
     flex: 0 0 30vw;
@@ -27,6 +40,9 @@
 .order2 {order:2}
 .order3 {order:3}
 
+.pure-form--error {
+    color: red;
+}
 .pure-checkbox.flex {
     display: flex;
 }
