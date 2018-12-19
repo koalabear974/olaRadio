@@ -10,13 +10,9 @@ import "typeface-open-sans";
 
 import Home from "./containers/Home";
 import Navigation from "./components/Navigation";
-import Direct from "./containers/Direct"
-import Agenda from "./containers/Agenda"
 import Shop from "./containers/Shop"
 import Dons from "./containers/Dons"
-import VideoLive from "./containers/VideoLive"
 import Info from "./containers/Info"
-import Contact from "./containers/Contact"
 import Admin from "./containers/Admin"
 import NotFoundPage from "./containers/NotFoundPage";
 
@@ -26,13 +22,10 @@ import RadioBox from "./components/RadioBox";
 import Logo from "./components/Logo";
 
 const pages = [
-    {path: "Direct", text: "Direct"},
-    {path: "Agenda", text: "Agenda"},
+    {path: "Prog", text: "Info"},
+    {path: "Archive", text: "Info"},
     {path: "Shop", text: "Shop"},
-    {path: "Dons", text: "Dons"},
-    {path: "VideoLive", text: "Video Live"},
-    {path: "Info", text: "Info"},
-    {path: "Contact", text: "Contact"},
+    {path: "Info", text: "Dons"},
 ];
 
 class App extends Component {
@@ -86,13 +79,10 @@ class App extends Component {
                     path="/Home"
                     render={() => <Home setCurrentPage={this.setCurrentPage}/>}
                 />
-                <Route path="/Direct" component={Direct}/>
-                <Route path="/Agenda" component={Agenda}/>
+                <Route path="/Prog" component={Info}/>
+                <Route path="/Archive" component={Info}/>
                 <Route path="/Shop" component={Shop}/>
-                <Route path="/Dons" component={Dons}/>
-                <Route path="/VideoLive" component={VideoLive}/>
                 <Route path="/Info" component={Info}/>
-                <Route path="/Contact" component={Contact}/>
                 <Route path="/Admin" component={Admin}/>
                 <Route component={NotFoundPage}/>
             </Switch>
