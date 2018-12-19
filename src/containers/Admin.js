@@ -1,5 +1,8 @@
 import React, {Component} from "react";
 import Sha1 from "../helpers/sha1";
+import firebase from 'firebase/app';
+import 'firebase/auth';
+import _ from 'lodash';
 
 import CategoryAdminComponent from "../components/admin/CategoryAdminComponent";
 import EmissionAdminComponent from "../components/admin/EmissionAdminComponent";
@@ -17,12 +20,14 @@ export default class Admin extends Component {
     constructor(props) {
         super(props);
 
-        // The Website password
-        this.password = 'e7ee777deaff95f2c168a88c4c82b3d6531553bc';
-
         this.state = {
-            isVerified: true,
-            passwordValue: "",
+            isVerified: false,
+            errors: "",
+            user: {
+                email: '',
+                password: '',
+                remember: false
+            },
             selectedItem: "Emission",
         };
 
@@ -32,15 +37,38 @@ export default class Admin extends Component {
     }
 
     componentDidMount() {
+        this.unregisterAuthObserver = firebase.auth().onAuthStateChanged(
+            (user) => {this.setState({isVerified: !!user, errors: ""})}
+        );
+    }
+
+    componentWillUnmount() {
+        this.unregisterAuthObserver();
     }
 
     onPasswordSubmit(event) {
         event.preventDefault();
-        this.setState({isVerified: (this.password ===  Sha1.hash(this.state.passwordValue))})
+        let user = this.state.user;
+        let that = this;
+
+        firebase.auth().setPersistence(
+            this.state.user.remember ?
+                firebase.auth.Auth.Persistence.LOCAL :
+                firebase.auth.Auth.Persistence.NONE
+        ).then(function () {
+            return firebase.auth().signInWithEmailAndPassword(user.email, user.password);
+        }).catch(function (error) {
+            console.error('Login error: ', error);
+            that.setState({errors: error.message});
+        });
     }
 
     handleChange(event) {
-        this.setState({passwordValue: event.target.value});
+        const target = event.target;
+        let value = target.type === 'checkbox' ? target.checked : target.value;
+        let curValue = this.state.user;
+        curValue[target.name] = value;
+        this.setState({user: curValue});
     }
 
     changeCurrentItem(item) {
@@ -49,6 +77,7 @@ export default class Admin extends Component {
 
     render() {
         let CurrentItem = Components[this.state.selectedItem + "AdminComponent"];
+        let curUser = this.state.user;
         return (
             <div className="Admin">
                 {this.state.isVerified ? (
@@ -70,6 +99,11 @@ export default class Admin extends Component {
                                     onClick={() => this.changeCurrentItem("Question")}>
                                     <span className="pure-menu-link">Questions</span>
                                 </li>
+                                <li
+                                    className="pure-menu-item"
+                                    onClick={() => firebase.auth().signOut()}>
+                                    <button className="pure-button pure-button-primary"> Log out</button>
+                                </li>
                             </ul>
                         </nav>
 
@@ -78,15 +112,40 @@ export default class Admin extends Component {
                         </div>
                     </div>
                 ) : (
-                    <div>
-                        <form onSubmit={this.onPasswordSubmit}>
-                            <input
-                                type="password"
-                                name="password"
-                                onChange={this.handleChange}
-                                value={this.state.passwordValue}
-                            />
-                            <input type="submit" value="Log in" />
+                    <div className={'Admin__loginForm'}>
+                        <form
+                            className={'pure-form'}
+                            onSubmit={this.onPasswordSubmit}
+                        >
+                            {
+                                _.isEmpty(this.state.errors) ?
+                                    "" :
+                                    <legend>{this.state.errors}</legend>
+                            }
+                            <fieldset>
+                                <input
+                                    type="email"
+                                    name="email"
+                                    onChange={this.handleChange}
+                                    value={curUser.email}
+                                />
+                                <input
+                                    type="password"
+                                    name="password"
+                                    onChange={this.handleChange}
+                                    value={curUser.password}
+                                />
+                                <label htmlFor="remember" className="pure-checkbox">
+                                    <input
+                                        id="remember"
+                                        type="checkbox"
+                                        name="remember"
+                                        checked={curUser.remember}
+                                        onChange={this.handleChange}
+                                    /> Remember me
+                                </label>
+                                <button type="submit" className="pure-button pure-button-primary">Sign in</button>
+                            </fieldset>
                         </form>
                     </div>
                 )}

@@ -4,6 +4,10 @@
     max-width: 70vw;
 }
 
+.AppContainer--mobile .Admin {
+    max-width: 100vw;
+}
+
 .Admin__container {
     display: flex;
     flex: 1;
@@ -43,4 +47,8 @@
 
 .CategoryAdminComponent__form, .EmissionAdminComponent__form {
     margin-top: 2em;
+}
+
+.Admin__loginForm {
+    margin: 0 auto;
 }
