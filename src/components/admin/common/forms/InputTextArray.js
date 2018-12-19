@@ -97,38 +97,41 @@ export default class InputTextArray extends Component {
         let {label, name, placeholder} = this.props;
 
         return (
-            <fieldset>
-                <label htmlFor={name}>{label}</label>
-                {
-                    inputArray.map((object) => {
-                        return (
-                            <div
-                                key={name + '[' + object.index + ']div'}
-                                className={'flex'}>
-                                <input
-                                    className={''}
-                                    key={name + '[' + object.index + ']'}
-                                    type="text"
-                                    data-index={object.index}
-                                    name={name + '[' + object.index + ']'}
-                                    placeholder={placeholder}
-                                    value={object.value}
-                                    onChange={this.handleChange}
-                                />
-                                <button
-                                    className={'button-error pure-button'}
-                                    key={name + '[' + object.index + ']button'}
-                                    onClick={(e) => {e.preventDefault(); this.handleDelete(object.index)}}
+            <div className="field">
+                <label htmlFor={name} className={'label'}>{label}</label>
+                <div className="control">
+                    {
+                        inputArray.map((object) => {
+                            return (
+                                <div
+                                    key={name + '[' + object.index + ']div'}
+                                    className={'flex'}>
+                                    <input
+                                        className={'input'}
+                                        key={name + '[' + object.index + ']'}
+                                        type="text"
+                                        data-index={object.index}
+                                        name={name + '[' + object.index + ']'}
+                                        placeholder={placeholder}
+                                        value={object.value}
+                                        onChange={this.handleChange}
+                                    />
+                                    <button
+                                        className={'button is-danger'}
+                                        key={name + '[' + object.index + ']button'}
+                                        onClick={(e) => {
+                                            e.preventDefault();
+                                            this.handleDelete(object.index)
+                                        }}
                                     >
-                                    <FaMinus/>
-                                </button>
-                            </div>
-                        );
-                    })
-                }
-
+                                        <FaMinus/>
+                                    </button>
+                                </div>
+                            );
+                        })
+                    }
                 <input
-                    className={'pure-input-1-2'}
+                    className={'input'}
                     key={name + '[' + lastInput.index + ']'}
                     type="text"
                     data-index={lastInput.index}
@@ -139,7 +142,8 @@ export default class InputTextArray extends Component {
                     onBlur={this.registerLast}
                     ref={this.lastInputRef}
                 />
-            </fieldset>
+                </div>
+            </div>
         );
     }
 }

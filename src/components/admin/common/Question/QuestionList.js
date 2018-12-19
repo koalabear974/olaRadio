@@ -25,7 +25,7 @@ export default class QuestionList extends Component {
         const questionsArray = this.props.questions;
         const that = this;
         return (
-            <table className="QuestionAdminComponent__table pure-table-bordered pure-table">
+            <table className="QuestionAdminComponent__table table">
                 <thead>
                 <tr key={'header'}>
                     <th>Id</th>
@@ -51,7 +51,7 @@ export default class QuestionList extends Component {
                             <td>{questionsArray[key].active ? 'Oui' : 'Non'}</td>
                             <td>
                                 <button
-                                    className={'pure-button pure-button-primary pure-input-1-2'}
+                                    className={'button'}
                                     onClick={() => that.onEditClick(key)}
                                 >
                                     <FaEdit />

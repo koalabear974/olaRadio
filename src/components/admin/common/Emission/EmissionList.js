@@ -25,7 +25,7 @@ export default class EmissionList extends Component {
         const categoriesArray = this.props.categories;
         let that = this;
         return (
-            <table className="EmissionAdminComponent__table pure-table-bordered pure-table">
+            <table className="EmissionAdminComponent__table table">
                 <thead>
                 <tr key={'header'}>
                     <th>Id</th>
@@ -49,7 +49,7 @@ export default class EmissionList extends Component {
                             <td>{emissionsArray[key].image}</td>
                             <td>
                                 <button
-                                    className={'pure-button pure-button-primary pure-input-1-2'}
+                                    className={'button'}
                                     onClick={() => that.onEditClick(key)}
                                 >
                                     <FaEdit />

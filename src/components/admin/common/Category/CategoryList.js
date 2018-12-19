@@ -23,7 +23,7 @@ export default class CategoryList extends Component {
         let categoriesArray = this.props.categories;
         let that = this;
         return (
-            <table className="CategoryAdminComponent__table pure-table">
+            <table className="CategoryAdminComponent__table table">
                 <thead>
                 <tr key={'header'}>
                     <th>Id</th>
@@ -39,7 +39,7 @@ export default class CategoryList extends Component {
                             <td>{categoriesArray[key].name}</td>
                             <td>
                                 <button
-                                    className={'pure-button pure-button-primary pure-input-1-2'}
+                                    className={'button'}
                                     onClick={() => that.onEditClick(key)}
                                 >
                                     <FaEdit />

@@ -85,39 +85,35 @@ export default class CategoryForm extends Component {
 
         return (
             <form
-                className="CategoryAdminComponent__form pure-form"
+                className="CategoryAdminComponent__form form"
                 onSubmit={this.onCategorySubmit}
             >
-                <fieldset className={'pure-group'}>
-                    <legend>Ajouter une catégorie</legend>
-                    <input
-                        type="text"
-                        name="name"
-                        className={'pure-input-1-2'}
-                        placeholder={"Nom"}
-                        onChange={this.handleChange}
-                        value={curCategory.name}
-                    />
-                </fieldset>
-                    <button
-                        className={
-                            'pure-button pure-button-primary ' +
-                            (this.state.isEdit ? 'pure-input-1-4' : 'pure-input-1-2')
-                        }
-                        type="submit"
-                    >
-                        {this.state.isEdit ? <FaEdit/> : <FaPlus/>}
-                    </button>
-                    {
-                        this.state.isEdit ? (
-                            <button
-                                className={'button-error pure-button pure-input-1-4'}
-                                onClick={this.handleDelete}
-                            >
-                                <FaMinus />
-                            </button>
-                        ) : ''
-                    }
+                <legend>Ajouter une catégorie</legend>
+                <label htmlFor="name" className={'label'}>Nom</label>
+                <input
+                    type="text"
+                    name="name"
+                    className={'input'}
+                    placeholder={"Nom"}
+                    onChange={this.handleChange}
+                    value={curCategory.name}
+                />
+                {
+                    this.state.isEdit ? (
+                        <button
+                            className={'button is-danger'}
+                            onClick={this.handleDelete}
+                        >
+                            <FaMinus/>
+                        </button>
+                    ) : ''
+                }
+                <button
+                    className={'button is-info '}
+                    type="submit"
+                >
+                    {this.state.isEdit ? <FaEdit/> : <FaPlus/>}
+                </button>
             </form>
         );
     }

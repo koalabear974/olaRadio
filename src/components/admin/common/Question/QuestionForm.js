@@ -77,9 +77,9 @@ export default class QuestionForm extends Component {
         this.setState({
             question: {
                 question: "",
-                    answers: [],
-                    active: false,
-                    id: "",
+                answers: [],
+                active: false,
+                id: "",
             },
             isEdit: false,
         });
@@ -120,59 +120,57 @@ export default class QuestionForm extends Component {
         let question = this.state.question;
         return (
             <form
-                className="QuestionAdminComponent__form pure-form"
+                className="QuestionAdminComponent__form form"
                 onSubmit={this.onQuestionSubmit}
             >
                 <legend>{this.state.isEdit ? 'Editer' : 'Ajouter'} une question</legend>
 
-
-                <fieldset className={'pure-group'}>
-                    <label htmlFor="question">Question</label>
-                    <input
-                        type="text"
-                        className={'pure-input-1-2'}
-                        name="question"
-                        placeholder={"Question"}
-                        value={question.question}
-                        onChange={this.handleChange}
-                    />
-
-                    <InputTextArray
-                        label={'Réponses'}
-                        name={'answers'}
-                        placeholder={'Réponses'}
-                        values={question.answers}
-                        onChange={this.handleArrayChange}
-                    />
-
-                    <label className="pure-checkbox flex">
+                <div className="field">
+                    <label className="label">Question</label>
+                    <div className="control">
+                        <input
+                            type="text"
+                            className={'input'}
+                            name="question"
+                            placeholder={"Question"}
+                            value={question.question}
+                            onChange={this.handleChange}
+                        />
+                    </div>
+                </div>
+                <InputTextArray
+                    label={'Réponses'}
+                    name={'answers'}
+                    placeholder={'Réponses'}
+                    values={question.answers}
+                    onChange={this.handleArrayChange}
+                />
+                <div className="field">
+                    <div className="control">
                         <input
                             type="checkbox"
                             name="active"
                             checked={question.active}
                             onChange={this.handleChange}
                         /> est active?
-                    </label>
-                </fieldset>
+                    </div>
+                </div>
+                {
+                    this.state.isEdit ? (
+                        <button
+                            className={'button is-danger'}
+                            onClick={this.handleDelete}
+                        >
+                            <FaMinus/>
+                        </button>
+                    ) : ''
+                }
                 <button
-                    className={
-                        'pure-button pure-button-primary ' +
-                        (this.state.isEdit ? 'pure-input-1-4' : 'pure-input-1-2')
-                    }
+                    className={'button is-info '}
                     type="submit"
                 >
                     {this.state.isEdit ? <FaEdit/> : <FaPlus/>}
                 </button>
-                {
-                    this.state.isEdit ? (
-                        <button
-                            className={'button-error pure-button pure-input-1-4'}
-                            onClick={this.handleDelete}
-                        >
-                            <FaMinus />
-                        </button>
-                    ) : ''
-                }
             </form>
         );
     }

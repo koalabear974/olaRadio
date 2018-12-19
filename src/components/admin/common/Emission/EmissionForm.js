@@ -115,74 +115,92 @@ export default class EmissionForm extends Component {
         let curEmission = this.state.emission;
         return (
             <form
-                className="EmissionAdminComponent__form pure-form"
+                className="EmissionAdminComponent__form form"
                 onSubmit={this.handleSubmit}
             >
                 <legend>Ajouter une émission</legend>
 
-                <select
-                    multiple
-                    name="categories"
-                    className={'pure-input-1-2'}
-                    value={curEmission.categories}
-                    onChange={this.handleChange}
-                >
-                    {Object.keys(categoriesArray).map(function(key) {
-                        return (
-                            <option
-                                key={key}
-                                value={categoriesArray[key].id}
-                            >
-                                {categoriesArray[key].name}
-                            </option>
-                        );
-                    })}
-                </select>
+                <div className="field">
+                    <label className="label">Catégories</label>
+                    <div className="control">
+                        <select
+                            multiple
+                            name="categories"
+                            className={''}
+                            value={curEmission.categories}
+                            onChange={this.handleChange}
+                        >
+                            {Object.keys(categoriesArray).map(function(key) {
+                                return (
+                                    <option
+                                        key={key}
+                                        value={categoriesArray[key].id}
+                                    >
+                                        {categoriesArray[key].name}
+                                    </option>
+                                );
+                            })}
+                        </select>
+                    </div>
+                </div>
 
-                <fieldset className={'pure-group'}>
-                    <input
-                        type="text"
-                        className={'pure-input-1-2'}
-                        name="name"
-                        placeholder={"Nom"}
-                        value={curEmission.name}
-                        onChange={this.handleChange}
-                    />
-                    <textarea
-                        className={'pure-input-1-2'}
-                        name="contenu"
-                        placeholder={"Contenu"}
-                        value={curEmission.contenu}
-                        onChange={this.handleChange}
-                    />
-                    <input
-                        type="text"
-                        className={'pure-input-1-2'}
-                        name="image"
-                        placeholder={"Image"}
-                        value={curEmission.image}
-                        onChange={this.handleChange}
-                    />
-                </fieldset>
+                <div className="field">
+                    <label className="label">Nom</label>
+                    <div className="control">
+                            <input
+                                type="text"
+                                className={'input'}
+                                name="name"
+                                placeholder={"Nom"}
+                                value={curEmission.name}
+                                onChange={this.handleChange}
+                            />
+                    </div>
+                </div>
+
+                <div className="field">
+                    <label className="label">Contenu</label>
+                    <div className="control">
+                        <textarea
+                            className={'textarea'}
+                            name="contenu"
+                            placeholder={"Contenu"}
+                            value={curEmission.contenu}
+                            onChange={this.handleChange}
+                        />
+                    </div>
+                </div>
+
+                <div className="field">
+                    <label className="label">Image</label>
+                    <div className="control">
+                        <input
+                            type="text"
+                            className={'input'}
+                            name="image"
+                            placeholder={"Image"}
+                            value={curEmission.image}
+                            onChange={this.handleChange}
+                        />
+                    </div>
+                </div>
+
+                {
+                    this.state.isEdit ? (
+                        <button
+                            className={'button is-danger'}
+                            onClick={this.handleDelete}
+                        >
+                            <FaMinus />
+                        </button>
+                    ) : ''
+                }
                 <button
-                    className={
-                        'pure-button pure-button-primary ' +
-                        (this.state.isEdit ? 'pure-input-1-4' : 'pure-input-1-2')
-                    }
+                    className={'button is-info is-big'}
                     type="submit"
                 >
                     {this.state.isEdit ? <FaEdit/> : <FaPlus/>}
                 </button>
-                    {
-                        this.state.isEdit ? (
-                            <button
-                                className={'button-error pure-button pure-input-1-4'}
-                                onClick={this.handleDelete}
-                            >
-                                <FaMinus />
-                            </button>
-                        ) : ''
-                    }
             </form>
         );
     }

@@ -18,7 +18,6 @@
 }
 
 .Admin__navbar {
-    flex: 0;
 }
 
 .Admin__current {
@@ -52,9 +51,6 @@
 }
 
 .Admin__loginForm {
-    margin: auto;
-}
-
-.AppContainer--mobile .Admin__loginForm {
-    padding: 0 1em;
+    padding: 1em;
+    margin: auto 0;
 }
