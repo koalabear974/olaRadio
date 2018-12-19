@@ -49,7 +49,7 @@ export default class LoginForm extends Component {
         let user = this.state.user;
         return (
             <form
-                className={'pure-form'}
+                className={'form'}
                 onSubmit={this.onSubmit}
             >
                 {

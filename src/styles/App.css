@@ -40,16 +40,6 @@
 .order2 {order:2}
 .order3 {order:3}
 
-.pure-form--error {
-    color: red;
-}
-.pure-checkbox.flex {
-    display: flex;
-}
-.pure-form .pure-group .pure-checkbox input {
-    margin-right: 5px !important;
-}
-
 .button-success,
 .button-error,
 .button-warning,
