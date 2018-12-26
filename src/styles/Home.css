@@ -1,12 +1,15 @@
 .Home {
     display: flex;
     flex: 1;
-    flex-wrap: wrap;
-    padding: 1em 1em 1em 0;
+    flex-direction: column;
+    margin: 2em 1em 0;
 }
 
 .Home__secondTitle {
     text-transform: uppercase;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 5px;
 }
 
 .Home__mainPage {
@@ -14,5 +17,8 @@
 }
 
 .Home__bottom {
-    flex: 1 1 100%;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    margin: 1em 0 0;
 }

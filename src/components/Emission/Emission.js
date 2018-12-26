@@ -12,8 +12,28 @@ export default class Emission extends Component {
 
     render() {
         let emission = this.props.emission;
+        //TODO change to proper verification
+        let isFeatured = (this.props.emission.categories || []).includes("1539086792337");
+
+        if (this.props.small) {
+            return (
+                <article className={"Emission--small"+ (isFeatured ? ' Emission--featured' : '')}>
+                    <footer
+                        className={'Emission__date'}
+                    >
+                        10:00 - 12:00
+                    </footer>
+                    <header
+                        className={'Emission__name'}
+                    >
+                        {emission.name}
+                    </header>
+                </article>
+            );
+        }
+
         return (
-            <article className="Emission">
+            <article className={"Emission"}>
                 <div className="Emission__imageContainer">
                     <img
                         className={'Emission__image'}

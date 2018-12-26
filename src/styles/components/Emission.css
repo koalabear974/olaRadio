@@ -21,6 +21,10 @@
 
 }
 
+.Emission--featured .Emission__name {
+    color: red;
+}
+
 .Emission__name {
     flex: 1 1 100%;
 }
@@ -29,5 +33,48 @@
     flex: 1 1 100%;
 }
 
+.EmissionCalendar {
+    display: flex;
+    flex: 1;
+    height: 100%;
+    flex-direction: column;
+    margin: 0 1em;
+}
+
+.EmissionCalendar__section {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.EmissionCalendar__date {
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 26px;
+    margin-bottom: 10px;
+}
+
+.EmissionCalendar__date > span {
+    border-bottom: 7px solid black;
+    padding-bottom: 4px;
+}
+
+.EmissionCalendar__container {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+}
+
+.Emission--small {
+    display: flex;
+    font-weight: bold;
+    line-height: 18px;
+    text-transform: uppercase;
+}
+
+.Emission--small .Emission__date {
+    flex: 0 0 130px
+}
 
 

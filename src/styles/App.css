@@ -1,15 +1,28 @@
 .AppContainer {
     display: flex;
-    flex:1;
+    flex-direction: column;
+    flex-wrap: wrap;
+    flex: 1 1 auto;
+    overflow-y: scroll;
+    position: relative;
+}
+
+.AppContainer__footer {
+    flex: 0 0 15px;
+    text-align: left;
+    font-size: 0.6em;
 }
 
 .AppContainer__body {
     display: flex;
-    flex:1;
+    flex-direction: column;
+    flex: 1 0 auto;
+    width: 70vw;
+    margin-top: -1px;
 }
 
 .AppContainer__body--mobile {
-    flex-direction: column;
+    width: 100vw;
 }
 
 .AppContainer__body--mobile > * {
@@ -18,11 +31,12 @@
 
 .AppContainer__sideBar {
     background: white;
-    flex: 0 0 30vw;
+    flex: 1 0 auto;
+    width: 26vw;
     max-width: 320px;
     display: flex;
     flex-direction: column;
-    padding: 0 3vw;
+    margin: 0 2vw;
 }
 
 .AppContainer__sideBar--mobile {
@@ -39,6 +53,10 @@
 .order1 {order:1}
 .order2 {order:2}
 .order3 {order:3}
+
+.input--select {
+    height: auto;
+}
 
 .button-success,
 .button-error,
