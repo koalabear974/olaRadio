@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@firebase/storage": "^0.2.4",
     "bulma": "^0.7.2",
     "firebase": "^5.5.2",
     "lodash": "latest",
