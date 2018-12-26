@@ -19,6 +19,7 @@ export default class EmissionForm extends Component {
                 categories: [],
                 contenu: "",
                 image: "",
+                datetime: "",
                 id: '',
             },
             isEdit: false,
@@ -31,6 +32,7 @@ export default class EmissionForm extends Component {
                     categories: this.props.editEmission.categories,
                     contenu: this.props.editEmission.contenu,
                     image: this.props.editEmission.image,
+                    datetime: this.props.editEmission.datetime,
                     id: this.props.editEmission.id,
                 },
                 isEdit: true,
@@ -51,6 +53,7 @@ export default class EmissionForm extends Component {
                 categories: [],
                 contenu: "",
                 image: "",
+                datetime: "",
                 id: '',
             },
             isEdit: false,
@@ -104,6 +107,7 @@ export default class EmissionForm extends Component {
                 categories: [],
                 contenu: "",
                 image: "",
+                datetime: "",
                 id: '',
             },
             isEdit: false,
@@ -126,7 +130,7 @@ export default class EmissionForm extends Component {
                         <select
                             multiple
                             name="categories"
-                            className={''}
+                            className={'input input--select'}
                             value={curEmission.categories}
                             onChange={this.handleChange}
                         >
@@ -153,6 +157,20 @@ export default class EmissionForm extends Component {
                                 name="name"
                                 placeholder={"Nom"}
                                 value={curEmission.name}
+                                onChange={this.handleChange}
+                            />
+                    </div>
+                </div>
+
+                <div className="field">
+                    <label className="label">Date</label>
+                    <div className="control">
+                            <input
+                                type="datetime-local"
+                                name="datetime"
+                                className={'input'}
+                                placeholder={"Date"}
+                                value={curEmission.datetime}
                                 onChange={this.handleChange}
                             />
                     </div>

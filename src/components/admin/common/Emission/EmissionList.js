@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import {FaEdit} from "react-icons/fa/index";
 import PropTypes from "prop-types";
+import _ from 'lodash';
 
 export default class EmissionList extends Component {
     static propTypes = {
@@ -42,7 +43,7 @@ export default class EmissionList extends Component {
                         <tr key={key}>
                             <td>{emissionsArray[key].id}</td>
                             <td>{emissionsArray[key].name}</td>
-                            <td>{emissionsArray[key].categories.map((catId) => {
+                            <td>{!_.isEmpty(emissionsArray[key].categories) && emissionsArray[key].categories.map((catId) => {
                                 return categoriesArray[catId].name;
                             }).join()}</td>
                             <td>{emissionsArray[key].contenu}</td>
