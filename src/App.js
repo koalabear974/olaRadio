@@ -7,6 +7,7 @@ import {
     Redirect
 } from "react-router-dom";
 import "typeface-open-sans";
+import * as utils from './common/util';
 
 import Home from "./containers/Home";
 import Navigation from "./components/Navigation";
@@ -38,12 +39,12 @@ class App extends Component {
     }
 
     componentWillMount() {
-        this.props.media({ minWidth: 768 }, () => {
+        this.props.media({minWidth: 768}, () => {
             this.setState({
                 isMobile: false
             });
         });
-        this.props.media({ maxWidth: 768 }, () => {
+        this.props.media({maxWidth: 768}, () => {
             this.setState({
                 isMobile: true
             });
@@ -53,7 +54,7 @@ class App extends Component {
     setCurrentPage = currentPage => this.setState({currentPage});
 
     render() {
-        const { isMobile } = this.state;
+        const {isMobile} = this.state;
         let sideBar = (isMobile ?
             <div className={'AppContainer__sideBar AppContainer__sideBar--mobile'}>
                 <Navigation
@@ -61,14 +62,20 @@ class App extends Component {
                     currentPage={this.state.currentPage}
                     setCurrentPage={this.setCurrentPage}
                 />
+                <footer className={'AppContainer__footer'}>
+                    © Ola Radio 2018
+                </footer>
             </div> : <div className={'AppContainer__sideBar'}>
-                <Logo />
-                <RadioBox />
+                <Logo/>
+                <RadioBox/>
                 <Navigation
                     pageArray={pages}
                     currentPage={this.state.currentPage}
                     setCurrentPage={this.setCurrentPage}
                 />
+                <footer className={'AppContainer__footer'}>
+                    © Ola Radio 2018
+                </footer>
             </div>);
 
         let switchRoutes = (
@@ -95,15 +102,15 @@ class App extends Component {
                     <RadioBox />
                 </div> :
                 <div className={'AppContainer__body'}>
-                    { switchRoutes }
+                    {switchRoutes}
                 </div>
         );
 
         return (
             <Router>
-                <div className={'AppContainer' + ( isMobile ? ' AppContainer--mobile' : '')}>
-                    { sideBar }
-                    { appBody }
+                <div className={'AppContainer' + (isMobile ? ' AppContainer--mobile' : '')}>
+                    {sideBar}
+                    {appBody}
                 </div>
             </Router>
         );
