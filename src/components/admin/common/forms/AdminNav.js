@@ -36,6 +36,9 @@ export default class AdminNavbar extends Component {
                     <li className={this.props.selected === 'Question' ? 'is-active' : ''}>
                         <a onClick={() => this.handleNavClick('Question')}>Questions</a>
                     </li>
+                    <li className={this.props.selected === 'Static' ? 'is-active' : ''}>
+                        <a onClick={() => this.handleNavClick('Static')}>Pages static</a>
+                    </li>
                     <li className={'is-pulled-right'}>
                         <button className={'button is-primary'} onClick={() => firebase.auth().signOut()}>Log out</button>
                     </li>

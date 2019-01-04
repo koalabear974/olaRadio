@@ -7,6 +7,7 @@ import _ from 'lodash';
 import CategoryAdminComponent from "../components/admin/CategoryAdminComponent";
 import EmissionAdminComponent from "../components/admin/EmissionAdminComponent";
 import QuestionAdminComponent from "../components/admin/QuestionAdminComponent";
+import StaticAdminComponent from "../components/admin/StaticAdminComponent";
 
 import 'bulma/css/bulma.css'
 import "./../styles/Admin.css";
@@ -17,6 +18,7 @@ const Components = {
     CategoryAdminComponent: CategoryAdminComponent,
     EmissionAdminComponent: EmissionAdminComponent,
     QuestionAdminComponent: QuestionAdminComponent,
+    StaticAdminComponent: StaticAdminComponent,
 };
 
 export default class Admin extends Component {
@@ -53,6 +55,7 @@ export default class Admin extends Component {
                 firebase.auth.Auth.Persistence.LOCAL :
                 firebase.auth.Auth.Persistence.NONE
         ).then(() => {
+            // TODO fix this double code
             that.setState({loginErrors: ''});
             that.setState({loginErrors: ''});
             return firebase.auth().signInWithEmailAndPassword(user.email, user.password);
