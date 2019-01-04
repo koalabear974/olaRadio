@@ -4,6 +4,10 @@
             ".read": true,
             ".write": "auth != null"
         },
+        "statics": {
+            ".read": true,
+            ".write": "auth != null"
+        },
         "categories": {
             ".read": true,
             ".write": "auth != null"

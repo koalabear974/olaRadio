@@ -5,6 +5,7 @@
     flex: 1 1 auto;
     overflow-y: scroll;
     position: relative;
+    color: black;
 }
 
 .AppContainer__footer {
