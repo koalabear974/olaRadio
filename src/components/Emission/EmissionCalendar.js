@@ -9,8 +9,7 @@ export default class EmissionCalendar extends Component {
         super(props);
 
         this.state = {
-            // fromDate: new Date().startOfDay(),
-            fromDate: 1545433200000,
+            fromDate: new Date().startOfDay(),
         };
 
         this.separatePerDay = this.separatePerDay.bind(this);

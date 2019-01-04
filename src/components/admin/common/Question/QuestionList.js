@@ -43,7 +43,7 @@ export default class QuestionList extends Component {
                             <td>{questionsArray[key].question}</td>
                             <td>
                                 <ul>
-                                {questionsArray[key].answers.map((answer, index) => {
+                                {(questionsArray[key].answers || []).map((answer, index) => {
                                    return <li key={questionsArray[key].id+index+answer}>{answer}</li>
                                 })}
                                 </ul>

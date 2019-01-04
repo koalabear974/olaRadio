@@ -13,7 +13,9 @@ Date.prototype.getDayOfWeek = function(){
 };
 
 Date.prototype.getFormated = function () {
-    return this.getDate()+" - "+this.getMonth()+" - "+((String) (new Date().getFullYear())).substr(2,2);
+    var mm = this.getMonth() < 9 ? "0" + (this.getMonth() + 1) : (this.getMonth() + 1); // getMonth() is zero-based
+    var dd  = this.getDate() < 10 ? "0" + this.getDate() : this.getDate();
+    return dd+" - "+mm+" - "+((String) (new Date().getFullYear())).substr(2,2);
 };
 
 export function log(message) {

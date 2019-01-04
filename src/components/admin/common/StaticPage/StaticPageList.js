@@ -42,7 +42,7 @@ export default class StaticPageList extends Component {
                             <td>{staticArray[key].title}</td>
                             <td>
                                 <ul>
-                                    {staticArray[key].texts.map((v, i) => {
+                                    {(staticArray[key].texts || []).map((v, i) => {
                                         return <li key={staticArray[key].id+i+v}>{v}</li>
                                     })}
                                 </ul>
