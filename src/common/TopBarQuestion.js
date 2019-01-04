@@ -15,7 +15,6 @@ export default class TopBarQuestion extends Component {
         super(props);
         this.cookies = new Cookies();
 
-        ;
         this.state = {
             curAnswer: this.cookies.get('currentAnswer') ? this.cookies.get('currentAnswer') : '',
         };

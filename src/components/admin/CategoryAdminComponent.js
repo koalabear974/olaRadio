@@ -10,6 +10,7 @@ export default class CategoryAdminComponent extends Component {
 
         this.state = {
             categories: {},
+            emissions: {},
             editCategory: {},
         };
 
@@ -23,10 +24,15 @@ export default class CategoryAdminComponent extends Component {
             context: this,
             state: 'categories'
         });
+        this.emissionsRef = base.syncState('emissions', {
+            context: this,
+            state: 'emissions'
+        });
     }
 
     componentWillUnmount() {
         base.removeBinding(this.categoriesRef);
+        base.removeBinding(this.emissionsRef);
     }
 
     handleSubmit(category) {
@@ -44,13 +50,27 @@ export default class CategoryAdminComponent extends Component {
     }
 
     handleDelete(id) {
+        let emissions = this.state.emissions;
+
+        // remove categories in emissions if used
+        _.each(emissions, (emission, key) => {
+            if(_.includes(emission.categories, id.toString())) {
+                let c = emission.categories;
+                _.remove(c, (c) => c === id.toString());
+                emission.categories = c;
+                emissions[key] = emission;
+            }
+        });
+
         base.remove('categories/'+id);
         let categories = _.omit(this.state.categories, [id]);
         this.setState({
             categories: categories,
+            emissions: emissions,
             editCategory: {},
         });
     }
+
     handleEditClick(key) {
         this.setState({
             editCategory: this.state.categories[key]

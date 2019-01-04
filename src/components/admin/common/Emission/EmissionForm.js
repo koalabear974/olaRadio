@@ -63,13 +63,7 @@ export default class EmissionForm extends Component {
     componentDidUpdate() {
         if (!_.isEmpty(this.props.editEmission) && this.props.editEmission.id !== this.state.emission.id) {
             this.setState({
-                emission: {
-                    name: this.props.editEmission.name,
-                    categories: this.props.editEmission.categories,
-                    contenu: this.props.editEmission.contenu,
-                    image: this.props.editEmission.image,
-                    id: this.props.editEmission.id,
-                },
+                emission: this.props.editEmission,
                 isEdit: true,
             });
         }

@@ -32,6 +32,7 @@ export default class EmissionList extends Component {
                     <th>Id</th>
                     <th>Nom</th>
                     <th>Catégories</th>
+                    <th>Date</th>
                     <th>Contenu</th>
                     <th>Image</th>
                     <th></th>
@@ -46,6 +47,7 @@ export default class EmissionList extends Component {
                             <td>{!_.isEmpty(emissionsArray[key].categories) && emissionsArray[key].categories.map((catId) => {
                                 return categoriesArray[catId].name;
                             }).join()}</td>
+                            <td>{emissionsArray[key].datetime}</td>
                             <td>{emissionsArray[key].contenu}</td>
                             <td>{emissionsArray[key].image}</td>
                             <td>

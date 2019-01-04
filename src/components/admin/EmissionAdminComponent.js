@@ -22,11 +22,11 @@ export default class EmissionAdminComponent extends Component {
     componentWillMount() {
         this.emissionsRef = base.syncState('emissions', {
             context: this,
-            state: 'emissions'
+            state: 'emissions',
         });
         this.categoriesRef = base.syncState('categories', {
             context: this,
-            state: 'categories'
+            state: 'categories',
         });
     }
 
@@ -66,10 +66,10 @@ export default class EmissionAdminComponent extends Component {
 
     render() {
         const emissionsArray = this.state.emissions;
-        const editEmission = this.state.editEmission;
         const categoriesArray = this.state.categories;
+        const editEmission = this.state.editEmission;
 
-        if (_.isEmpty(categoriesArray)) {
+        if (_.isEmpty(categoriesArray) || _.isEmpty(emissionsArray)) {
             return <div>loading</div>;
         }
 

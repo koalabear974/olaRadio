@@ -60,8 +60,6 @@ export default class StaticAdminComponent extends Component {
         const staticPageArray = this.state.staticPages;
         let editStatic = this.state.editStatic;
 
-        console.log(editStatic);
-        console.log(staticPageArray);
         return (
             <div className="StaticAdminComponent">
                 <StaticPageList
