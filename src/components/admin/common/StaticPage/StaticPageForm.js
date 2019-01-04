@@ -141,16 +141,6 @@ export default class StaticPageForm extends Component {
                     values={curStatic.texts}
                     onChange={this.handleArrayChange}
                 />
-                {
-                    this.state.isEdit ? (
-                        <button
-                            className={'button is-danger'}
-                            onClick={this.handleDelete}
-                        >
-                            <FaMinus/>
-                        </button>
-                    ) : ''
-                }
                 <button
                     className={'button is-info '}
                     type="submit"
