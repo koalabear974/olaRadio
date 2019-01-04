@@ -11,55 +11,35 @@ export default class MainPage extends Component {
         categories: PropTypes.object,
         emissions: PropTypes.object,
         questions: PropTypes.object,
+        curPage: PropTypes.object,
     };
 
     constructor(props) {
         super(props);
 
         this.state = {
-            questions: {},
-            activeQuestion: {},
         };
-
-        if (!_.isEmpty(this.props.questions)) {
-            let questions = _.filter(this.props.questions, (o) => {
-                return o.active
-            });
-            let curQuestion = _.isEmpty(questions) ? {} : questions[0];
-            this.state = {
-                questions: questions,
-                activeQuestion: curQuestion,
-            };
-        }
-    }
-
-    componentDidUpdate() {
-        if (!_.isEmpty(this.props.questions) && (_.size(this.props.questions) !== _.size(this.state.questions))) {
-            let questions = _.filter(this.props.questions, (o) => {
-                return o.active
-            });
-            let curQuestion = _.isEmpty(questions) ? {} : questions[0];
-            this.setState({
-                questions: questions,
-                activeQuestion: curQuestion,
-            })
-        }
     }
 
     render() {
-
+        let curPage = this.props.curPage;
         return (
             <div className={'MainPage'}>
                 <TopBarQuestion
                     className={'MainPage__topQuestion'}
-                    question={this.state.activeQuestion}
+                    question={this.props.curQuestion}
                 />
                 <article className={'MainPage__main-article'}>
                     <EmissionCalendar
                         emissions={this.props.emissions}
                     />
                     <aside className={'MainPage__aside'}>
-
+                        <header className={'MainPageAside__header'}>
+                            {curPage.title}
+                        </header>
+                        <article className={'MainPageAside__text'}>
+                            {curPage.texts[0]}
+                        </article>
                     </aside>
                 </article>
             </div>

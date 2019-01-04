@@ -1,9 +1,10 @@
 import React, {Component} from "react";
 import base from "../db/config";
-import EmissionList from "../components/Emission/EmissionList";
+import _ from 'lodash';
 
 import "../styles/Home.css"
 import MainPage from "../components/MainPage/MainPage";
+import EmissionList from "../components/Emission/EmissionList";
 
 export default class HomePage extends Component {
   constructor(props) {
@@ -12,8 +13,11 @@ export default class HomePage extends Component {
         this.state = {
             categories: {},
             emissions: {},
-            questions: {},
+            curPage: {},
+            curQuestion: {},
         };
+
+        this.isLoading = this.isLoading.bind(this);
     }
 
     componentDidMount() {
@@ -32,13 +36,35 @@ export default class HomePage extends Component {
         base.fetch('questions', {
             context: this,
             then(data) {
-                this.setState({questions: data});
-                console.log('data');
+                let curQuestion = _.find(data, (v) => {
+                    return v.active;
+                }) || {};
+                this.setState({curQuestion: curQuestion});
+            }
+        });
+        base.fetch('statics', {
+            context: this,
+            then(data) {
+                let curPage = _.find(data, (v) => {
+                    return v.slug === 'home';
+                });
+                this.setState({
+                    curPage: curPage,
+                });
             }
         });
     }
 
+    isLoading() {
+        return _.isEmpty(this.state.emissions) ||
+            _.isEmpty(this.state.categories) ||
+            _.isEmpty(this.state.curPage);
+    }
+
     render() {
+        if (this.isLoading()) {
+            return <div>loading</div>
+        }
         return (
             <div className={'Home'}>
                 <MainPage
@@ -46,7 +72,8 @@ export default class HomePage extends Component {
                     className={'Home__mainPage'}
                     emissions={this.state.emissions}
                     categories={this.state.categories}
-                    questions={this.state.questions}
+                    curQuestion={this.state.curQuestion}
+                    curPage={this.state.curPage}
                 />
                 <div className={'Home__bottom'}>
                     <h2 className={'Home__secondTitle'}>

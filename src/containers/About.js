@@ -1,5 +1,6 @@
 import React, { Component} from "react";
 import _ from 'lodash';
+import base from "../db/config";
 
 import "../styles/containers/About.css"
 
@@ -13,24 +14,25 @@ export default class About extends Component {
         };
     }
 
-    componentWillUpdate(nextProps) {
-        console.log("apropo update", nextProps.staticPages);
-        if (!_.isEmpty(nextProps.staticPages) && _.isEmpty(this.state.staticPages)) {
-            let curPage = _.find(nextProps.staticPages, (v) => {
-                return v.slug === 'about';
-            });
-            this.setState({
-                staticPages: nextProps.staticPages,
-                curPage: curPage,
-                loading: false,
-            })
-        }
+    componentDidMount() {
+        base.fetch('statics', {
+            context: this,
+            then(data) {
+                let curPage = _.find(data, (v) => {
+                    return v.slug === 'about';
+                });
+                this.setState({
+                    staticPages: data,
+                    curPage: curPage,
+                })
+            }
+        });
     }
 
     render() {
         let curPage = this.state.curPage;
-        console.log("abotu render ", curPage);
-        if (this.state.loading || _.isEmpty(curPage) || _.size(curPage.texts)<3) {
+
+        if (_.isEmpty(curPage) || _.size(curPage.texts)<3) {
             return <div>loading</div>
         }
         return (

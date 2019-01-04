@@ -28,7 +28,7 @@ export default class Admin extends Component {
         this.state = {
             isVerified: false,
             loginErrors: '',
-            selectedItem: "Emission",
+            selectedItem: "Category",
         };
 
         this.onPasswordSubmit = this.onPasswordSubmit.bind(this);
