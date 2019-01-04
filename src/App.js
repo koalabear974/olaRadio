@@ -26,8 +26,8 @@ import Logo from "./components/Logo";
 const pages = [
     {path: "Prog", text: "Prog"},
     {path: "Archives", text: "Archives"},
-    {path: "Support", text: "Soutenir"},
     {path: "About", text: "A propos"},
+    {path: "Support", text: "Soutenir"},
     // {path: "Shop", text: "Shop"},
 ];
 
