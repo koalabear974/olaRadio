@@ -11,9 +11,10 @@ import * as utils from './common/util';
 
 import Home from "./containers/Home";
 import Navigation from "./components/Navigation";
-import Shop from "./containers/Shop"
-import Dons from "./containers/Dons"
-import Info from "./containers/Info"
+// import Shop from "./containers/Shop"
+import Support from "./containers/Support"
+import About from "./containers/About"
+import Archives from "./containers/Archives"
 import Admin from "./containers/Admin"
 import NotFoundPage from "./containers/NotFoundPage";
 
@@ -23,10 +24,11 @@ import RadioBox from "./components/RadioBox";
 import Logo from "./components/Logo";
 
 const pages = [
-    {path: "Prog", text: "Info"},
-    {path: "Archive", text: "Info"},
-    {path: "Shop", text: "Shop"},
-    {path: "Info", text: "Dons"},
+    {path: "Prog", text: "Prog"},
+    {path: "Archives", text: "Archives"},
+    {path: "Support", text: "Soutenir"},
+    {path: "About", text: "A propos"},
+    // {path: "Shop", text: "Shop"},
 ];
 
 class App extends Component {
@@ -81,15 +83,12 @@ class App extends Component {
         let switchRoutes = (
             <Switch>
                 <Redirect exact from="/" to="Home"/>
-                <Route
-                    exact
-                    path="/Home"
-                    render={() => <Home setCurrentPage={this.setCurrentPage}/>}
-                />
-                <Route path="/Prog" component={Info}/>
-                <Route path="/Archive" component={Info}/>
-                <Route path="/Shop" component={Shop}/>
-                <Route path="/Info" component={Info}/>
+                <Route exact path="/Home" component={Home} />
+                <Route path="/Prog" component={Home}/>
+                <Route path="/Archives" component={Archives}/>
+                {/*<Route path="/Shop" component={Shop}/>*/}
+                <Route path="/Support" component={Support}/>
+                <Route path="/About" component={About}/>
                 <Route path="/Admin" component={Admin}/>
                 <Route component={NotFoundPage}/>
             </Switch>
