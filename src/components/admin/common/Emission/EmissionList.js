@@ -31,10 +31,11 @@ export default class EmissionList extends Component {
                 <tr key={'header'}>
                     <th>Id</th>
                     <th>Nom</th>
-                    <th>Catégories</th>
-                    <th>Date</th>
                     <th>Contenu</th>
                     <th>Image</th>
+                    <th>Date</th>
+                    <th>Catégories</th>
+                    <th>Link</th>
                     <th></th>
                 </tr>
                 </thead>
@@ -42,14 +43,23 @@ export default class EmissionList extends Component {
                 {Object.keys(emissionsArray).map(function(key) {
                     return (
                         <tr key={key}>
-                            <td>{emissionsArray[key].id}</td>
+                            <td className={'table__td--small'}>{emissionsArray[key].id}</td>
                             <td>{emissionsArray[key].name}</td>
+                            <td>{emissionsArray[key].contenu}</td>
+                            <td className={'table__td--small'}>
+                                <img className={'table__image'} src={emissionsArray[key].image} alt={"emission"+key}/>
+                            </td>
+                            <td>{emissionsArray[key].datetime}</td>
                             <td>{!_.isEmpty(emissionsArray[key].categories) && emissionsArray[key].categories.map((catId) => {
                                 return categoriesArray[catId].name;
                             }).join()}</td>
-                            <td>{emissionsArray[key].datetime}</td>
-                            <td>{emissionsArray[key].contenu}</td>
-                            <td>{emissionsArray[key].image}</td>
+                            <td>
+                                {
+                                    emissionsArray[key].link ?
+                                        <a href={emissionsArray[key].link}>click</a> :
+                                        ''
+                                }
+                            </td>
                             <td>
                                 <button
                                     className={'button'}

@@ -84,3 +84,11 @@
 .button-secondary {
     background: rgb(66, 184, 221); /* this is a light blue */
 }
+
+.cut-text {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 160px;
+    height: 1.2em;
+    white-space: nowrap;
+}

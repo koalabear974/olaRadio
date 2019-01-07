@@ -39,7 +39,7 @@ export default class QuestionList extends Component {
                 {Object.keys(questionsArray).map(function(key) {
                     return (
                         <tr key={key}>
-                            <td>{questionsArray[key].id}</td>
+                            <td className={'table__td--small'}>{questionsArray[key].id}</td>
                             <td>{questionsArray[key].question}</td>
                             <td>
                                 <ul>

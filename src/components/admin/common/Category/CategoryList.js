@@ -35,7 +35,7 @@ export default class CategoryList extends Component {
                 {Object.keys(categoriesArray).map(function(key) {
                     return (
                         <tr key={key}>
-                            <td>{categoriesArray[key].id}</td>
+                            <td className={'table__td--small'}>{categoriesArray[key].id}</td>
                             <td>{categoriesArray[key].name}</td>
                             <td>
                                 <button

@@ -37,7 +37,7 @@ export default class StaticPageList extends Component {
                 {Object.keys(staticArray).map(function(key) {
                     return (
                         <tr key={key}>
-                            <td>{staticArray[key].id}</td>
+                            <td className={'table__td--small qw'}>{staticArray[key].id}</td>
                             <td>{staticArray[key].slug}</td>
                             <td>{staticArray[key].title}</td>
                             <td>

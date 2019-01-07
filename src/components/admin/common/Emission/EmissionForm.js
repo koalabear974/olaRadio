@@ -3,6 +3,16 @@ import {FaEdit, FaMinus, FaPlus} from "react-icons/fa/index";
 import PropTypes from "prop-types";
 import _ from "lodash";
 
+const EMISSIONEMPTY = {
+    name: "",
+    categories: [],
+    contenu: "",
+    image: "",
+    link: "",
+    datetime: "",
+    id: '',
+};
+
 export default class EmissionForm extends Component {
     static propTypes = {
         editEmission: PropTypes.object,
@@ -14,27 +24,13 @@ export default class EmissionForm extends Component {
         super(props);
 
         this.state = {
-            emission: {
-                name: "",
-                categories: [],
-                contenu: "",
-                image: "",
-                datetime: "",
-                id: '',
-            },
+            emission: EMISSIONEMPTY,
             isEdit: false,
         };
 
         if (!_.isEmpty(this.props.editEmission)) {
             this.state = {
-                emission: {
-                    name: this.props.editEmission.name,
-                    categories: this.props.editEmission.categories,
-                    contenu: this.props.editEmission.contenu,
-                    image: this.props.editEmission.image,
-                    datetime: this.props.editEmission.datetime,
-                    id: this.props.editEmission.id,
-                },
+                emission: this.props.editEmission,
                 isEdit: true,
             };
         }
@@ -48,14 +44,7 @@ export default class EmissionForm extends Component {
         event.preventDefault();
         this.props.handleSubmit(this.state.emission);
         this.setState({
-            emission: {
-                name: "",
-                categories: [],
-                contenu: "",
-                image: "",
-                datetime: "",
-                id: '',
-            },
+            emission: EMISSIONEMPTY,
             isEdit: false,
         });
     }
@@ -96,14 +85,7 @@ export default class EmissionForm extends Component {
         let id = this.state.emission.id;
         this.props.handleDelete(id);
         this.setState({
-            emission: {
-                name: "",
-                categories: [],
-                contenu: "",
-                image: "",
-                datetime: "",
-                id: '',
-            },
+            emission: EMISSIONEMPTY,
             isEdit: false,
         });
     }
@@ -192,6 +174,20 @@ export default class EmissionForm extends Component {
                             name="image"
                             placeholder={"Image"}
                             value={curEmission.image}
+                            onChange={this.handleChange}
+                        />
+                    </div>
+                </div>
+
+                <div className="field">
+                    <label className="label">Link</label>
+                    <div className="control">
+                        <input
+                            type="text"
+                            className={'input'}
+                            name="link"
+                            placeholder={"Link"}
+                            value={curEmission.link}
                             onChange={this.handleChange}
                         />
                     </div>

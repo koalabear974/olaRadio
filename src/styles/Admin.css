@@ -29,7 +29,7 @@
 }
 
 .CategoryAdminComponent {
-    display: block;
+    display: flex;
     flex: 1;
     flex-direction: column;
     justify-content: space-evenly;
@@ -53,4 +53,18 @@
 .Admin__loginForm {
     padding: 1em;
     margin: auto 0;
+}
+
+.table__td--small {
+    max-width: 5vw;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 160px;
+    height: 1.2em;
+    white-space: nowrap;
+}
+
+.table__image {
+    width: 100%;
+    height: auto;
 }
