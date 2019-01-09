@@ -13,8 +13,53 @@
     flex: 0 0 auto;
 }
 
+.About__article {
+    padding: 0 30px;
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.About__article--1 {
+    flex-direction: row-reverse;
+}
+
+.About__article--2 {
+    padding-right: 90px;
+}
+
+.About__articleBorder {
+    position: absolute;
+    /*top: 0;*/
+    left: 0;
+    width: 100%;
+    /*height: 100%;*/
+    border: 8px solid black;
+    height: 80%;
+    top: 10%;
+}
+
+.About__article--1 .About__articleBorder {
+    height: 80%;
+    top: 10%;
+}
+
+.About__imageContainer {
+    flex: 0 0 200px;
+    height: auto;
+}
+
 .About__text {
     flex: 1;
+    margin: 35px 0;
+    margin-left: 10px;
+    text-align: justify;
+}
+
+.About__article--1 .About__text {
+    margin-right: 10px;
+    margin-left: 0;
 }
 
 .About__container {

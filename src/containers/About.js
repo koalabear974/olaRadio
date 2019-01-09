@@ -10,6 +10,7 @@ export default class About extends Component {
         this.state = {
             staticPages: {},
             curPage: {},
+            curImages: {},
             loading: true,
         };
     }
@@ -21,9 +22,13 @@ export default class About extends Component {
                 let curPage = _.find(data, (v) => {
                     return v.slug === 'about';
                 });
+                let curImages = _.find(data, (v) => {
+                    return v.slug === 'about-images';
+                });
                 this.setState({
                     staticPages: data,
                     curPage: curPage,
+                    curImages: curImages,
                 })
             }
         });
@@ -31,6 +36,7 @@ export default class About extends Component {
 
     render() {
         let curPage = this.state.curPage;
+        let curImages = this.state.curImages;
 
         if (_.isEmpty(curPage) || _.size(curPage.texts)<3) {
             return <div>loading</div>
@@ -43,32 +49,50 @@ export default class About extends Component {
                 <div className={'About__container'}>
                     <section className={'About__left'}>
                         <article
-                            className={'About__text About__text--0'}
-                            key={'About__text--0'}
+                            className={'About__article About__article--0'}
+                            key={'About__article--0'}
                         >
-                            {curPage.texts[0]}
+                            <div className="About__articleBorder"></div>
+                            <div className="About__imageContainer">
+                                <img className={'About__images'} src={curImages.texts[0]} alt="Créateur n.1"/>
+                            </div>
+                            <p className={'About__text'}>
+                                {curPage.texts[0]}
+                            </p>
                         </article>
                         <article
-                            className={'About__text About__text--1'}
-                            key={'About__text--1'}
+                            className={'About__article About__article--1'}
+                            key={'About__article--1'}
                         >
-                            {curPage.texts[1]}
+                            <div className="About__articleBorder"></div>
+                            <div className="About__imageContainer">
+                                <img className={'About__images'} src={curImages.texts[1]} alt="Créateur n.1"/>
+                            </div>
+                            <p className={'About__text'}>
+                                {curPage.texts[1]}
+                            </p>
                         </article>
                         <article
-                            className={'About__text About__text--2'}
-                            key={'About__text--2'}
+                            className={'About__article About__article--2'}
+                            key={'About__article--2'}
                         >
-                            {curPage.texts[2]}
+                            <div className="About__articleBorder"></div>
+                            <div className="About__imageContainer">
+                                <img className={'About__images'} src={curImages.texts[2]} alt="Créateur n.1"/>
+                            </div>
+                            <p className={'About__text'}>
+                                {curPage.texts[2]}
+                            </p>
                         </article>
                     </section>
-                    <aside className={'About__right'}>
-                        <article
-                            className={'About__text About__text--3'}
-                            key={'About__text--3'}
-                        >
-                            {curPage.texts[3]}
-                        </article>
-                    </aside>
+                    {/*<aside className={'About__right'}>*/}
+                        {/*<article*/}
+                            {/*className={'About__article About__article--3'}*/}
+                            {/*key={'About__article--3'}*/}
+                        {/*>*/}
+                            {/*{curPage.texts[3]}*/}
+                        {/*</article>*/}
+                    {/*</aside>*/}
                 </div>
             </div>
         );
