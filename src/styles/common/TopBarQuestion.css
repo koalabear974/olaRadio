@@ -1,0 +1,43 @@
+.TopBarQuestion {
+    display: flex;
+    flex: 0 0 40px;
+    align-items: center;
+    text-transform: uppercase;
+    font-weight: bold;
+    justify-content: center;
+    padding: 0 1em;
+}
+
+.TopBarQuestion__question {
+    flex: 1;
+    font-style: italic;
+    font-size: 17px;
+    line-height: -1px;
+}
+
+.TopBarQuestion__answers {
+    flex: 3;
+    display: flex;
+    font-size: 18px;
+    list-style-type: none;
+}
+
+.TopBarQuestion__answer {
+    flex: 1;
+    line-height: 0px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.TopBarQuestion__answer--separator:first-child {
+    order: 1;
+}
+.TopBarQuestion__answer--active {
+    font-style: italic;
+}
+.TopBarQuestion__answer--separator {
+    order: 2;
+    font-size: 60px;
+    line-height: 3px;
+    cursor: inherit;
+}

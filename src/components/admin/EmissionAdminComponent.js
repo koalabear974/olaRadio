@@ -1,6 +1,5 @@
-import React, {Component, Fragment} from "react";
+import React, {Component} from "react";
 import base from "../../db/config";
-import {FaPlus} from "react-icons/fa/index";
 import _ from "lodash";
 import EmissionForm from "./common/Emission/EmissionForm";
 import EmissionList from "./common/Emission/EmissionList";
@@ -12,19 +11,22 @@ export default class EmissionAdminComponent extends Component {
         this.state = {
             categories: {},
             emissions: {},
+            editEmission: {},
         };
 
-        this.addEmission = this.addEmission.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleEditClick = this.handleEditClick.bind(this);
+        this.handleDelete = this.handleDelete.bind(this);
     }
 
     componentWillMount() {
         this.emissionsRef = base.syncState('emissions', {
             context: this,
-            state: 'emissions'
+            state: 'emissions',
         });
         this.categoriesRef = base.syncState('categories', {
             context: this,
-            state: 'categories'
+            state: 'categories',
         });
     }
 
@@ -33,23 +35,41 @@ export default class EmissionAdminComponent extends Component {
         base.removeBinding(this.categoriesRef);
     }
 
-    addEmission(emission) {
+    handleSubmit(emission) {
         const emissions = {...this.state.emissions};
-        const id = Date.now();
+        const id = emission.id ? emission.id : Date.now();
         let curEmission = emission;
         curEmission['id'] = id;
         emissions[id] = curEmission;
 
         this.setState({
             emissions: emissions,
+            editEmission: {},
+        });
+    }
+
+
+    handleEditClick(key) {
+        this.setState({
+            editEmission: this.state.emissions[key]
+        });
+    }
+
+    handleDelete(id) {
+        base.remove('emissions/'+id);
+        let emissions = _.omit(this.state.emissions, [id]);
+        this.setState({
+            emissions: emissions,
+            editEmission: {},
         });
     }
 
     render() {
         const emissionsArray = this.state.emissions;
         const categoriesArray = this.state.categories;
+        const editEmission = this.state.editEmission;
 
-        if (_.isEmpty(categoriesArray)) {
+        if (_.isEmpty(categoriesArray) || _.isEmpty(emissionsArray)) {
             return <div>loading</div>;
         }
 
@@ -58,11 +78,14 @@ export default class EmissionAdminComponent extends Component {
                 <EmissionList
                     categories={categoriesArray}
                     emissions={emissionsArray}
+                    handleEditClick={this.handleEditClick}
                 />
 
                 <EmissionForm
                     categories={categoriesArray}
-                    addEmission={this.addEmission}
+                    editEmission={editEmission}
+                    handleSubmit={this.handleSubmit}
+                    handleDelete={this.handleDelete}
                 />
             </div>
         );

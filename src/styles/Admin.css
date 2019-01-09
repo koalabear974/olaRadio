@@ -2,29 +2,34 @@
     display: flex;
     flex: 1;
     max-width: 70vw;
+    flex-direction: column;
+}
+
+.AppContainer--mobile .Admin {
+    max-width: 100vw;
 }
 
 .Admin__container {
     display: flex;
     flex: 1;
     flex-direction: column;
-    padding: 1em;
+    margin: 1em;
     max-width: 100%;
 }
 
 .Admin__navbar {
-    flex: 0;
 }
 
 .Admin__current {
     display: flex;
+    flex-direction: column;
     flex: 1;
-    padding: 1em;
+    margin: 1em;
     max-width: 100%;
 }
 
 .CategoryAdminComponent {
-    display: block;
+    display: flex;
     flex: 1;
     flex-direction: column;
     justify-content: space-evenly;
@@ -43,4 +48,23 @@
 
 .CategoryAdminComponent__form, .EmissionAdminComponent__form {
     margin-top: 2em;
+}
+
+.Admin__loginForm {
+    padding: 1em;
+    margin: auto 0;
+}
+
+.table__td--small {
+    max-width: 5vw;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 160px;
+    height: 1.2em;
+    white-space: nowrap;
+}
+
+.table__image {
+    width: 100%;
+    height: auto;
 }

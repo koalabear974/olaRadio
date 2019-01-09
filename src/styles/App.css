@@ -1,13 +1,94 @@
 .AppContainer {
     display: flex;
-    flex:1;
+    flex-direction: column;
+    flex-wrap: wrap;
+    flex: 1 1 auto;
+    overflow-y: scroll;
+    position: relative;
+    color: black;
+}
+
+.AppContainer__footer--login {
+    flex: 0 0 15px;
+    text-align: left;
+    font-size: 0.6em;
+}
+
+.AppContainer__body {
+    display: flex;
+    flex-direction: column;
+    flex: 1 0 auto;
+    width: 70vw;
+    margin-top: -1px;
+}
+
+.AppContainer__body--mobile {
+    width: 100vw;
+}
+
+.AppContainer__body--mobile > * {
+    flex: 0 0 auto
 }
 
 .AppContainer__sideBar {
     background: white;
-    flex: 0 0 30vw;
+    flex: 1 0 auto;
+    min-height: 100vh;
+    width: 26vw;
     max-width: 320px;
     display: flex;
     flex-direction: column;
-    padding: 0px 3vw;
+    margin: 0 2vw;
+}
+
+.AppContainer__sideBar--mobile {
+    display: none;
+}
+
+.flex {
+    display: flex;
+}
+.hidden {
+    display: none;
+}
+.order0 {order:0}
+.order1 {order:1}
+.order2 {order:2}
+.order3 {order:3}
+
+.input--select {
+    height: auto;
+}
+
+.button-success,
+.button-error,
+.button-warning,
+.button-secondary {
+    color: white;
+    border-radius: 4px;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+.button-success {
+    background: rgb(28, 184, 65); /* this is a green */
+}
+
+.button-error {
+    background: rgb(202, 60, 60); /* this is a maroon */
+}
+
+.button-warning {
+    background: rgb(223, 117, 20); /* this is an orange */
+}
+
+.button-secondary {
+    background: rgb(66, 184, 221); /* this is a light blue */
+}
+
+.cut-text {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 160px;
+    height: 1.2em;
+    white-space: nowrap;
 }

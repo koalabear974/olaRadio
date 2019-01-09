@@ -1,26 +1,61 @@
 import React, {Component} from "react";
-import {FaPlus} from "react-icons/fa/index";
+import {FaEdit, FaMinus, FaPlus} from "react-icons/fa/index";
+import PropTypes from "prop-types";
+import _ from "lodash";
+
+const EMISSIONEMPTY = {
+    name: "",
+    categories: [],
+    contenu: "",
+    image: "",
+    link: "",
+    datetime: "",
+    id: '',
+};
 
 export default class EmissionForm extends Component {
+    static propTypes = {
+        editEmission: PropTypes.object,
+        handleSubmit: PropTypes.func,
+        handleDelete: PropTypes.func,
+    };
+
     constructor(props) {
         super(props);
 
         this.state = {
-            emission: {
-                name: "",
-                categories: [],
-                contenu: "",
-                image: "",
-            },
+            emission: EMISSIONEMPTY,
+            isEdit: false,
         };
 
+        if (!_.isEmpty(this.props.editEmission)) {
+            this.state = {
+                emission: this.props.editEmission,
+                isEdit: true,
+            };
+        }
+
         this.handleChange = this.handleChange.bind(this);
-        this.onEmissionAdd = this.onEmissionAdd.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleDelete = this.handleDelete.bind(this);
     }
 
-    onEmissionAdd(event) {
+    handleSubmit(event) {
         event.preventDefault();
-        this.props.addEmission(this.state.emission);
+        this.props.handleSubmit(this.state.emission);
+        this.setState({
+            emission: EMISSIONEMPTY,
+            isEdit: false,
+        });
+    }
+
+    componentDidUpdate() {
+        if (!_.isEmpty(this.props.editEmission) && this.props.editEmission.id !== this.state.emission.id) {
+            this.setState({
+                emission: this.props.editEmission,
+                isEdit: true,
+            });
+        }
     }
 
     handleChange(event) {
@@ -45,65 +80,134 @@ export default class EmissionForm extends Component {
         });
     }
 
+    handleDelete(event) {
+        event.preventDefault();
+        let id = this.state.emission.id;
+        this.props.handleDelete(id);
+        this.setState({
+            emission: EMISSIONEMPTY,
+            isEdit: false,
+        });
+    }
+
     render() {
         let categoriesArray = this.props.categories;
+        let curEmission = this.state.emission;
         return (
             <form
-                className="EmissionAdminComponent__form pure-form"
-                onSubmit={this.onEmissionAdd}
+                className="EmissionAdminComponent__form form"
+                onSubmit={this.handleSubmit}
             >
                 <legend>Ajouter une émission</legend>
 
-                <select
-                    multiple
-                    name="categories"
-                    className={'pure-input-1-2'}
-                    value={this.state.emission.categories}
-                    onChange={this.handleChange}
-                >
-                    {Object.keys(categoriesArray).map(function(key) {
-                        return (
-                            <option
-                                key={key}
-                                value={categoriesArray[key].id}
-                            >
-                                {categoriesArray[key].name}
-                            </option>
-                        );
-                    })}
-                </select>
+                <div className="field">
+                    <label className="label">Catégories</label>
+                    <div className="control">
+                        <select
+                            multiple
+                            name="categories"
+                            className={'input input--select'}
+                            value={curEmission.categories}
+                            onChange={this.handleChange}
+                        >
+                            {Object.keys(categoriesArray).map(function(key) {
+                                return (
+                                    <option
+                                        key={key}
+                                        value={categoriesArray[key].id}
+                                    >
+                                        {categoriesArray[key].name}
+                                    </option>
+                                );
+                            })}
+                        </select>
+                    </div>
+                </div>
 
-                <fieldset className={'pure-group'}>
-                    <input
-                        type="text"
-                        className={'pure-input-1-2'}
-                        name="name"
-                        placeholder={"Nom"}
-                        value={this.state.emission.name}
-                        onChange={this.handleChange}
-                    />
-                    <textarea
-                        type="text"
-                        className={'pure-input-1-2'}
-                        name="contenu"
-                        placeholder={"Contenu"}
-                        value={this.state.emission.contenu}
-                        onChange={this.handleChange}
-                    />
-                    <input
-                        type="text"
-                        className={'pure-input-1-2'}
-                        name="image"
-                        placeholder={"Image"}
-                        value={this.state.emission.image}
-                        onChange={this.handleChange}
-                    />
-                </fieldset>
+                <div className="field">
+                    <label className="label">Nom</label>
+                    <div className="control">
+                            <input
+                                type="text"
+                                className={'input'}
+                                name="name"
+                                placeholder={"Nom"}
+                                value={curEmission.name}
+                                onChange={this.handleChange}
+                            />
+                    </div>
+                </div>
+
+                <div className="field">
+                    <label className="label">Date</label>
+                    <div className="control">
+                            <input
+                                type="datetime-local"
+                                name="datetime"
+                                className={'input'}
+                                placeholder={"Date"}
+                                value={curEmission.datetime}
+                                onChange={this.handleChange}
+                            />
+                    </div>
+                </div>
+
+                <div className="field">
+                    <label className="label">Contenu</label>
+                    <div className="control">
+                        <textarea
+                            className={'textarea'}
+                            name="contenu"
+                            placeholder={"Contenu"}
+                            value={curEmission.contenu}
+                            onChange={this.handleChange}
+                        />
+                    </div>
+                </div>
+
+                <div className="field">
+                    <label className="label">Image</label>
+                    <div className="control">
+                        <input
+                            type="text"
+                            className={'input'}
+                            name="image"
+                            placeholder={"Image"}
+                            value={curEmission.image}
+                            onChange={this.handleChange}
+                        />
+                    </div>
+                </div>
+
+                <div className="field">
+                    <label className="label">Link</label>
+                    <div className="control">
+                        <input
+                            type="text"
+                            className={'input'}
+                            name="link"
+                            placeholder={"Link"}
+                            value={curEmission.link}
+                            onChange={this.handleChange}
+                        />
+                    </div>
+                </div>
+
+                {
+                    this.state.isEdit ? (
+                        <button
+                            className={'button is-danger'}
+                            onClick={this.handleDelete}
+                        >
+                            <FaMinus />
+                        </button>
+                    ) : ''
+                }
                 <button
-                    className={'EmissionAdminComponent__button pure-button pure-button-primary pure-input-1-2'}
+                    className={'button is-info is-big'}
                     type="submit"
                 >
-                    <FaPlus className="EmissionAdminComponent__add"/>
+                    {this.state.isEdit ? <FaEdit/> : <FaPlus/>}
                 </button>
             </form>
         );

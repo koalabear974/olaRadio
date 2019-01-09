@@ -11,9 +11,6 @@ import "./styles/Teaser.css";
 
 import FullTeaser from "./containers/FullTeaser";
 
-import {Body} from "./common/Fonts";
-
-
 export default class App extends Component {
     constructor(props) {
         super(props);
@@ -22,14 +19,18 @@ export default class App extends Component {
     render() {
         return (
             <Router>
-                <Body className={'AppContainer'}>
+                <div className={'AppContainer'}>
                 <div className={'AppContainer__teaser'}>
                     <Switch>
                         <Route exact path='/' component={FullTeaser}/>
                         <Redirect from="*" to="/" />
                     </Switch>
                 </div>
-                </Body>
+
+                <footer className={'AppContainer__footer'}>
+                    © Ola Radio 2018
+                </footer>
+                </div>
             </Router>
         );
     }

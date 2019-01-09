@@ -1,16 +1,23 @@
-html, .MainContainer {
+html, body {
+    height: 100%;
+    color: black;
+}
+
+.MainContainer {
     width: 100%;
     height: 100%;
     position: absolute;
-    left: 0px;
-    top: 0px;
+    left: 0;
+    top: 0;
     min-height: 100vh;
     display: flex;
+    flex-direction: column;
     flex: 1;
     margin: 0;
 }
 
 .MainContainer__body {
     display: flex;
+    flex-direction: column;
     flex: 1;
 }

@@ -1,7 +1,6 @@
-import React, { Component, Fragment } from "react";
-import base from "../db/config";
+import React, { Component} from "react";
 
-export default class Info extends Component {
+export default class Support extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -13,7 +12,7 @@ export default class Info extends Component {
 
     render() {
         return (
-            <div>Info</div>
+            <div>Soutenir</div>
         );
     }
 }

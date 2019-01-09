@@ -1,27 +1,83 @@
 import React, {Component} from "react";
-import {FaPlus} from "react-icons/fa/index";
+import {FaEdit, FaMinus, FaPlus} from "react-icons/fa/index";
+import PropTypes from "prop-types";
+import _ from "lodash";
 
 export default class CategoryForm extends Component {
+    static propTypes = {
+        editCategory: PropTypes.object,
+        handleSubmit: PropTypes.func,
+        handleDelete: PropTypes.func,
+    };
+
     constructor(props) {
         super(props);
 
         this.state = {
             category: {
                 name: "",
+                id: '',
             },
+            isEdit: false,
         };
 
+        if (!_.isEmpty(this.props.editCategory)) {
+            this.state = {
+                category: {
+                    name: this.props.editCategory.name,
+                    id: this.props.editCategory.id,
+                },
+                isEdit: true,
+            };
+        }
+
         this.handleChange = this.handleChange.bind(this);
-        this.onCategoryAdd = this.onCategoryAdd.bind(this);
+        this.onCategorySubmit = this.onCategorySubmit.bind(this);
+        this.handleDelete = this.handleDelete.bind(this);
     }
 
-    onCategoryAdd(event) {
+    onCategorySubmit(event) {
         event.preventDefault();
-        this.props.addCategory(this.state.category);
+        this.props.handleSubmit(this.state.category);
+        this.setState({
+            category: {
+                name: "",
+                id: "",
+            },
+            isEdit: false,
+        })
     }
 
     handleChange(event) {
-        this.setState({category: {name: event.target.value}});
+        const target = event.target;
+        let curValue = this.state.category;
+        curValue[target.name] = target.value;
+        this.setState({category: curValue});
+    }
+
+    componentDidUpdate() {
+        if (!_.isEmpty(this.props.editCategory) && this.props.editCategory.id !== this.state.category.id) {
+            this.setState({
+                category: {
+                    name: this.props.editCategory.name,
+                    id: this.props.editCategory.id,
+                },
+                isEdit: true,
+            });
+        }
+    }
+
+    handleDelete(event) {
+        event.preventDefault();
+        let id = this.state.category.id;
+        this.props.handleDelete(id);
+        this.setState({
+            category: {
+                name: "",
+                id: '',
+            },
+            isEdit: false,
+        });
     }
 
     render() {
@@ -29,25 +85,35 @@ export default class CategoryForm extends Component {
 
         return (
             <form
-                className="CategoryAdminComponent__form pure-form"
-                onSubmit={this.onCategoryAdd}
+                className="CategoryAdminComponent__form form"
+                onSubmit={this.onCategorySubmit}
             >
-                <fieldset>
-                    <legend>Ajouter une catégorie</legend>
-                    <input
-                        type="text"
-                        name="name"
-                        placeholder={"Nom"}
-                        onChange={this.handleChange}
-                        value={curCategory.name}
-                    />
-                    <button
-                        className={'CategoryAdminComponent__button pure-button pure-button-primary'}
-                        type="submit"
-                    >
-                        <FaPlus className="CategoryAdminComponent__add"/>
-                    </button>
-                </fieldset>
+                <legend>Ajouter une catégorie</legend>
+                <label htmlFor="name" className={'label'}>Nom</label>
+                <input
+                    type="text"
+                    name="name"
+                    className={'input'}
+                    placeholder={"Nom"}
+                    onChange={this.handleChange}
+                    value={curCategory.name}
+                />
+                {
+                    this.state.isEdit ? (
+                        <button
+                            className={'button is-danger'}
+                            onClick={this.handleDelete}
+                        >
+                            <FaMinus/>
+                        </button>
+                    ) : ''
+                }
+                <button
+                    className={'button is-info '}
+                    type="submit"
+                >
+                    {this.state.isEdit ? <FaEdit/> : <FaPlus/>}
+                </button>
             </form>
         );
     }

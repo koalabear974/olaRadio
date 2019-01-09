@@ -1,90 +1,104 @@
-import React, {Component, Fragment} from "react";
+import React, {Component} from "react";
 import Sha1 from "../helpers/sha1";
+import firebase from 'firebase/app';
+import 'firebase/auth';
+import _ from 'lodash';
 
 import CategoryAdminComponent from "../components/admin/CategoryAdminComponent";
 import EmissionAdminComponent from "../components/admin/EmissionAdminComponent";
+import QuestionAdminComponent from "../components/admin/QuestionAdminComponent";
+import StaticAdminComponent from "../components/admin/StaticAdminComponent";
 
+import 'bulma/css/bulma.css'
 import "./../styles/Admin.css";
+import LoginForm from "../components/admin/common/forms/LoginForm";
+import AdminNavbar from "../components/admin/common/forms/AdminNav";
 
 const Components = {
     CategoryAdminComponent: CategoryAdminComponent,
-    EmissionAdminComponent: EmissionAdminComponent
+    EmissionAdminComponent: EmissionAdminComponent,
+    QuestionAdminComponent: QuestionAdminComponent,
+    StaticAdminComponent: StaticAdminComponent,
 };
 
 export default class Admin extends Component {
     constructor(props) {
         super(props);
 
-        this.password = 'e7ee777deaff95f2c168a88c4c82b3d6531553bc';
-
         this.state = {
             isVerified: false,
-            passwordValue: "",
-            selectedItem: "Emission",
+            loginErrors: '',
+            selectedItem: "Category",
         };
 
         this.onPasswordSubmit = this.onPasswordSubmit.bind(this);
-        this.handleChange = this.handleChange.bind(this);
         this.changeCurrentItem = this.changeCurrentItem.bind(this);
     }
 
     componentDidMount() {
+        this.unregisterAuthObserver = firebase.auth().onAuthStateChanged(
+            (user) => {
+                this.setState({isVerified: !!user, errors: ""})
+            }
+        );
     }
 
-    onPasswordSubmit(event) {
-        event.preventDefault();
-        this.setState({isVerified: (this.password ===  Sha1.hash(this.state.passwordValue))})
+    componentWillUnmount() {
+        this.unregisterAuthObserver();
     }
 
-    handleChange(event) {
-        this.setState({passwordValue: event.target.value});
+    onPasswordSubmit(user) {
+        let that = this;
+
+        firebase.auth().setPersistence(
+            user.remember ?
+                firebase.auth.Auth.Persistence.LOCAL :
+                firebase.auth.Auth.Persistence.NONE
+        ).then(() => {
+            // TODO fix this double code
+            that.setState({loginErrors: ''});
+            that.setState({loginErrors: ''});
+            return firebase.auth().signInWithEmailAndPassword(user.email, user.password);
+        }).catch((error) => {
+            console.error('Login error: ', error);
+            that.setState({loginErrors: error.message});
+            that.setState({loginErrors: error.message});
+        });
     }
 
     changeCurrentItem(item) {
-        console.log(item);
         this.setState({selectedItem: item});
     }
 
     render() {
         let CurrentItem = Components[this.state.selectedItem + "AdminComponent"];
+
+        if (!this.state.isVerified) {
+            return (
+                <div className="Admin">
+                    <div className={'Admin__loginForm'}>
+                        <LoginForm
+                            onSubmit={this.onPasswordSubmit}
+                            errors={this.state.loginErrors}
+                        />
+                    </div>
+                </div>
+            );
+        }
+
         return (
             <div className="Admin">
-                {this.state.isVerified ? (
-                    <div className="Admin__container">
-                        <nav className="Admin__navbar pure-menu pure-menu-horizontal">
-                            <ul className="pure-menu-list">
-                                <li
-                                    className="pure-menu-item"
-                                    onClick={() => this.changeCurrentItem("Category")}>
-                                    <a href="#" className="pure-menu-link">Catégories d'émissions</a>
-                                </li>
-                                <li
-                                    className="pure-menu-item"
-                                    onClick={() => this.changeCurrentItem("Emission")}>
-                                    <a href="#" className="pure-menu-link">Emissions</a>
-                                </li>
-                            </ul>
-                        </nav>
-
-                        <div className="Admin__current">
-                            <CurrentItem />
-                        </div>
+                <div className="Admin__container">
+                    <AdminNavbar
+                        onNavClick={this.changeCurrentItem}
+                        selected={this.state.selectedItem}
+                    />
+                    <div className="Admin__current">
+                        <CurrentItem/>
                     </div>
-                ) : (
-                    <div>
-                        <form onSubmit={this.onPasswordSubmit}>
-                            <input
-                                type="password"
-                                name="password"
-                                onChange={this.handleChange}
-                                value={this.state.passwordValue}
-                            />
-                            <input type="submit" value="Log in" />
-                        </form>
-                    </div>
-                )}
+                </div>
             </div>
-
         );
+
     }
 }
