@@ -23,10 +23,12 @@
 
 .About__article--1 {
     flex-direction: row-reverse;
+    margin-right: 10vw;
 }
 
 .About__article--2 {
-    padding-right: 90px;
+    padding-right: 10vw;
+    margin-left: 10vw;
 }
 
 .About__articleBorder {
