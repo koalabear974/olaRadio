@@ -31,7 +31,7 @@ import FullTeaser from "./containers/FullTeaser";
 
 const pages = [
     {path: "Prog", text: "Prog"},
-    {path: "Archives", text: "Archives"},
+    // {path: "Archives", text: "Archives"},
     {path: "About", text: "A propos"},
     {path: "Support", text: "Soutenir"},
     // {path: "Shop", text: "Shop"},
@@ -115,7 +115,7 @@ class App extends Component {
                         currentPage={this.state.currentPage}
                         setCurrentPage={this.setCurrentPage}
                     />
-                    <footer className={'AppContainer__footer'}>
+                    <footer className={'AppContainer__footer--login'}>
                         © Ola Radio 2018
                     </footer>
                 </div>);
@@ -125,7 +125,7 @@ class App extends Component {
                     <Redirect exact from="/" to="Home"/>
                     <Route exact path="/Home" component={Home}/>
                     <Route path="/Prog" component={Home}/>
-                    <Route path="/Archives" component={Archives}/>
+                    {/*<Route path="/Archives" component={Archives}/>*/}
                     {/*<Route path="/Shop" component={Shop}/>*/}
                     <Route path="/Support" component={Support}/>
                     <Route path="/About" component={About}/>
@@ -154,7 +154,7 @@ class App extends Component {
                 </Router>
             );
         }
-    }
+    // }
 }
 
 export default Responsive(App);
