@@ -104,7 +104,7 @@ class App extends Component {
                         currentPage={this.state.currentPage}
                         setCurrentPage={this.setCurrentPage}
                     />
-                    <footer className={'AppContainer__footer'}>
+                    <footer className={'AppContainer__footer--login'}>
                         © Ola Radio 2018
                     </footer>
                 </div> : <div className={'AppContainer__sideBar'}>

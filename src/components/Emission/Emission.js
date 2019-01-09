@@ -57,7 +57,7 @@ export default class Emission extends Component {
                 <footer
                     className={'Emission__date'}
                 >
-                    {(new Date()).toLocaleDateString('en-GB')}
+                    {(new Date(emission.datetime)).getFormated()}
                 </footer>
             </article>
         );

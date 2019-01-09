@@ -65,6 +65,8 @@ export default class HomePage extends Component {
         if (this.isLoading()) {
             return <div>loading</div>
         }
+        let latestEmissions = _.map(this.state.emissions, (o) => {return o});
+        latestEmissions = (_.sortBy(latestEmissions, (o) => { return (o['datetime'] || 0)})).reverse().slice(0, 10);
         return (
             <div className={'Home'}>
                 <MainPage
@@ -81,7 +83,7 @@ export default class HomePage extends Component {
                     </h2>
                     <EmissionList
                         className={'Home__EmissionList'}
-                        emissions={this.state.emissions}
+                        emissions={latestEmissions}
                     />
                 </div>
             </div>
