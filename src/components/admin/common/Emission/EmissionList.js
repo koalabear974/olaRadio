@@ -56,7 +56,7 @@ export default class EmissionList extends Component {
                             <td>
                                 {
                                     emissionsArray[key].link ?
-                                        <a href={emissionsArray[key].link}>click</a> :
+                                        <a href={emissionsArray[key].link} target={'_blank'}>click</a> :
                                         ''
                                 }
                             </td>

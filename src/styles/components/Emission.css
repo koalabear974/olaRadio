@@ -32,6 +32,10 @@
     flex: 1 1 100%;
 }
 
+.Emission__name a {
+    color: black;
+}
+
 .Emission__date {
     flex: 1 1 100%;
 }

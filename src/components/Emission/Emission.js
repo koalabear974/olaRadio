@@ -23,11 +23,11 @@ export default class Emission extends Component {
                     >
                         10:00 - 12:00
                     </footer>
-                    <header
-                        className={'Emission__name'}
-                    >
-                        {emission.name}
-                    </header>
+                    {
+                        (emission.link && emission.link !== "") ?
+                        <header className={'Emission__name'}><a target={'_blank'} href={emission.link}>{emission.name}</a></header> :
+                        <header className={'Emission__name'}>{emission.name}</header>
+                    }
                 </article>
             );
         }
@@ -35,17 +35,25 @@ export default class Emission extends Component {
         return (
             <article className={"Emission"}>
                 <div className="Emission__imageContainer">
-                    <img
-                        className={'Emission__image'}
-                        src={emission.image}
-                        alt={emission.name}
-                    />
+                    {
+                        (emission.link && emission.link !== "") ?
+                            <a target={'_blank'} href={emission.link}><img
+                                className={'Emission__image'}
+                                src={emission.image}
+                                alt={emission.name}
+                            /></a> :
+                            <img
+                                className={'Emission__image'}
+                                src={emission.image}
+                                alt={emission.name}
+                            />
+                    }
                 </div>
-                <header
-                    className={'Emission__name'}
-                >
-                    {emission.name}
-                </header>
+                {
+                    (emission.link && emission.link !== "") ?
+                        <header className={'Emission__name'}><a target={'_blank'} href={emission.link}>{emission.name}</a></header> :
+                        <header className={'Emission__name'}>{emission.name}</header>
+                }
                 <footer
                     className={'Emission__date'}
                 >
