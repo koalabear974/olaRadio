@@ -9,6 +9,9 @@
     flex: 0 0 220px;
     flex-wrap: wrap;
     padding-right: 2em;
+    font-weight: bold;
+    font-size: 0.8em;
+    margin-bottom: 20px;
 }
 
 .Emission__imageContainer {
