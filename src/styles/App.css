@@ -42,7 +42,18 @@
 }
 
 .AppContainer__sideBar--mobile {
-    display: none;
+    height: 260px;
+    min-height: 0;
+    overflow: hidden;
+    display: block;
+    margin: 0;
+    position: absolute;
+    top: -8px;
+    border-bottom: 8px solid black;
+    left: 0;
+    max-width: 100vw;
+    width: 100vw;
+    padding-left: 10vw;
 }
 
 .flex {
@@ -123,4 +134,19 @@
     font-weight: bold;
     height: 30px;
     width: 60px;
+}
+
+.MobileNavigator {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.MobileNavigator__button {
+    color: black;
+    background-color: transparent !important;
+}
+.MobileNavigator__button:hover {
+    color: black;
+    background-color: transparent;
 }

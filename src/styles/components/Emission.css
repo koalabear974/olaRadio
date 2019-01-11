@@ -48,6 +48,11 @@
     margin: 0 1em;
 }
 
+.AppContainer--mobile .EmissionCalendar {
+    min-width: 100%;
+    margin: 0;
+}
+
 .EmissionCalendar__section {
     display: flex;
     flex: 1;

@@ -11,7 +11,7 @@ export default class CookieWarning extends Component {
 
         this.state = {
             cookieAccepted: !!this.cookies.get('cookieAccepted'),
-        }
+        };
 
         this.acceptCookie = this.acceptCookie.bind(this);
     }

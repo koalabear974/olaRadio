@@ -29,14 +29,19 @@ import RadioBox from "./components/RadioBox";
 import Logo from "./components/Logo";
 import CookieWarning from "./common/CookieWarning";
 import FullTeaser from "./containers/FullTeaser";
+import MobileNavigator from "./common/MobileNavigator";
 
-const pages = [
+const PAGES = [
     {path: "Prog", text: "Prog"},
     // {path: "Archives", text: "Archives"},
     {path: "About", text: "A propos"},
     {path: "Support", text: "Soutenir"},
     // {path: "Shop", text: "Shop"},
 ];
+const NAVBARHEIGHT = 260;
+function simple_easing(how_much_time_has_passed) {
+    return (1 - Math.cos(how_much_time_has_passed * Math.PI)) / 2;
+}
 
 class App extends Component {
     constructor(props) {
@@ -45,7 +50,12 @@ class App extends Component {
             currentPage: "Home",
             isMobile: false,
             isVerified: false,
+            navBarHeight: 0,
         };
+
+
+        this.animateNav = this.animateNav.bind(this);
+        this.toggleMenu = this.toggleMenu.bind(this);
     }
 
     componentWillMount() {
@@ -75,6 +85,36 @@ class App extends Component {
 
     setCurrentPage = currentPage => this.setState({currentPage});
 
+    toggleMenu(isOpen) {
+        let start = Date.now();
+        requestAnimationFrame(() => {
+            this.animateNav(isOpen, start);
+        });
+    }
+
+    animateNav(isOpen, start) {
+        let duration = 600;
+        let now = Date.now();
+        if (now - start >= duration) return;
+        let p = (now - start) / duration;
+        if(isOpen) {
+            let navBarHeight = NAVBARHEIGHT * simple_easing(p);
+            this.setState({navBarHeight: navBarHeight});
+            if (navBarHeight >= NAVBARHEIGHT) return;
+            requestAnimationFrame(() => {
+                this.animateNav(isOpen, start);
+            });
+        } else {
+            let navBarHeight = NAVBARHEIGHT - (NAVBARHEIGHT * simple_easing(p));
+            this.setState({navBarHeight: navBarHeight});
+            if (navBarHeight <= 0) return;
+            requestAnimationFrame(() => {
+                this.animateNav(isOpen, start);
+            });
+        }
+
+    }
+
     render() {
         const {isMobile} = this.state;
 
@@ -99,9 +139,14 @@ class App extends Component {
         } else {
             // FULL SITE
             let sideBar = (isMobile ?
-                <div className={'AppContainer__sideBar AppContainer__sideBar--mobile'}>
+                <div
+                    className={'AppContainer__sideBar AppContainer__sideBar--mobile'}
+                    style={{
+                        height: this.state.navBarHeight + 'px',
+                    }}
+                >
                     <Navigation
-                        pageArray={pages}
+                        pageArray={PAGES}
                         currentPage={this.state.currentPage}
                         setCurrentPage={this.setCurrentPage}
                     />
@@ -112,7 +157,7 @@ class App extends Component {
                     <Logo/>
                     <RadioBox/>
                     <Navigation
-                        pageArray={pages}
+                        pageArray={PAGES}
                         currentPage={this.state.currentPage}
                         setCurrentPage={this.setCurrentPage}
                     />
@@ -137,6 +182,7 @@ class App extends Component {
 
             let appBody = (isMobile ?
                     <div className={'AppContainer__body AppContainer__body--mobile'}>
+                        <MobileNavigator toggleMenu={this.toggleMenu}/>
                         <Logo/>
                         {switchRoutes}
                         <RadioBox/>
