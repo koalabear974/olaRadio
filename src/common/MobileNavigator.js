@@ -6,7 +6,7 @@ import "../styles/common/SearchBar.css";
 export default class MobileNavigator extends Component {
     static propTypes = {
         isOpen: PropTypes.bool,
-        curHeight: PropTypes.int,
+        curHeight: PropTypes.number,
     };
 
     constructor(props) {
