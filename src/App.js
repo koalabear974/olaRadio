@@ -1,11 +1,13 @@
 import React, {Component} from "react";
 import Responsive from 'react-responsive-decorator';
 import {
-    BrowserRouter as Router,
+    Router,
     Switch,
     Route,
     Redirect
 } from "react-router-dom";
+import {createBrowserHistory} from 'history';
+
 import "typeface-open-sans";
 
 import "./styles/Teaser.css";
@@ -39,6 +41,8 @@ const PAGES = [
     // {path: "Shop", text: "Shop"},
 ];
 const NAVBARHEIGHT = 260;
+const history = createBrowserHistory();
+
 function simple_easing(how_much_time_has_passed) {
     return (1 - Math.cos(how_much_time_has_passed * Math.PI)) / 2;
 }
@@ -77,13 +81,15 @@ class App extends Component {
                 this.setState({isVerified: !!user, errors: ""})
             }
         );
+        history.listen((location, action) => {
+            this.toggleMenu(false);
+        })
+
     }
 
     componentWillUnmount() {
         this.unregisterAuthObserver();
     }
-
-    setCurrentPage = currentPage => this.setState({currentPage});
 
     toggleMenu(isOpen) {
         let start = Date.now();
@@ -97,7 +103,7 @@ class App extends Component {
         let now = Date.now();
         if (now - start >= duration) return;
         let p = (now - start) / duration;
-        if(isOpen) {
+        if (isOpen) {
             let navBarHeight = NAVBARHEIGHT * simple_easing(p);
             this.setState({navBarHeight: navBarHeight});
             if (navBarHeight >= NAVBARHEIGHT) return;
@@ -118,15 +124,15 @@ class App extends Component {
     render() {
         const {isMobile} = this.state;
 
-        if(!this.state.isVerified) {
+        if (!this.state.isVerified) {
             return (
-                <Router>
+                <Router history={history}>
                     <div className={'AppContainer'}>
                         <div className={'AppContainer__teaser'}>
                             <Switch>
                                 <Route exact path='/' component={FullTeaser}/>
                                 <Route path="/Admin" component={Admin}/>
-                                <Redirect from="*" to="/" />
+                                <Redirect from="*" to="/"/>
                             </Switch>
                         </div>
 
@@ -148,7 +154,6 @@ class App extends Component {
                     <Navigation
                         pageArray={PAGES}
                         currentPage={this.state.currentPage}
-                        setCurrentPage={this.setCurrentPage}
                     />
                     <footer className={'AppContainer__footer--login'}>
                         © Ola Radio 2018
@@ -193,11 +198,11 @@ class App extends Component {
             );
 
             return (
-                <Router>
+                <Router history={history}>
                     <div className={'AppContainer' + (isMobile ? ' AppContainer--mobile' : '')}>
                         {sideBar}
                         {appBody}
-                        <CookieWarning />
+                        <CookieWarning/>
                     </div>
                 </Router>
             );

@@ -18,7 +18,6 @@ export default class MobileNavigator extends Component {
 
     toggleMenu(e) {
         e.preventDefault();
-        console.log(!this.state.isOpen);
         this.props.toggleMenu(!this.state.isOpen);
         this.setState({isOpen: !this.state.isOpen})
     }
