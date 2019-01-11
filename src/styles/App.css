@@ -92,3 +92,35 @@
     height: 1.2em;
     white-space: nowrap;
 }
+
+.CookieWarning {
+    position: absolute;
+    width: 100%;
+    background: white;
+    text-align: center;
+    bottom: 0;
+    left: 0;
+    height: 50px;
+    padding-top: 5px;
+    border-top: 8px solid black;
+    font-size: 14px;
+    font-weight: bold;
+}
+.CookieWarning--hidden {
+    display: none;
+}
+
+.CookieWarning a {
+    color: black;
+    font-style: italic;
+}
+.CookieWarning button {
+    margin-left: 20px;
+    background: black;
+    color: white;
+    text-transform: uppercase;
+    border: 0;
+    font-weight: bold;
+    height: 30px;
+    width: 60px;
+}

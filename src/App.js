@@ -27,6 +27,7 @@ import "./styles/App.css";
 
 import RadioBox from "./components/RadioBox";
 import Logo from "./components/Logo";
+import CookieWarning from "./common/CookieWarning";
 import FullTeaser from "./containers/FullTeaser";
 
 const pages = [
@@ -150,6 +151,7 @@ class App extends Component {
                     <div className={'AppContainer' + (isMobile ? ' AppContainer--mobile' : '')}>
                         {sideBar}
                         {appBody}
+                        <CookieWarning />
                     </div>
                 </Router>
             );
