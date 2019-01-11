@@ -1,10 +1,13 @@
 import React, {Component} from "react";
-
+import PropTypes from "prop-types";
 
 import "../styles/common/SearchBar.css";
 
 export default class MobileNavigator extends Component {
-    static propTypes = {};
+    static propTypes = {
+        isOpen: PropTypes.bool,
+        curHeight: PropTypes.int,
+    };
 
     constructor(props) {
         super(props);
@@ -18,8 +21,7 @@ export default class MobileNavigator extends Component {
 
     toggleMenu(e) {
         e.preventDefault();
-        this.props.toggleMenu(!this.state.isOpen);
-        this.setState({isOpen: !this.state.isOpen})
+        this.props.toggleMenu(!this.props.isOpen);
     }
 
     render() {
@@ -27,8 +29,8 @@ export default class MobileNavigator extends Component {
             <div className={'MobileNavigator'}>
                 <a
                     role="button"
-                    className={"MobileNavigator__button navbar-burger burger "+(this.state.isOpen ? 'is-active' : '')}
-                    aria-expanded={this.state.isOpen}
+                    className={"MobileNavigator__button navbar-burger burger "+(this.props.isOpen ? 'is-active' : '')}
+                    aria-expanded={this.props.isOpen}
                     onClick={this.toggleMenu}
                 >
                     <span aria-hidden="true"></span>

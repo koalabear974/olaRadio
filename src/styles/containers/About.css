@@ -84,3 +84,25 @@
     flex: 1;
     min-width: 25vw;
 }
+
+.AppContainer--mobile .About__article {
+    flex-direction: column;
+}
+
+.AppContainer--mobile .About__article--1 {
+    flex-direction: column-reverse;
+}
+
+.AppContainer--mobile .About__article--2 {
+    margin-left: 0;
+    padding: 0 30px;
+    margin-top: 40px;
+}
+
+.AppContainer--mobile .About__articleBorder {
+    height: 90%;
+}
+
+.AppContainer--mobile .About__article--1 .About__articleBorder {
+    top: 2%;
+}

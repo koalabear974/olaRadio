@@ -55,6 +55,7 @@ class App extends Component {
             isMobile: false,
             isVerified: false,
             navBarHeight: 0,
+            isNavBarOpen: false,
         };
 
 
@@ -84,7 +85,6 @@ class App extends Component {
         history.listen((location, action) => {
             this.toggleMenu(false);
         })
-
     }
 
     componentWillUnmount() {
@@ -93,6 +93,7 @@ class App extends Component {
 
     toggleMenu(isOpen) {
         let start = Date.now();
+        this.setState({isNavBarOpen: isOpen});
         requestAnimationFrame(() => {
             this.animateNav(isOpen, start);
         });
@@ -102,16 +103,17 @@ class App extends Component {
         let duration = 600;
         let now = Date.now();
         if (now - start >= duration) return;
+        if (this.state.navBarHeight <= 0 && !isOpen) return;
         let p = (now - start) / duration;
         if (isOpen) {
-            let navBarHeight = NAVBARHEIGHT * simple_easing(p);
+            let navBarHeight = Math.round(NAVBARHEIGHT * simple_easing(p));
             this.setState({navBarHeight: navBarHeight});
             if (navBarHeight >= NAVBARHEIGHT) return;
             requestAnimationFrame(() => {
                 this.animateNav(isOpen, start);
             });
         } else {
-            let navBarHeight = NAVBARHEIGHT - (NAVBARHEIGHT * simple_easing(p));
+            let navBarHeight = Math.round(NAVBARHEIGHT - (NAVBARHEIGHT * simple_easing(p)));
             this.setState({navBarHeight: navBarHeight});
             if (navBarHeight <= 0) return;
             requestAnimationFrame(() => {
@@ -187,7 +189,11 @@ class App extends Component {
 
             let appBody = (isMobile ?
                     <div className={'AppContainer__body AppContainer__body--mobile'}>
-                        <MobileNavigator toggleMenu={this.toggleMenu}/>
+                        <MobileNavigator
+                            toggleMenu={this.toggleMenu}
+                            isOpen={this.state.isNavBarOpen}
+                            curHeight={this.state.navBarHeight}
+                        />
                         <Logo/>
                         {switchRoutes}
                         <RadioBox/>
