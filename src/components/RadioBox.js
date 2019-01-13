@@ -42,13 +42,18 @@ export default class RadioBox extends Component {
         if(this.state.isPlaying) {
             this.audioPlayer.current.audioEl.pause();
         } else {
-            this.audioPlayer.current.audioEl.play();
+            try {
+                this.audioPlayer.current.audioEl.play();
+            } catch (e) {
+                console.log(e);
+            }
         }
         this.setState({isPlaying: !this.state.isPlaying});
     }
 
     onCanPlay() {
-        this.togglePlay();
+        // Todo find a solution
+        // this.togglePlay();
     }
 
     fetchData() {
