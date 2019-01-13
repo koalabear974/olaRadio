@@ -24,7 +24,7 @@ export default class TopBarQuestion extends Component {
 
     handleAnswer(event) {
         let value = event.target.dataset.value;
-        this.cookies.set('currentAnswer', value, { path: '/' })
+        this.cookies.set('currentAnswer', value, { path: '/' });
         this.setState({curAnswer: value})
     }
 

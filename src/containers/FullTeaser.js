@@ -44,7 +44,7 @@ export default class FullTeaserPage extends Component {
                 <span
                     className={'Teaser__text'}
                 >
-                    Rendez-vous en janvier 2019.
+                    Rendez-vous le 14 janvier.
                 </span>
                 <span
                     className={'Teaser__links'}

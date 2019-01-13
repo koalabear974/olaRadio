@@ -1,11 +1,13 @@
 import React, {Component} from "react";
 import Responsive from 'react-responsive-decorator';
 import {
-    BrowserRouter as Router,
+    Router,
     Switch,
     Route,
     Redirect
 } from "react-router-dom";
+import {createBrowserHistory} from 'history';
+
 import "typeface-open-sans";
 
 import "./styles/Teaser.css";
@@ -27,15 +29,23 @@ import "./styles/App.css";
 
 import RadioBox from "./components/RadioBox";
 import Logo from "./components/Logo";
+import CookieWarning from "./common/CookieWarning";
 import FullTeaser from "./containers/FullTeaser";
+import MobileNavigator from "./common/MobileNavigator";
 
-const pages = [
+const PAGES = [
     {path: "Prog", text: "Prog"},
     // {path: "Archives", text: "Archives"},
     {path: "About", text: "A propos"},
     {path: "Support", text: "Soutenir"},
     // {path: "Shop", text: "Shop"},
 ];
+const NAVBARHEIGHT = 260;
+const history = createBrowserHistory();
+
+function simple_easing(how_much_time_has_passed) {
+    return (1 - Math.cos(how_much_time_has_passed * Math.PI)) / 2;
+}
 
 class App extends Component {
     constructor(props) {
@@ -44,7 +54,13 @@ class App extends Component {
             currentPage: "Home",
             isMobile: false,
             isVerified: false,
+            navBarHeight: 0,
+            isNavBarOpen: false,
         };
+
+
+        this.animateNav = this.animateNav.bind(this);
+        this.toggleMenu = this.toggleMenu.bind(this);
     }
 
     componentWillMount() {
@@ -66,26 +82,59 @@ class App extends Component {
                 this.setState({isVerified: !!user, errors: ""})
             }
         );
+        history.listen((location, action) => {
+            this.toggleMenu(false);
+        })
     }
 
     componentWillUnmount() {
         this.unregisterAuthObserver();
     }
 
-    setCurrentPage = currentPage => this.setState({currentPage});
+    toggleMenu(isOpen) {
+        let start = Date.now();
+        this.setState({isNavBarOpen: isOpen});
+        requestAnimationFrame(() => {
+            this.animateNav(isOpen, start);
+        });
+    }
+
+    animateNav(isOpen, start) {
+        let duration = 600;
+        let now = Date.now();
+        if (now - start >= duration) return;
+        if (this.state.navBarHeight <= 0 && !isOpen) return;
+        let p = (now - start) / duration;
+        if (isOpen) {
+            let navBarHeight = Math.round(NAVBARHEIGHT * simple_easing(p));
+            this.setState({navBarHeight: navBarHeight});
+            if (navBarHeight >= NAVBARHEIGHT) return;
+            requestAnimationFrame(() => {
+                this.animateNav(isOpen, start);
+            });
+        } else {
+            let navBarHeight = Math.round(NAVBARHEIGHT - (NAVBARHEIGHT * simple_easing(p)));
+            this.setState({navBarHeight: navBarHeight});
+            if (navBarHeight <= 0) return;
+            requestAnimationFrame(() => {
+                this.animateNav(isOpen, start);
+            });
+        }
+
+    }
 
     render() {
         const {isMobile} = this.state;
 
-        if(!this.state.isVerified) {
+        if (!this.state.isVerified) {
             return (
-                <Router>
+                <Router history={history}>
                     <div className={'AppContainer'}>
                         <div className={'AppContainer__teaser'}>
                             <Switch>
                                 <Route exact path='/' component={FullTeaser}/>
                                 <Route path="/Admin" component={Admin}/>
-                                <Redirect from="*" to="/" />
+                                <Redirect from="*" to="/"/>
                             </Switch>
                         </div>
 
@@ -98,11 +147,15 @@ class App extends Component {
         } else {
             // FULL SITE
             let sideBar = (isMobile ?
-                <div className={'AppContainer__sideBar AppContainer__sideBar--mobile'}>
+                <div
+                    className={'AppContainer__sideBar AppContainer__sideBar--mobile'}
+                    style={{
+                        height: this.state.navBarHeight + 'px',
+                    }}
+                >
                     <Navigation
-                        pageArray={pages}
+                        pageArray={PAGES}
                         currentPage={this.state.currentPage}
-                        setCurrentPage={this.setCurrentPage}
                     />
                     <footer className={'AppContainer__footer--login'}>
                         © Ola Radio 2018
@@ -111,7 +164,7 @@ class App extends Component {
                     <Logo/>
                     <RadioBox/>
                     <Navigation
-                        pageArray={pages}
+                        pageArray={PAGES}
                         currentPage={this.state.currentPage}
                         setCurrentPage={this.setCurrentPage}
                     />
@@ -136,6 +189,11 @@ class App extends Component {
 
             let appBody = (isMobile ?
                     <div className={'AppContainer__body AppContainer__body--mobile'}>
+                        <MobileNavigator
+                            toggleMenu={this.toggleMenu}
+                            isOpen={this.state.isNavBarOpen}
+                            curHeight={this.state.navBarHeight}
+                        />
                         <Logo/>
                         {switchRoutes}
                         <RadioBox/>
@@ -146,10 +204,11 @@ class App extends Component {
             );
 
             return (
-                <Router>
+                <Router history={history}>
                     <div className={'AppContainer' + (isMobile ? ' AppContainer--mobile' : '')}>
                         {sideBar}
                         {appBody}
+                        <CookieWarning/>
                     </div>
                 </Router>
             );

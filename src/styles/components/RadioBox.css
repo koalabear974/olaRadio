@@ -1,6 +1,6 @@
 .RadioBox {
     display: flex;
-    padding: 20px;
+    padding: 20px 20px 0;
     border: 8px solid black;
     flex-wrap: wrap;
     flex-direction: column;
@@ -19,7 +19,18 @@
 }
 
 .RadioBox__player {
+    text-align: center;
+    margin: 6px;
+}
 
+.RadioBox__control:focus {
+    outline: 0;
+}
+
+.RadioBox__control {
+    font-size: 25px;
+    border: 0;
+    cursor: pointer;
 }
 
 .RadioBox .Emission__title {
@@ -41,4 +52,13 @@
 .RadioBox .Emission__date {
     flex: 0 0 50px;
     padding-left: 5px;
+}
+
+.RadioBox__redDot {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background: red;
+    border-radius: 20px;
+    margin-left: 10px;
 }

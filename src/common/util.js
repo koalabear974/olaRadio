@@ -18,6 +18,12 @@ Date.prototype.getFormated = function () {
     return dd+" - "+mm+" - "+((String) (new Date().getFullYear())).substr(2,2);
 };
 
+Date.prototype.getTimeFormated = function () {
+    var hh = this.getHours() < 9 ? "0" + this.getHours() : this.getHours();
+    var mm  = this.getMinutes() < 9 ? "0" + this.getMinutes() : this.getMinutes();
+    return hh+":"+mm;
+};
+
 export function log(message) {
     console.log(message);
 };

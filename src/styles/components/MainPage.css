@@ -9,6 +9,7 @@
 .MainPage__main-article {
     display: flex;
     flex: 1;
+    flex-wrap: wrap;
 }
 
 .MainPage__aside {
