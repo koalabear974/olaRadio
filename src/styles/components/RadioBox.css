@@ -31,6 +31,7 @@
     font-size: 25px;
     border: 0;
     cursor: pointer;
+    background: none;
 }
 
 .RadioBox .Emission__title {

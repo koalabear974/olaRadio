@@ -1,0 +1,23 @@
+.Support {
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    background-image: url("/images/supportBg.jpg");
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.Support__cta {
+    color: black;
+    text-transform: uppercase;
+    font-weight: bold;
+    border: 8px solid black;
+    padding: 20px 40px;
+    font-size: 20px;
+    background: white;
+}
+
+.AppContainer--mobile .Support {
+    flex: 1;
+}
