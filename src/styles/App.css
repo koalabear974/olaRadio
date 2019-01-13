@@ -152,3 +152,63 @@
     color: black;
     background-color: transparent;
 }
+
+.blink {
+    animation: blink-animation 2s steps(5, start) infinite;
+    -webkit-animation: blink-animation 2s steps(5, start) infinite;
+}
+@keyframes blink-animation {
+    to {
+        visibility: hidden;
+    }
+}
+@-webkit-keyframes blink-animation {
+    to {
+        visibility: hidden;
+    }
+}
+
+
+
+.marquee {
+    height: 50px;
+    overflow: hidden;
+    position: relative;
+}
+.marquee__text{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    line-height: 50px;
+    text-align: center;
+    /* Starting position */
+    -moz-transform:translateX(-100%);
+    -webkit-transform:translateX(-100%);
+    transform:translateX(-100%);
+    /* Apply animation to this element */
+    -moz-animation: scroll 15s linear infinite;
+    -webkit-animation: scroll 15s linear infinite;
+    animation: scroll 15s linear infinite;
+}
+/* Move it (define the animation) */
+@-moz-keyframes scroll {
+    0%   { -moz-transform: translateX(-100%); }
+    100% { -moz-transform: translateX(100%); }
+}
+@-webkit-keyframes scroll {
+    0%   { -webkit-transform: translateX(-100%); }
+    100% { -webkit-transform: translateX(100%); }
+}
+@keyframes scroll {
+    0%   {
+        -moz-transform: translateX(-100%); /* Firefox bug fix */
+        -webkit-transform: translateX(-100%); /* Firefox bug fix */
+        transform: translateX(-100%);
+    }
+    100% {
+        -moz-transform: translateX(100%); /* Firefox bug fix */
+        -webkit-transform: translateX(100%); /* Firefox bug fix */
+        transform: translateX(100%);
+    }
+}
