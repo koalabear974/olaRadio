@@ -169,46 +169,32 @@
 }
 
 
-
 .marquee {
-    height: 50px;
+    height: 25px;
+    width: 420px;
+    max-width: 100%;
+
     overflow: hidden;
     position: relative;
 }
-.marquee__text{
+
+.marquee div {
+    display: block;
+    width: 300%;
+    height: 30px;
+
     position: absolute;
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    line-height: 50px;
-    text-align: center;
-    /* Starting position */
-    -moz-transform:translateX(-100%);
-    -webkit-transform:translateX(-100%);
-    transform:translateX(-100%);
-    /* Apply animation to this element */
-    -moz-animation: scroll 15s linear infinite;
-    -webkit-animation: scroll 15s linear infinite;
-    animation: scroll 15s linear infinite;
+    overflow: hidden;
+
+    animation: marquee 8s linear infinite;
 }
-/* Move it (define the animation) */
-@-moz-keyframes scroll {
-    0%   { -moz-transform: translateX(-100%); }
-    100% { -moz-transform: translateX(100%); }
+
+.marquee span {
+    float: left;
+    width: 50%;
 }
-@-webkit-keyframes scroll {
-    0%   { -webkit-transform: translateX(-100%); }
-    100% { -webkit-transform: translateX(100%); }
-}
-@keyframes scroll {
-    0%   {
-        -moz-transform: translateX(-100%); /* Firefox bug fix */
-        -webkit-transform: translateX(-100%); /* Firefox bug fix */
-        transform: translateX(-100%);
-    }
-    100% {
-        -moz-transform: translateX(100%); /* Firefox bug fix */
-        -webkit-transform: translateX(100%); /* Firefox bug fix */
-        transform: translateX(100%);
-    }
+
+@keyframes marquee {
+    0% { left: 0; }
+    100% { left: -150%; }
 }

@@ -98,15 +98,15 @@ export default class RadioBox extends Component {
                 {
                     currentSong &&
                     <article className={'RadioBox__emission'}>
-                        <header className={'Emission__title'}>
-                            <Marquee
-                                hoverToStop={true}
-                                loop={this.state.marqueeLoop}
-                                leading={5}
-                                trailing={5}
-                                text={currentSong.title + ' - '+ currentSong.artist}
-                            />
-
+                        <header className={'Emission__title marquee'}>
+                            <div>
+                                <span className={'marquee__text'}>
+                                    {currentSong.title + ' - '+ currentSong.artist}
+                                </span>
+                                <span className={'marquee__text'}>
+                                    {currentSong.title + ' - '+ currentSong.artist}
+                                </span>
+                            </div>
                         </header>
                     </article>
                 }
