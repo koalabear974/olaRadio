@@ -21,7 +21,7 @@ export default class Emission extends Component {
                     <footer
                         className={'Emission__date'}
                     >
-                        10:00 - 12:00
+                        {(new Date(emission.datetime)).getTimeFormated()}
                     </footer>
                     {
                         (emission.link && emission.link !== "") ?
