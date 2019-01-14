@@ -126,93 +126,72 @@ class App extends Component {
     render() {
         const {isMobile} = this.state;
 
-        if (!this.state.isVerified) {
-            return (
-                <Router history={history}>
-                    <div className={'AppContainer'}>
-                        <div className={'AppContainer__teaser'}>
-                            <Switch>
-                                <Route exact path='/' component={FullTeaser}/>
-                                <Route path="/Admin" component={Admin}/>
-                                <Redirect from="*" to="/"/>
-                            </Switch>
-                        </div>
+        let sideBar = (isMobile ?
+            <div
+                className={'AppContainer__sideBar AppContainer__sideBar--mobile'}
+                style={{
+                    height: this.state.navBarHeight + 'px',
+                }}
+            >
+                <Navigation
+                    pageArray={PAGES}
+                    currentPage={this.state.currentPage}
+                />
+                <footer className={'AppContainer__footer--login'}>
+                    © Ola Radio 2018
+                </footer>
+            </div> : <div className={'AppContainer__sideBar'}>
+                <Logo/>
+                <RadioBox/>
+                <Navigation
+                    pageArray={PAGES}
+                    currentPage={this.state.currentPage}
+                    setCurrentPage={this.setCurrentPage}
+                />
+                <footer className={'AppContainer__footer--login'}>
+                    © Ola Radio 2018
+                </footer>
+            </div>);
 
-                        <footer className={'AppContainer__footer'}>
-                            © Ola Radio 2018
-                        </footer>
-                    </div>
-                </Router>
-            );
-        } else {
-            // FULL SITE
-            let sideBar = (isMobile ?
-                <div
-                    className={'AppContainer__sideBar AppContainer__sideBar--mobile'}
-                    style={{
-                        height: this.state.navBarHeight + 'px',
-                    }}
-                >
-                    <Navigation
-                        pageArray={PAGES}
-                        currentPage={this.state.currentPage}
+        let switchRoutes = (
+            <Switch>
+                <Redirect exact from="/" to="Home"/>
+                <Route exact path="/Home" component={Home}/>
+                <Route path="/Prog" component={Home}/>
+                {/*<Route path="/Archives" component={Archives}/>*/}
+                {/*<Route path="/Shop" component={Shop}/>*/}
+                <Route path="/Support" component={Support}/>
+                <Route path="/About" component={About}/>
+                <Route path="/Admin" component={Admin}/>
+                <Route component={NotFoundPage}/>
+            </Switch>
+        );
+
+        let appBody = (isMobile ?
+                <div className={'AppContainer__body AppContainer__body--mobile'}>
+                    <MobileNavigator
+                        toggleMenu={this.toggleMenu}
+                        isOpen={this.state.isNavBarOpen}
+                        curHeight={this.state.navBarHeight}
                     />
-                    <footer className={'AppContainer__footer--login'}>
-                        © Ola Radio 2018
-                    </footer>
-                </div> : <div className={'AppContainer__sideBar'}>
                     <Logo/>
+                    {switchRoutes}
                     <RadioBox/>
-                    <Navigation
-                        pageArray={PAGES}
-                        currentPage={this.state.currentPage}
-                        setCurrentPage={this.setCurrentPage}
-                    />
-                    <footer className={'AppContainer__footer--login'}>
-                        © Ola Radio 2018
-                    </footer>
-                </div>);
+                </div> :
+                <div className={'AppContainer__body'}>
+                    {switchRoutes}
+                </div>
+        );
 
-            let switchRoutes = (
-                <Switch>
-                    <Redirect exact from="/" to="Home"/>
-                    <Route exact path="/Home" component={Home}/>
-                    <Route path="/Prog" component={Home}/>
-                    {/*<Route path="/Archives" component={Archives}/>*/}
-                    {/*<Route path="/Shop" component={Shop}/>*/}
-                    <Route path="/Support" component={Support}/>
-                    <Route path="/About" component={About}/>
-                    <Route path="/Admin" component={Admin}/>
-                    <Route component={NotFoundPage}/>
-                </Switch>
-            );
-
-            let appBody = (isMobile ?
-                    <div className={'AppContainer__body AppContainer__body--mobile'}>
-                        <MobileNavigator
-                            toggleMenu={this.toggleMenu}
-                            isOpen={this.state.isNavBarOpen}
-                            curHeight={this.state.navBarHeight}
-                        />
-                        <Logo/>
-                        {switchRoutes}
-                        <RadioBox/>
-                    </div> :
-                    <div className={'AppContainer__body'}>
-                        {switchRoutes}
-                    </div>
-            );
-
-            return (
-                <Router history={history}>
-                    <div className={'AppContainer' + (isMobile ? ' AppContainer--mobile' : '')}>
-                        {sideBar}
-                        {appBody}
-                        <CookieWarning/>
-                    </div>
-                </Router>
-            );
-        }
+        return (
+            <Router history={history}>
+                <div className={'AppContainer' + (isMobile ? ' AppContainer--mobile' : '')}>
+                    {sideBar}
+                    {appBody}
+                    <CookieWarning/>
+                </div>
+            </Router>
+        );
     }
 }
 
