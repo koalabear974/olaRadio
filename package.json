@@ -38,5 +38,6 @@
   ],
   "devDependencies": {
     "babel-cli": "^6.26.0"
-  }
+  },
+  "homepage" : "https://olaradio.fr"
 }
