@@ -60,16 +60,17 @@ export default class RadioBox extends Component {
         fetch(CurrentSongUrl)
             .then(response => response.json())
             .then(json => {
+                console.log("Fetching new current song.");
                 this.setState({
                     currentSong: json,
                 });
-
-                let endTime = new Date(json.end_at);
                 let now = new Date();
-
+                let endTime = (new Date(json.end_at.substr(0,19))).addHours(((-now.getTimezoneOffset())/60));
+                let timeSpan = (endTime.getTime() - now.getTime()) > 0 ? endTime.getTime() - now.getTime(): 10000;
+                console.log("Next fetch in: "+timeSpan);
                 setTimeout(
                     this.fetchData,
-                    endTime - now + 1000
+                    timeSpan,
                 )
             }).catch(error => {
                 this.setState({
