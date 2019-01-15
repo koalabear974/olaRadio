@@ -5,10 +5,13 @@
     flex-direction: column;
     flex-wrap: wrap;
     flex: 1 1 auto;
-    overflow-y: scroll;
     position: relative;
     color: black;
     font-family: Companion, serif;
+
+    scroll-behavior: smooth;
+    overflow-y: scroll; /* has to be scroll, not auto */
+    -webkit-overflow-scrolling: touch;
 }
 
 .AppContainer__footer--login {
@@ -23,6 +26,10 @@
     flex: 1 0 auto;
     width: 70vw;
     margin-top: -1px;
+
+    scroll-behavior: smooth;
+    overflow-y: scroll; /* has to be scroll, not auto */
+    -webkit-overflow-scrolling: touch;
 }
 
 .AppContainer__body--mobile {
@@ -123,7 +130,7 @@
 }
 
 .AppContainer--mobile .CookieWarning {
-    height: 80px;
+    height: 100px;
     border-bottom: 8px solid black;
 }
 
