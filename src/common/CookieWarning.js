@@ -26,7 +26,7 @@ export default class CookieWarning extends Component {
     render() {
         return (
             <div className={'CookieWarning '+(this.state.cookieAccepted ? 'CookieWarning--hidden' : '')}>
-                Ce site utilise des cookies as des fins d'analyse.
+                Ce site utilise des cookies à des fins analytiques.
                 <a target={'_blank'} href="https://en.wikipedia.org/wiki/HTTP_cookie"> En lire plus.</a>
                 <button onClick={this.acceptCookie}>
                     Ok

@@ -4,6 +4,7 @@ import uuidv1 from "uuid/v1";
 import {NavLink} from "react-router-dom";
 
 import "./../styles/components/Navigation.css";
+import {FaFacebook, FaInstagram} from "react-icons/fa/index";
 
 export default class Navigation extends Component {
     static propTypes = {
@@ -26,6 +27,14 @@ export default class Navigation extends Component {
                         <span>{page.text}</span>
                     </NavLink>
                 ))}
+                <li className={'NavigationBar__social'} >
+                    <a className={'Social__link'} target={'blank'} href="https://www.facebook.com/Ola-Radio-2003400579719885/">
+                        <FaFacebook className="Teaser__icon Teaser__links-fb"/>
+                    </a>
+                    <a className={'Social__link'} target={'blank'} href="https://www.instagram.com/ola_radio/">
+                        <FaInstagram className="Teaser__icon Teaser__links-ig"/>
+                    </a>
+                </li>
             </nav>
         );
     }

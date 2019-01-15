@@ -22,3 +22,16 @@
     transform: rotate(-20deg);
     transform-origin: bottom left;
 }
+
+.NavigationBar__social {
+    margin: 10px 0px;
+}
+
+.Social__link {
+    text-decoration: none;
+    color: inherit;
+}
+
+.Social__link svg {
+    margin: 0;
+}

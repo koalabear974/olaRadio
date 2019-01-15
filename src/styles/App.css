@@ -121,6 +121,12 @@
     font-size: 14px;
     font-weight: bold;
 }
+
+.AppContainer--mobile .CookieWarning {
+    height: 80px;
+    border-bottom: 8px solid black;
+}
+
 .CookieWarning--hidden {
     display: none;
 }

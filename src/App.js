@@ -40,7 +40,7 @@ const PAGES = [
     {path: "Support", text: "Soutenir"},
     // {path: "Shop", text: "Shop"},
 ];
-const NAVBARHEIGHT = 260;
+const NAVBARHEIGHT = 330;
 const history = createBrowserHistory();
 
 function simple_easing(how_much_time_has_passed) {
@@ -138,7 +138,7 @@ class App extends Component {
                     currentPage={this.state.currentPage}
                 />
                 <footer className={'AppContainer__footer--login'}>
-                    © Ola Radio 2018
+                    © Ola Radio 2019
                 </footer>
             </div> : <div className={'AppContainer__sideBar'}>
                 <Logo/>
@@ -149,7 +149,7 @@ class App extends Component {
                     setCurrentPage={this.setCurrentPage}
                 />
                 <footer className={'AppContainer__footer--login'}>
-                    © Ola Radio 2018
+                    © Ola Radio 2019
                 </footer>
             </div>);
 

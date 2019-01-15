@@ -24,6 +24,11 @@ Date.prototype.getTimeFormated = function () {
     return hh+":"+mm;
 };
 
+Date.prototype.addHours= function(h){
+    this.setHours(this.getHours()+h);
+    return this;
+}
+
 export function log(message) {
     console.log(message);
 };
