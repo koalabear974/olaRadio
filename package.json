@@ -28,7 +28,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "postinstall": "node hack-add-skipWaiting-true-to-react-script.js"
   },
   "browserslist": [
     ">0.2%",
@@ -37,7 +38,8 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "babel-cli": "^6.26.0"
+    "babel-cli": "^6.26.0",
+    "replace-in-file": "^3.4.3"
   },
-  "homepage" : "https://olaradio.fr"
+  "homepage": "https://olaradio.fr"
 }
