@@ -34,6 +34,7 @@
     scroll-behavior: smooth;
     overflow-y: scroll; /* has to be scroll, not auto */
     -webkit-overflow-scrolling: touch;
+    max-height: 100vh;
 }
 
 .AppContainer__body--mobile {
@@ -166,7 +167,8 @@
 
 .MobileNavigator__button {
     color: black;
-    background-color: transparent !important;
+    border-radius: 80px;
+    background-color: white !important;
 }
 .MobileNavigator__button:hover {
     color: black;
