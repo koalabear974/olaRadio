@@ -20,6 +20,10 @@
     font-size: 0.6em;
 }
 
+.AppContainer__legal {
+    color: black;
+}
+
 .AppContainer__body {
     display: flex;
     flex-direction: column;
