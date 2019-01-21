@@ -107,10 +107,10 @@ export default class RadioBox extends Component {
                         <header className={'Emission__title marquee'}>
                             <div>
                                 <span className={'marquee__text'}>
-                                    {currentSong.title + ' - '+ currentSong.artist}
+                                    {currentSong.artist + ' - '+ currentSong.title}
                                 </span>
                                 <span className={'marquee__text'}>
-                                    {currentSong.title + ' - '+ currentSong.artist}
+                                    {currentSong.artist + ' - '+ currentSong.title}
                                 </span>
                             </div>
                         </header>
