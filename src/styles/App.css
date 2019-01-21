@@ -1,4 +1,7 @@
-@font-face { font-family: Companion; src: url('/fonts/Compagnon-Medium.woff'); }
+@font-face {
+    font-family: Companion;
+    src: url('/fonts/Compagnon-Medium.woff');
+}
 
 .AppContainer {
     display: flex;
@@ -75,13 +78,26 @@
 .flex {
     display: flex;
 }
+
 .hidden {
     display: none;
 }
-.order0 {order:0}
-.order1 {order:1}
-.order2 {order:2}
-.order3 {order:3}
+
+.order0 {
+    order: 0
+}
+
+.order1 {
+    order: 1
+}
+
+.order2 {
+    order: 2
+}
+
+.order3 {
+    order: 3
+}
 
 .input--select {
     height: auto;
@@ -147,6 +163,7 @@
     color: black;
     font-style: italic;
 }
+
 .CookieWarning button {
     margin-left: 20px;
     background: black;
@@ -170,6 +187,7 @@
     border-radius: 80px;
     background-color: white !important;
 }
+
 .MobileNavigator__button:hover {
     color: black;
     background-color: transparent;
@@ -179,17 +197,18 @@
     animation: blink-animation 2s steps(5, start) infinite;
     -webkit-animation: blink-animation 2s steps(5, start) infinite;
 }
+
 @keyframes blink-animation {
     to {
         visibility: hidden;
     }
 }
+
 @-webkit-keyframes blink-animation {
     to {
         visibility: hidden;
     }
 }
-
 
 .marquee {
     height: 25px;
@@ -217,6 +236,30 @@
 }
 
 @keyframes marquee {
-    0% { left: 0; }
-    100% { left: -150%; }
+    0% {
+        left: 0;
+    }
+    100% {
+        left: -150%;
+    }
 }
+
+.Loading {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column-reverse;
+}
+
+.Loading__logo {
+    width: 10vw;
+    margin-top: 10px;
+    -webkit-animation:spin 3s linear infinite;
+    -moz-animation:spin 3s linear infinite;
+    animation:spin 3s linear infinite;
+}
+
+@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
+@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
+@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }

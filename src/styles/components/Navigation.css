@@ -1,6 +1,6 @@
 .NavigationBar {
     list-style: none;
-    padding: 20px 0;
+    padding: 20px 0 10px;
     text-transform: uppercase;
     font-weight: bold;
     display: flex;
