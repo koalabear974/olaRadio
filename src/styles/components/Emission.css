@@ -89,4 +89,8 @@
     flex: 0 0 60px;
 }
 
+.EmissionCalendar__title {
+    font-size: 2.5em;
+    text-transform: uppercase;
+}
 
