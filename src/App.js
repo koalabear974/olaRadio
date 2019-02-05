@@ -177,8 +177,8 @@ class App extends Component {
                         curHeight={this.state.navBarHeight}
                     />
                     <Logo/>
-                    {switchRoutes}
                     <RadioBox/>
+                    {switchRoutes}
                 </div> :
                 <div className={'AppContainer__body'}>
                     {switchRoutes}
