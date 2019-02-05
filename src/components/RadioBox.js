@@ -64,13 +64,13 @@ export default class RadioBox extends Component {
                 this.setState({
                     currentSong: json,
                 });
-                let endAt = moment(json.end_at, "YYYY-MM-DDTHH:mm:ssZ");
-                let nowM = moment();
+                let endAt = moment(json.end_at, "YYYY-MM-DDTHH:mm:ssZ").utc();
+                let nowM = moment.utc();
 
                 let timeSpan = endAt.diff(nowM);
                 timeSpan = timeSpan >= 10000 ? timeSpan : 10000;
 
-                console.log("Next fetch in: "+timeSpan+" at "+moment().add(timeSpan).format()+" song finish at: "+endAt.format());
+                console.log("Next fetch in: "+timeSpan+" at "+moment.utc().add(timeSpan).format()+" song finish at: "+json.end_at);
                 setTimeout(
                     this.fetchData,
                     timeSpan,
