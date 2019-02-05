@@ -24,6 +24,18 @@ Date.prototype.getTimeFormated = function () {
     return hh+":"+mm;
 };
 
+Date.prototype.addHours = function(h){
+    this.setHours(this.getHours()+h);
+    return this;
+};
+
+Date.prototype.utcDate = function(){
+    let now_utc =  Date.UTC(this.getUTCFullYear(), this.getUTCMonth(), this.getUTCDate(),
+        this.getUTCHours(), this.getUTCMinutes(), this.getUTCSeconds());
+
+    return new Date(now_utc);
+};
+
 export function log(message) {
     console.log(message);
 };

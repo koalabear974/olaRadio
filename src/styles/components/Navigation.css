@@ -1,6 +1,6 @@
 .NavigationBar {
     list-style: none;
-    padding: 20px 0;
+    padding: 20px 0 10px;
     text-transform: uppercase;
     font-weight: bold;
     display: flex;
@@ -21,4 +21,17 @@
 .NavigationBar__link--active {
     transform: rotate(-20deg);
     transform-origin: bottom left;
+}
+
+.NavigationBar__social {
+    margin: 15px 0px;
+}
+
+.Social__link {
+    text-decoration: none;
+    color: inherit;
+}
+
+.Social__link svg {
+    margin: 0;
 }

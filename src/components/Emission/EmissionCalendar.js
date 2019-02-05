@@ -55,6 +55,7 @@ export default class EmissionCalendar extends Component {
         let dayAfter = new Date(this.state.fromDate).addDays(2);
         return (
             <div className="EmissionCalendar">
+                <header className={'EmissionCalendar__title'}>Agenda</header>
                 <section className={'EmissionCalendar__section EmissionCalendar__today'}>
                     <header className={'EmissionCalendar__date'}>
                         <span>Aujourd'hui</span>

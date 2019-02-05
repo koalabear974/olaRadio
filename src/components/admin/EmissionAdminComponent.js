@@ -70,7 +70,13 @@ export default class EmissionAdminComponent extends Component {
         const editEmission = this.state.editEmission;
 
         if (_.isEmpty(categoriesArray) || _.isEmpty(emissionsArray)) {
-            return <div>loading</div>;
+            return <div className={'Loading'}>
+                <img
+                    className={'Loading__logo'}
+                    src={'images/logo_black.svg'}
+                    alt={'Olaradio logo'}
+                />
+            </div>;
         }
 
         return (

@@ -1,14 +1,20 @@
-@font-face { font-family: Companion; src: url('/fonts/Compagnon-Medium.woff'); }
+@font-face {
+    font-family: Companion;
+    src: url('/fonts/Compagnon-Medium.woff');
+}
 
 .AppContainer {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
     flex: 1 1 auto;
-    overflow-y: scroll;
     position: relative;
     color: black;
     font-family: Companion, serif;
+
+    scroll-behavior: smooth;
+    overflow-y: scroll; /* has to be scroll, not auto */
+    -webkit-overflow-scrolling: touch;
 }
 
 .AppContainer__footer--login {
@@ -17,12 +23,21 @@
     font-size: 0.6em;
 }
 
+.AppContainer__legal {
+    color: black;
+}
+
 .AppContainer__body {
     display: flex;
     flex-direction: column;
     flex: 1 0 auto;
     width: 70vw;
     margin-top: -1px;
+
+    scroll-behavior: smooth;
+    overflow-y: scroll; /* has to be scroll, not auto */
+    -webkit-overflow-scrolling: touch;
+    max-height: 100vh;
 }
 
 .AppContainer__body--mobile {
@@ -63,13 +78,26 @@
 .flex {
     display: flex;
 }
+
 .hidden {
     display: none;
 }
-.order0 {order:0}
-.order1 {order:1}
-.order2 {order:2}
-.order3 {order:3}
+
+.order0 {
+    order: 0
+}
+
+.order1 {
+    order: 1
+}
+
+.order2 {
+    order: 2
+}
+
+.order3 {
+    order: 3
+}
 
 .input--select {
     height: auto;
@@ -121,6 +149,12 @@
     font-size: 14px;
     font-weight: bold;
 }
+
+.AppContainer--mobile .CookieWarning {
+    height: 100px;
+    border-bottom: 8px solid black;
+}
+
 .CookieWarning--hidden {
     display: none;
 }
@@ -129,6 +163,7 @@
     color: black;
     font-style: italic;
 }
+
 .CookieWarning button {
     margin-left: 20px;
     background: black;
@@ -149,8 +184,10 @@
 
 .MobileNavigator__button {
     color: black;
-    background-color: transparent !important;
+    border-radius: 80px;
+    background-color: white !important;
 }
+
 .MobileNavigator__button:hover {
     color: black;
     background-color: transparent;
@@ -160,17 +197,18 @@
     animation: blink-animation 2s steps(5, start) infinite;
     -webkit-animation: blink-animation 2s steps(5, start) infinite;
 }
+
 @keyframes blink-animation {
     to {
         visibility: hidden;
     }
 }
+
 @-webkit-keyframes blink-animation {
     to {
         visibility: hidden;
     }
 }
-
 
 .marquee {
     height: 25px;
@@ -198,6 +236,30 @@
 }
 
 @keyframes marquee {
-    0% { left: 0; }
-    100% { left: -150%; }
+    0% {
+        left: 0;
+    }
+    100% {
+        left: -150%;
+    }
 }
+
+.Loading {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column-reverse;
+}
+
+.Loading__logo {
+    width: 10vw;
+    margin-top: 10px;
+    -webkit-animation:spin 3s linear infinite;
+    -moz-animation:spin 3s linear infinite;
+    animation:spin 3s linear infinite;
+}
+
+@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
+@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
+@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }

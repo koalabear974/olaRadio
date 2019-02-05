@@ -107,3 +107,16 @@
 .AppContainer--mobile .About__article--1 .About__articleBorder {
     top: 2%;
 }
+
+.Legal {
+    padding: 0 4vw;
+    text-align: justify;
+}
+
+.Legal h3 {
+    font-size: 1.4em;
+}
+
+.Legal b {
+    font-style: oblique;
+}

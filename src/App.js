@@ -21,7 +21,8 @@ import Navigation from "./components/Navigation";
 // import Shop from "./containers/Shop"
 import Support from "./containers/Support"
 import About from "./containers/About"
-import Archives from "./containers/Archives"
+import Legal from "./containers/Legal"
+// import Archives from "./containers/Archives"
 import Admin from "./containers/Admin"
 import NotFoundPage from "./containers/NotFoundPage";
 
@@ -30,17 +31,17 @@ import "./styles/App.css";
 import RadioBox from "./components/RadioBox";
 import Logo from "./components/Logo";
 import CookieWarning from "./common/CookieWarning";
-import FullTeaser from "./containers/FullTeaser";
 import MobileNavigator from "./common/MobileNavigator";
+import NavLink from "react-router-dom/es/NavLink";
 
 const PAGES = [
     {path: "Prog", text: "Prog"},
     // {path: "Archives", text: "Archives"},
-    {path: "About", text: "A propos"},
+    {path: "About", text: "À propos"},
     {path: "Support", text: "Soutenir"},
     // {path: "Shop", text: "Shop"},
 ];
-const NAVBARHEIGHT = 260;
+const NAVBARHEIGHT = 330;
 const history = createBrowserHistory();
 
 function simple_easing(how_much_time_has_passed) {
@@ -138,7 +139,7 @@ class App extends Component {
                     currentPage={this.state.currentPage}
                 />
                 <footer className={'AppContainer__footer--login'}>
-                    © Ola Radio 2018
+                    © Ola Radio 2019, <NavLink className={'AppContainer__legal'} to={'/Legal'}>mentions légales</NavLink>.
                 </footer>
             </div> : <div className={'AppContainer__sideBar'}>
                 <Logo/>
@@ -149,7 +150,7 @@ class App extends Component {
                     setCurrentPage={this.setCurrentPage}
                 />
                 <footer className={'AppContainer__footer--login'}>
-                    © Ola Radio 2018
+                    © Ola Radio 2019, <NavLink className={'AppContainer__legal'} to={'/Legal'}>mentions légales</NavLink>.
                 </footer>
             </div>);
 
@@ -162,6 +163,7 @@ class App extends Component {
                 {/*<Route path="/Shop" component={Shop}/>*/}
                 <Route path="/Support" component={Support}/>
                 <Route path="/About" component={About}/>
+                <Route path="/Legal" component={Legal}/>
                 <Route path="/Admin" component={Admin}/>
                 <Route component={NotFoundPage}/>
             </Switch>
@@ -175,8 +177,8 @@ class App extends Component {
                         curHeight={this.state.navBarHeight}
                     />
                     <Logo/>
-                    {switchRoutes}
                     <RadioBox/>
+                    {switchRoutes}
                 </div> :
                 <div className={'AppContainer__body'}>
                     {switchRoutes}

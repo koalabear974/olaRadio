@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import Cookies from 'universal-cookie';
+import NavLink from "react-router-dom/es/NavLink";
 
 export default class CookieWarning extends Component {
     static propTypes = {
@@ -26,8 +27,8 @@ export default class CookieWarning extends Component {
     render() {
         return (
             <div className={'CookieWarning '+(this.state.cookieAccepted ? 'CookieWarning--hidden' : '')}>
-                Ce site utilise des cookies as des fins d'analyse.
-                <a target={'_blank'} href="https://en.wikipedia.org/wiki/HTTP_cookie"> En lire plus.</a>
+                Ce site utilise des cookies à des fins analytiques.
+                <NavLink to={'/Legal'}> En lire plus.</NavLink>
                 <button onClick={this.acceptCookie}>
                     Ok
                 </button>

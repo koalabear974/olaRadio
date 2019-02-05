@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 
-import Marquee from 'react-text-marquee';
 import ReactAudioPlayer from 'react-audio-player';
+import moment from 'moment';
 
 import "./../styles/components/RadioBox.css";
 import {FaPause, FaPlay} from "react-icons/fa/index";
@@ -60,16 +60,20 @@ export default class RadioBox extends Component {
         fetch(CurrentSongUrl)
             .then(response => response.json())
             .then(json => {
+                console.log("Fetching new current song.");
                 this.setState({
                     currentSong: json,
                 });
+                let endAt = moment(json.end_at, "YYYY-MM-DDTHH:mm:ssZ").utc();
+                let nowM = moment.utc();
 
-                let endTime = new Date(json.end_at);
-                let now = new Date();
+                let timeSpan = endAt.diff(nowM);
+                timeSpan = timeSpan >= 10000 ? timeSpan : 10000;
 
+                console.log("Next fetch in: "+timeSpan+" at "+moment.utc().add(timeSpan).format()+" song finish at: "+json.end_at);
                 setTimeout(
                     this.fetchData,
-                    endTime - now + 1000
+                    timeSpan,
                 )
             }).catch(error => {
                 this.setState({
@@ -86,6 +90,7 @@ export default class RadioBox extends Component {
 
     render() {
         let currentSong = this.state.currentSong;
+        let formattedCurrentSong = currentSong ? currentSong.artist + ' - '+ currentSong.title : '';
 
         return (
             <div className={'RadioBox'}>
@@ -98,6 +103,7 @@ export default class RadioBox extends Component {
                     src={PlayerUrl}
                     onCanPlay={this.onCanPlay}
                     ref={this.audioPlayer}
+                    title={'Ola Radio | ' + formattedCurrentSong}
                 />
 
                 {
@@ -106,10 +112,10 @@ export default class RadioBox extends Component {
                         <header className={'Emission__title marquee'}>
                             <div>
                                 <span className={'marquee__text'}>
-                                    {currentSong.title + ' - '+ currentSong.artist}
+                                    {formattedCurrentSong}
                                 </span>
                                 <span className={'marquee__text'}>
-                                    {currentSong.title + ' - '+ currentSong.artist}
+                                    {formattedCurrentSong}
                                 </span>
                             </div>
                         </header>

@@ -63,9 +63,15 @@ export default class HomePage extends Component {
 
     render() {
         if (this.isLoading()) {
-            return <div>loading</div>
+            return <div className={'Loading'}>
+                <img
+                    className={'Loading__logo'}
+                    src={'images/logo_black.svg'}
+                    alt={'Olaradio logo'}
+                />
+            </div>
         }
-        let latestEmissions = _.map(this.state.emissions, (o) => {return o});
+        let latestEmissions = _.filter(this.state.emissions, (o) => {return new Date(o.datetime) < new Date()});
         latestEmissions = (_.sortBy(latestEmissions, (o) => { return (o['datetime'] || 0)})).reverse().slice(0, 10);
         return (
             <div className={'Home'}>

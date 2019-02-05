@@ -8,6 +8,7 @@
     "firebase": "^5.5.2",
     "history": "^4.7.2",
     "lodash": "latest",
+    "moment": "^2.24.0",
     "prop-types": "^15.6.2",
     "re-base": "^4.0.0",
     "react": "^16.4.1",
@@ -28,7 +29,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "postinstall": "node hack-add-skipWaiting-true-to-react-script.js"
   },
   "browserslist": [
     ">0.2%",
@@ -37,6 +39,8 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "babel-cli": "^6.26.0"
-  }
+    "babel-cli": "^6.26.0",
+    "replace-in-file": "^3.4.3"
+  },
+  "homepage": "https://olaradio.fr"
 }
