@@ -10,7 +10,7 @@
     position: sticky;
     top: 0;
     background: white;
-    z-index: 10;
+    z-index: 9;
 }
 
 .RadioBox__head {

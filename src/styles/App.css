@@ -60,7 +60,7 @@
 }
 
 .AppContainer__sideBar--mobile {
-    z-index: 10;
+    z-index: 11;
     height: 0px;
     min-height: 0;
     overflow: hidden;
@@ -179,7 +179,7 @@
     position: absolute;
     top: 0;
     right: 0;
-    z-index: 11;
+    z-index: 12;
 }
 
 .MobileNavigator__button {
