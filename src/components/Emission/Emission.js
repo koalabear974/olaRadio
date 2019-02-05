@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import moment from 'moment';
 
 import "../../styles/components/Emission.css"
 
@@ -21,7 +22,7 @@ export default class Emission extends Component {
                     <footer
                         className={'Emission__date'}
                     >
-                        {(new Date(emission.datetime)).getTimeFormated()}
+                        {moment(emission.datetime).format('H:mm')}
                     </footer>
                     {
                         (emission.link && emission.link !== "") ?
