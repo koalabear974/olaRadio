@@ -8,6 +8,7 @@
     "firebase": "^5.5.2",
     "history": "^4.7.2",
     "lodash": "latest",
+    "moment": "^2.24.0",
     "prop-types": "^15.6.2",
     "re-base": "^4.0.0",
     "react": "^16.4.1",
