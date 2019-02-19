@@ -22,7 +22,7 @@ import Navigation from "./components/Navigation";
 import Support from "./containers/Support"
 import About from "./containers/About"
 import Legal from "./containers/Legal"
-// import Archives from "./containers/Archives"
+import Archives from "./containers/Archives"
 import Admin from "./containers/Admin"
 import NotFoundPage from "./containers/NotFoundPage";
 
@@ -36,12 +36,12 @@ import NavLink from "react-router-dom/es/NavLink";
 
 const PAGES = [
     {path: "Prog", text: "Prog"},
-    // {path: "Archives", text: "Archives"},
+    {path: "Archives", text: "Archives"},
     {path: "About", text: "À propos"},
     {path: "Support", text: "Soutenir"},
     // {path: "Shop", text: "Shop"},
 ];
-const NAVBARHEIGHT = 330;
+const NAVBARHEIGHT = 400;
 const history = createBrowserHistory();
 
 function simple_easing(how_much_time_has_passed) {
@@ -159,7 +159,7 @@ class App extends Component {
                 <Redirect exact from="/" to="Home"/>
                 <Route exact path="/Home" component={Home}/>
                 <Route path="/Prog" component={Home}/>
-                {/*<Route path="/Archives" component={Archives}/>*/}
+                <Route path="/Archives" component={Archives}/>
                 {/*<Route path="/Shop" component={Shop}/>*/}
                 <Route path="/Support" component={Support}/>
                 <Route path="/About" component={About}/>
