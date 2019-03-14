@@ -53,6 +53,7 @@ export default class EmissionCalendar extends Component {
         const emissionsArray = this.separatePerDay(this.props.emissions);
         let tomorrow = new Date(this.state.fromDate).addDays(1);
         let dayAfter = new Date(this.state.fromDate).addDays(2);
+        let onEmissionClickFunc = this.props.onEmissionClick;
         return (
             <div className="EmissionCalendar">
                 <header className={'EmissionCalendar__title'}>Agenda</header>
@@ -67,6 +68,7 @@ export default class EmissionCalendar extends Component {
                                     small={true}
                                     key={'today'+key}
                                     emission={object}
+                                    onEmissionClick={onEmissionClickFunc}
                                 />
                             );
                         })}
@@ -83,6 +85,7 @@ export default class EmissionCalendar extends Component {
                                     small={true}
                                     key={'tomorrow'+key}
                                     emission={object}
+                                    onEmissionClick={onEmissionClickFunc}
                                 />
                             );
                         })}
@@ -99,6 +102,7 @@ export default class EmissionCalendar extends Component {
                                     small={true}
                                     key={'dayAfter'+key}
                                     emission={object}
+                                    onEmissionClick={onEmissionClickFunc}
                                 />
                             );
                         })}

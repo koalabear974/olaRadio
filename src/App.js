@@ -53,6 +53,7 @@ class App extends Component {
         super(props);
         this.state = {
             currentPage: "Home",
+            currentEmissionLink: "",
             isMobile: false,
             isVerified: false,
             navBarHeight: 0,
@@ -61,6 +62,7 @@ class App extends Component {
 
 
         this.animateNav = this.animateNav.bind(this);
+        this.onEmissionClick = this.onEmissionClick.bind(this);
         this.toggleMenu = this.toggleMenu.bind(this);
     }
 
@@ -98,6 +100,10 @@ class App extends Component {
         requestAnimationFrame(() => {
             this.animateNav(isOpen, start);
         });
+    }
+
+    onEmissionClick(link) {
+        this.setState({currentEmissionLink: link});
     }
 
     animateNav(isOpen, start) {
@@ -143,7 +149,7 @@ class App extends Component {
                 </footer>
             </div> : <div className={'AppContainer__sideBar'}>
                 <Logo/>
-                <RadioBox/>
+                <RadioBox externalLink={this.state.currentEmissionLink} />
                 <Navigation
                     pageArray={PAGES}
                     currentPage={this.state.currentPage}
@@ -157,8 +163,8 @@ class App extends Component {
         let switchRoutes = (
             <Switch>
                 <Redirect exact from="/" to="Home"/>
-                <Route exact path="/Home" component={Home}/>
-                <Route path="/Prog" component={Home}/>
+                <Route exact path="/Home" render={() => <Home onEmissionClick={this.onEmissionClick} />} />
+                <Route path="/Prog" render={() => <Home onEmissionClick={this.onEmissionClick} />} />
                 <Route path="/Archives" component={Archives}/>
                 {/*<Route path="/Shop" component={Shop}/>*/}
                 <Route path="/Support" component={Support}/>
@@ -177,7 +183,7 @@ class App extends Component {
                         curHeight={this.state.navBarHeight}
                     />
                     <Logo/>
-                    <RadioBox/>
+                    <RadioBox externalLink={this.state.currentEmissionLink} />
                     {switchRoutes}
                 </div> :
                 <div className={'AppContainer__body'}>
