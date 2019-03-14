@@ -48,6 +48,7 @@ export default class Archives extends Component {
                       <EmissionList
                           className={'Archive__EmissionList'}
                           emissions={section.emissions}
+                          onEmissionClick={this.props.onEmissionClick}
                       />
                       : "À venir"
               }

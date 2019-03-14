@@ -63,6 +63,7 @@ class App extends Component {
 
         this.animateNav = this.animateNav.bind(this);
         this.onEmissionClick = this.onEmissionClick.bind(this);
+        this.onEmissionClear = this.onEmissionClear.bind(this);
         this.toggleMenu = this.toggleMenu.bind(this);
     }
 
@@ -104,6 +105,10 @@ class App extends Component {
 
     onEmissionClick(link) {
         this.setState({currentEmissionLink: link});
+    }
+
+    onEmissionClear() {
+        this.setState({currentEmissionLink: ""});
     }
 
     animateNav(isOpen, start) {
@@ -149,7 +154,7 @@ class App extends Component {
                 </footer>
             </div> : <div className={'AppContainer__sideBar'}>
                 <Logo/>
-                <RadioBox externalLink={this.state.currentEmissionLink} />
+                <RadioBox externalLink={this.state.currentEmissionLink} onEmissionClear={this.onEmissionClear} />
                 <Navigation
                     pageArray={PAGES}
                     currentPage={this.state.currentPage}
@@ -165,7 +170,7 @@ class App extends Component {
                 <Redirect exact from="/" to="Home"/>
                 <Route exact path="/Home" render={() => <Home onEmissionClick={this.onEmissionClick} />} />
                 <Route path="/Prog" render={() => <Home onEmissionClick={this.onEmissionClick} />} />
-                <Route path="/Archives" component={Archives}/>
+                <Route path="/Archives" render={() => <Archives onEmissionClick={this.onEmissionClick} />}  />
                 {/*<Route path="/Shop" component={Shop}/>*/}
                 <Route path="/Support" component={Support}/>
                 <Route path="/About" component={About}/>
