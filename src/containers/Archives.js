@@ -39,7 +39,7 @@ export default class Archives extends Component {
     }
 
     displaySection(section) {
-        section.emissions = (_.sortBy(section.emissions, (o) => { return (o['datetime'] || 0)})).reverse().slice(0, 10);
+        section.emissions = (_.sortBy(section.emissions, (o) => { return (o['datetime'] || 0)})).reverse();
         return (
           <div className={'Archive__section'} key={section.category.id}>
               <h2 className={'Archive__section-title'}>{section.category.name}</h2>
