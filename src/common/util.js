@@ -36,6 +36,45 @@ Date.prototype.utcDate = function(){
     return new Date(now_utc);
 };
 
+function getBase64(file, callback) {
+    var reader = new FileReader();
+    reader.onload = function(event) {
+        callback(event.target.result);
+    };
+    reader.readAsDataURL(file);
+}
+
+File.prototype.resizeImage = function(width, callback) {
+    let img = document.createElement("img");
+
+    getBase64(this, function(src) {
+        img.src = src;
+        img.onload = function () {
+            console.log("afterload");
+            let MAX_WIDTH = width;
+            let imgwidth = this.width;
+            let imgheight = this.height;
+            console.log(imgheight, imgwidth);
+
+            imgheight *= MAX_WIDTH / imgwidth;
+            imgwidth = MAX_WIDTH;
+            console.log(imgheight, imgwidth);
+
+            let canvas = document.getElementById('canvas');
+            let ctx = canvas.getContext("2d");
+            ctx.drawImage(this, 0, 0);
+
+            canvas.width = imgwidth;
+            canvas.height = imgheight;
+
+            ctx = canvas.getContext("2d");
+            ctx.drawImage(img, 0, 0, imgwidth, imgheight);
+
+            callback(canvas.toDataURL("image/png"));
+        };
+    });
+};
+
 export function log(message) {
     console.log(message);
 };
