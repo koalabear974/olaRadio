@@ -65,7 +65,8 @@ export default class EmissionAdminComponent extends Component {
     }
 
     render() {
-        const emissionsArray = this.state.emissions;
+        let emissionsArray = this.state.emissions;
+        emissionsArray = (_.sortBy(emissionsArray, (o) => { return (o['datetime'] || 0)})).reverse();
         const categoriesArray = this.state.categories;
         const editEmission = this.state.editEmission;
 
