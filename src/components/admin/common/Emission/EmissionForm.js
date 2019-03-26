@@ -2,6 +2,9 @@ import React, {Component} from "react";
 import {FaEdit, FaMinus, FaPlus} from "react-icons/fa/index";
 import PropTypes from "prop-types";
 import _ from "lodash";
+import FileInput from 'simple-react-file-uploader';
+import firebase from 'firebase/app';
+import 'firebase/storage';
 
 const EMISSIONEMPTY = {
     name: "",
@@ -36,8 +39,11 @@ export default class EmissionForm extends Component {
         }
 
         this.handleChange = this.handleChange.bind(this);
+        this.handleFileChange = this.handleFileChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleDelete = this.handleDelete.bind(this);
+
+        this.storageRef = firebase.storage().ref();
     }
 
     handleSubmit(event) {
@@ -78,6 +84,29 @@ export default class EmissionForm extends Component {
         this.setState({
             emission: curValue
         });
+    }
+
+    handleFileChange(file) {
+        let curFile = file[0];
+        let that = this;
+
+        curFile.resizeImage(180, function (result) {
+            let newFileRef = that.storageRef.child(curFile.name);
+            newFileRef.putString(result, 'data_url').then(function(snap) {
+                console.log("File uploaded.");
+                snap.ref.getDownloadURL().then(function(downloadURL) {
+                    let curEmission = that.state.emission;
+                    curEmission.image = downloadURL;
+                    that.setState({emission: curEmission});
+                    console.log('File available at', downloadURL);
+                    document.getElementById("simple-react-file-uploader-icon")
+                        .getElementsByClassName("file-name")[0]
+                        .style = "color:green; border-color:green;"
+                });
+            });
+        });
+
+
     }
 
     handleDelete(event) {
@@ -141,14 +170,14 @@ export default class EmissionForm extends Component {
                 <div className="field">
                     <label className="label">Date</label>
                     <div className="control">
-                            <input
-                                type="datetime-local"
-                                name="datetime"
-                                className={'input'}
-                                placeholder={"Date"}
-                                value={curEmission.datetime}
-                                onChange={this.handleChange}
-                            />
+                        <input
+                            type="datetime-local"
+                            name="datetime"
+                            className={'input'}
+                            placeholder={"Date"}
+                            value={curEmission.datetime}
+                            onChange={this.handleChange}
+                        />
                     </div>
                 </div>
 
@@ -167,15 +196,15 @@ export default class EmissionForm extends Component {
 
                 <div className="field">
                     <label className="label">Image</label>
-                    <div className="control">
-                        <input
-                            type="text"
-                            className={'input'}
+                    <div className="control file-upload">
+                        <FileInput
+                            className={'file-upload-input'}
+                            multiple={false}
                             name="image"
-                            placeholder={"Image"}
-                            value={curEmission.image}
-                            onChange={this.handleChange}
+                            onChange = {this.handleFileChange}
+                            accept="image/*"
                         />
+                        <canvas style={{display: "none"}} id="canvas" width="200" height="200"></canvas>
                     </div>
                 </div>
 

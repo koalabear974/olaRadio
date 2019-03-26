@@ -33,8 +33,6 @@ export default class EmissionList extends Component {
 
     getCurrentEmissionArray() {
         let curOffset = this.state.currentPage * PAGEOFFSET;
-        console.log(this.state.currentPage);
-
         return this.props.emissions.slice(curOffset, curOffset + PAGEOFFSET);
     }
 

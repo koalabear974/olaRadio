@@ -16,11 +16,6 @@ export default class Paginator extends Component {
         this.onPageClick = this.onPageClick.bind(this);
     }
 
-    componentDidUpdate() {
-        console.log("update");
-        console.log(this.props);
-    }
-
     onPageClick(event) {
         event.preventDefault();
         this.props.onPageClick(event.target.dataset.page);

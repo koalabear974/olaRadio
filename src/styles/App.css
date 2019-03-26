@@ -263,3 +263,22 @@
 @-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
 @-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
 @keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
+
+.file-upload {
+    display: flex;
+}
+.file-upload-input {
+    flex: 1;
+}
+.file-upload #simple-react-file-upload ul li {
+    display: flex;
+    align-items: center;
+}
+.file-upload #simple-react-file-uploader-icon {
+    flex: 1;
+    display: flex;
+    margin-left: 0;
+}
+.file-upload #file {
+    margin-left: 0;
+}
