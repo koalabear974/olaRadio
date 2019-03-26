@@ -195,7 +195,8 @@ export default class EmissionForm extends Component {
                 </div>
 
                 <div className="field">
-                    <label className="label">Image</label>
+                    <label className="label">Image:</label>
+                    <img src={curEmission.image} width={180} height={180} />
                     <div className="control file-upload">
                         <FileInput
                             className={'file-upload-input'}

@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {FaEdit} from "react-icons/fa/index";
+import {FaEdit, FaMinus} from "react-icons/fa/index";
 import PropTypes from "prop-types";
 import _ from 'lodash';
 import Paginator from "../forms/Paginator";
@@ -20,11 +20,18 @@ export default class EmissionList extends Component {
             currentPage: 0,
         };
         this.onEditClick = this.onEditClick.bind(this);
+        this.onDeleteClick = this.onDeleteClick.bind(this);
         this.onPageClick = this.onPageClick.bind(this);
     }
 
-    onEditClick(key){
-        this.props.handleEditClick(key);
+    onEditClick(id){
+        this.props.handleEditClick(id);
+    }
+
+    onDeleteClick(id){
+        if(window.confirm("Supprimer l'emission?")) {
+            this.props.onDeleteClick(id);
+        }
     }
 
     onPageClick(page) {
@@ -78,9 +85,15 @@ export default class EmissionList extends Component {
                                 <td>
                                     <button
                                         className={'button'}
-                                        onClick={() => that.onEditClick(key)}
+                                        onClick={() => that.onEditClick(curEmissionsArray[key].id)}
                                     >
                                         <FaEdit />
+                                    </button>
+                                    <button
+                                        className={'button is-danger'}
+                                        onClick={() => that.onDeleteClick(curEmissionsArray[key].id)}
+                                    >
+                                        <FaMinus />
                                     </button>
                                 </td>
                             </tr>

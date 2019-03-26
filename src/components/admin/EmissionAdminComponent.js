@@ -49,9 +49,9 @@ export default class EmissionAdminComponent extends Component {
     }
 
 
-    handleEditClick(key) {
+    handleEditClick(id) {
         this.setState({
-            editEmission: this.state.emissions[key]
+            editEmission: this.state.emissions[id]
         });
     }
 
@@ -86,6 +86,7 @@ export default class EmissionAdminComponent extends Component {
                     categories={categoriesArray}
                     emissions={emissionsArray}
                     handleEditClick={this.handleEditClick}
+                    handleDeleteClick={this.handleDelete}
                 />
 
                 <EmissionForm
