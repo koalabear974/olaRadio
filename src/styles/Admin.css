@@ -18,6 +18,8 @@
 }
 
 .Admin__navbar {
+    z-index: 10;
+    background: white;
 }
 
 .Admin__current {
@@ -29,10 +31,14 @@
 }
 
 .CategoryAdminComponent {
-    display: flex;
+    display: block;
     flex: 1;
     flex-direction: column;
     justify-content: space-evenly;
+}
+
+.CategoryAdminComponent__button {
+    width: 100%;
 }
 
 .CategoryAdminComponent__button {
