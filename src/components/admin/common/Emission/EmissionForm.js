@@ -90,7 +90,7 @@ export default class EmissionForm extends Component {
         let curFile = file[0];
         let that = this;
 
-        curFile.resizeImage(180, function (result) {
+        curFile.resizeImage(540, function (result) {
             let newFileRef = that.storageRef.child(curFile.name);
             newFileRef.putString(result, 'data_url').then(function(snap) {
                 console.log("File uploaded.");
