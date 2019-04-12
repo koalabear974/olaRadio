@@ -49,65 +49,60 @@ export default class EmissionCalendar extends Component {
         };
     }
 
+    generateSection(date, emissionsArray) {
+        let emissions = [];
+        let headerText, headerClass = "";
+        let onEmissionClickFunc = this.props.onEmissionClick;
+
+        if(date === "today") {
+            headerText = "Aujourd'hui";
+            headerClass = "EmissionCalendar__today";
+            emissions = emissionsArray.todayEmissions
+        } else if (date === "tomorrow") {
+            let tomorrow = new Date(this.state.fromDate).addDays(1);
+            headerText = tomorrow.getDayOfWeek() + " " + tomorrow.getFormated();
+            headerClass = "EmissionCalendar__tomorrow";
+            emissions = emissionsArray.tommorrowEmissions;
+        } else if (date === "dayAfter") {
+            let dayAfter = new Date(this.state.fromDate).addDays(2);
+            headerText = dayAfter.getDayOfWeek() + " " + dayAfter.getFormated();
+            headerClass = "EmissionCalendar__dayAfter";
+            emissions = emissionsArray.dayAfterEmissions;
+        }
+
+        if(emissions.length === 0 ){
+            return ("");
+        }
+
+        return (
+            <section className={'EmissionCalendar__section ' + headerClass}>
+                <header className={'EmissionCalendar__date'}>
+                    <span>{headerText}</span>
+                </header>
+                <div className={'EmissionCalendar__container'}>
+                    {_.map(emissions, (object, key) => {
+                        return (
+                            <Emission
+                                small={true}
+                                key={'today'+key}
+                                emission={object}
+                                onEmissionClick={onEmissionClickFunc}
+                            />
+                        );
+                    })}
+                </div>
+            </section>
+        );
+    }
+
     render() {
         const emissionsArray = this.separatePerDay(this.props.emissions);
-        let tomorrow = new Date(this.state.fromDate).addDays(1);
-        let dayAfter = new Date(this.state.fromDate).addDays(2);
-        let onEmissionClickFunc = this.props.onEmissionClick;
         return (
             <div className="EmissionCalendar">
                 <header className={'EmissionCalendar__title'}>Agenda</header>
-                <section className={'EmissionCalendar__section EmissionCalendar__today'}>
-                    <header className={'EmissionCalendar__date'}>
-                        <span>Aujourd'hui</span>
-                    </header>
-                    <div className={'EmissionCalendar__container'}>
-                        {_.map(emissionsArray.todayEmissions, (object, key) => {
-                            return (
-                                <Emission
-                                    small={true}
-                                    key={'today'+key}
-                                    emission={object}
-                                    onEmissionClick={onEmissionClickFunc}
-                                />
-                            );
-                        })}
-                    </div>
-                </section>
-                <section className={'EmissionCalendar__section EmissionCalendar__tomorrow'}>
-                    <header className={'EmissionCalendar__date'}>
-                        <span>{tomorrow.getDayOfWeek()} {tomorrow.getFormated()}</span>
-                    </header>
-                    <div className={'EmissionCalendar__container'}>
-                        {_.map(emissionsArray.tommorrowEmissions, (object, key) => {
-                            return (
-                                <Emission
-                                    small={true}
-                                    key={'tomorrow'+key}
-                                    emission={object}
-                                    onEmissionClick={onEmissionClickFunc}
-                                />
-                            );
-                        })}
-                    </div>
-                </section>
-                <section className={'EmissionCalendar__section EmissionCalendar__dayAfter'}>
-                    <header className={'EmissionCalendar__date'}>
-                        <span>{dayAfter.getDayOfWeek()} {dayAfter.getFormated()}</span>
-                    </header>
-                    <div className={'EmissionCalendar__container'}>
-                        {_.map(emissionsArray.dayAfterEmissions, (object, key) => {
-                            return (
-                                <Emission
-                                    small={true}
-                                    key={'dayAfter'+key}
-                                    emission={object}
-                                    onEmissionClick={onEmissionClickFunc}
-                                />
-                            );
-                        })}
-                    </div>
-                </section>
+                {this.generateSection("today", emissionsArray)}
+                {this.generateSection("tomorrow", emissionsArray)}
+                {this.generateSection("dayAfter", emissionsArray)}
             </div>
         );
     }
