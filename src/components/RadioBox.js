@@ -72,7 +72,7 @@ export default class RadioBox extends Component {
     }
 
     togglePlay() {
-        let isExternalLink = this.state.externalLink && this.state.externalWidgetLink;
+        let isExternalLink = !!this.state.externalLink;
         if(isExternalLink) {
             return;
         }
