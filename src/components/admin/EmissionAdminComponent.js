@@ -49,9 +49,9 @@ export default class EmissionAdminComponent extends Component {
     }
 
 
-    handleEditClick(key) {
+    handleEditClick(id) {
         this.setState({
-            editEmission: this.state.emissions[key]
+            editEmission: this.state.emissions[id]
         });
     }
 
@@ -65,7 +65,8 @@ export default class EmissionAdminComponent extends Component {
     }
 
     render() {
-        const emissionsArray = this.state.emissions;
+        let emissionsArray = this.state.emissions;
+        emissionsArray = (_.sortBy(emissionsArray, (o) => { return (o['datetime'] || 0)})).reverse();
         const categoriesArray = this.state.categories;
         const editEmission = this.state.editEmission;
 
@@ -85,6 +86,7 @@ export default class EmissionAdminComponent extends Component {
                     categories={categoriesArray}
                     emissions={emissionsArray}
                     handleEditClick={this.handleEditClick}
+                    handleDeleteClick={this.handleDelete}
                 />
 
                 <EmissionForm

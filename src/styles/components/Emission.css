@@ -56,7 +56,9 @@
 
 .EmissionCalendar__section {
     display: flex;
-    flex: 1;
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: auto;
     flex-direction: column;
     margin-bottom: 20px;
 }

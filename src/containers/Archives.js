@@ -49,7 +49,7 @@ export default class Archives extends Component {
                           className={'Archive__EmissionList'}
                           emissions={section.emissions}
                       />
-                      : "Vide..."
+                      : "À venir"
               }
           </div>
         );

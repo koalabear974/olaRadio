@@ -1,8 +1,6 @@
 import React, {Component} from "react";
-import Sha1 from "../helpers/sha1";
 import firebase from 'firebase/app';
 import 'firebase/auth';
-import _ from 'lodash';
 
 import CategoryAdminComponent from "../components/admin/CategoryAdminComponent";
 import EmissionAdminComponent from "../components/admin/EmissionAdminComponent";
@@ -28,7 +26,7 @@ export default class Admin extends Component {
         this.state = {
             isVerified: false,
             loginErrors: '',
-            selectedItem: "Category",
+            selectedItem: "Emission",
         };
 
         this.onPasswordSubmit = this.onPasswordSubmit.bind(this);
