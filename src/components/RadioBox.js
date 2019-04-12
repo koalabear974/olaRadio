@@ -97,7 +97,9 @@ export default class RadioBox extends Component {
 
         this.audioPlayer.current.audioEl.pause();
 
-        this.props.onEmissionClear();
+        if(this.props.onEmissionClear) {
+            this.props.onEmissionClear();
+        };
     }
 
     onCanPlay() {

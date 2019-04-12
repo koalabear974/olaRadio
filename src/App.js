@@ -40,7 +40,7 @@ const PAGES = [
     {path: "Podcasts", text: "Podcasts"},
     // {path: "Shop", text: "Shop"},
 ];
-const NAVBARHEIGHT = 400;
+const NAVBARHEIGHT = 220;
 const history = createBrowserHistory();
 
 function simple_easing(how_much_time_has_passed) {
@@ -136,6 +136,7 @@ class App extends Component {
 
     render() {
         const {isMobile} = this.state;
+        let onEmissionClearFunc = this.onEmissionClear;
 
         let switchRoutes = (
             <Switch>
@@ -165,7 +166,7 @@ class App extends Component {
                 <Footer/>
             </div> : <div className={'AppContainer__sideBar'}>
                 <Logo/>
-                <RadioBox externalLink={this.state.currentEmissionLink} onEmissionClear={this.onEmissionClear} />
+                <RadioBox externalLink={this.state.currentEmissionLink} onEmissionClear={onEmissionClearFunc} />
                 <Navigation
                     pageArray={PAGES}
                     currentPage={this.state.currentPage}
@@ -196,7 +197,7 @@ class App extends Component {
                     {sideBar}
                     {appBody}
 
-                    <ExternalPlayer externalLink={this.state.currentEmissionLink} onEmissionClear={this.onEmissionClear} />
+                    <ExternalPlayer externalLink={this.state.currentEmissionLink} onEmissionClear={onEmissionClearFunc} />
                     <CookieWarning/>
                 </div>
             </Router>

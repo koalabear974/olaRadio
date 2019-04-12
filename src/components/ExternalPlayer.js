@@ -41,7 +41,7 @@ export default class ExternalPlayer extends Component {
             });
 
             if(passFilter) {
-                console.log("update external "+passFilter+" link", nextProps.externalLink);
+                // console.log("update external "+passFilter+" link", nextProps.externalLink);
                 let widgetLink = "";
                 switch (passFilter) {
                     case "mixcloud":
@@ -59,12 +59,6 @@ export default class ExternalPlayer extends Component {
                     default:
                         break;
                 }
-                console.log({
-                    moduleType: passFilter,
-                    externalLink: nextProps.externalLink,
-                    externalWidgetLink: widgetLink,
-                    isPlaying: false,
-                });
                 this.setState({
                     moduleType: passFilter,
                     externalLink: nextProps.externalLink,
@@ -87,11 +81,12 @@ export default class ExternalPlayer extends Component {
             isPlaying: false,
         });
 
-        this.props.onEmissionClear();
+        if(this.props.onEmissionClear) {
+            this.props.onEmissionClear();
+        };
     }
 
     generateExternalIframe() {
-        /*<iframe width="100%" height="20" scrolling="no" frameBorder="no" allow="autoplay"*/
         switch (this.state.moduleType) {
             case "mixcloud":
                 return (
