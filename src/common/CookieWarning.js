@@ -20,7 +20,9 @@ export default class CookieWarning extends Component {
     acceptCookie(e) {
         e.preventDefault();
 
-        this.cookies.set('cookieAccepted', true, { path: '/' });
+        this.cookies.set( 'cookieAccepted', true, { path: '/', expires: (new Date(2030, 0)) });
+
+
         this.setState({cookieAccepted: true})
     }
 
