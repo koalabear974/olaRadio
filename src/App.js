@@ -33,12 +33,10 @@ import Logo from "./components/Logo";
 import CookieWarning from "./common/CookieWarning";
 import MobileNavigator from "./common/MobileNavigator";
 import NavLink from "react-router-dom/es/NavLink";
+import Footer from "./components/Footer";
 
 const PAGES = [
-    {path: "Prog", text: "Prog"},
-    {path: "Archives", text: "Archives"},
-    {path: "About", text: "À propos"},
-    {path: "Support", text: "Soutenir"},
+    {path: "Podcasts", text: "Podcasts"},
     // {path: "Shop", text: "Shop"},
 ];
 const NAVBARHEIGHT = 400;
@@ -138,6 +136,20 @@ class App extends Component {
     render() {
         const {isMobile} = this.state;
 
+        let switchRoutes = (
+            <Switch>
+                <Redirect exact from="/" to="Home"/>
+                <Route exact path="/Home" render={() => <Home onEmissionClick={this.onEmissionClick} />} />
+                <Route path="/Podcasts" render={() => <Archives onEmissionClick={this.onEmissionClick} />}  />
+                {/*<Route path="/Shop" component={Shop}/>*/}
+                <Route path="/Support" component={Support}/>
+                <Route path="/About" component={About}/>
+                <Route path="/Legal" component={Legal}/>
+                <Route path="/Admin" component={Admin}/>
+                <Route component={NotFoundPage}/>
+            </Switch>
+        );
+
         let sideBar = (isMobile ?
             <div
                 className={'AppContainer__sideBar AppContainer__sideBar--mobile'}
@@ -149,9 +161,7 @@ class App extends Component {
                     pageArray={PAGES}
                     currentPage={this.state.currentPage}
                 />
-                <footer className={'AppContainer__footer--login'}>
-                    © Ola Radio 2019, <NavLink className={'AppContainer__legal'} to={'/Legal'}>mentions légales</NavLink>.
-                </footer>
+                <Footer/>
             </div> : <div className={'AppContainer__sideBar'}>
                 <Logo/>
                 <RadioBox externalLink={this.state.currentEmissionLink} onEmissionClear={this.onEmissionClear} />
@@ -160,25 +170,8 @@ class App extends Component {
                     currentPage={this.state.currentPage}
                     setCurrentPage={this.setCurrentPage}
                 />
-                <footer className={'AppContainer__footer--login'}>
-                    © Ola Radio 2019, <NavLink className={'AppContainer__legal'} to={'/Legal'}>mentions légales</NavLink>.
-                </footer>
+                <Footer/>
             </div>);
-
-        let switchRoutes = (
-            <Switch>
-                <Redirect exact from="/" to="Home"/>
-                <Route exact path="/Home" render={() => <Home onEmissionClick={this.onEmissionClick} />} />
-                <Route path="/Prog" render={() => <Home onEmissionClick={this.onEmissionClick} />} />
-                <Route path="/Archives" render={() => <Archives onEmissionClick={this.onEmissionClick} />}  />
-                {/*<Route path="/Shop" component={Shop}/>*/}
-                <Route path="/Support" component={Support}/>
-                <Route path="/About" component={About}/>
-                <Route path="/Legal" component={Legal}/>
-                <Route path="/Admin" component={Admin}/>
-                <Route component={NotFoundPage}/>
-            </Switch>
-        );
 
         let appBody = (isMobile ?
                 <div className={'AppContainer__body AppContainer__body--mobile'}>

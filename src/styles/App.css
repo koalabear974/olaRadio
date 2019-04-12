@@ -138,6 +138,7 @@
 
 .CookieWarning {
     position: absolute;
+    z-index: 11;
     width: 100%;
     background: white;
     text-align: center;
@@ -153,10 +154,6 @@
 .AppContainer--mobile .CookieWarning {
     height: 100px;
     border-bottom: 8px solid black;
-}
-
-.CookieWarning--hidden {
-    display: none;
 }
 
 .CookieWarning a {
@@ -282,3 +279,8 @@
 .file-upload #file {
     margin-left: 0;
 }
+
+.hidden {
+    display: none !important;
+}
+
