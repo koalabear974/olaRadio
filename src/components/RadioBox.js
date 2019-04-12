@@ -12,7 +12,8 @@ const CurrentSongUrl = "https://www.radioking.com/widgets/currenttrack.php?radio
 const PlayerUrl = "https://www.radioking.com/play/ola-radio";
 
 const sourceFilter = [
-    "mixcloud"
+    "mixcloud",
+    "soundcloud"
 ];
 
 export default class RadioBox extends Component {
@@ -27,7 +28,6 @@ export default class RadioBox extends Component {
             isPlaying: false,
             currentSong: null,
             marqueeLoop: false,
-            externalWidgetLink: "",
             externalLink: this.props.externalLink,
         };
 
@@ -46,18 +46,16 @@ export default class RadioBox extends Component {
                     passFilter = true;
                 }
             });
-            if(passFilter) {
-                console.log("update external link", nextProps.externalLink);
-                let widgetLink = "https://www.mixcloud.com/widget/iframe/?hide_cover=1&feed=%2Fola_radio%2F";
-                let array = nextProps.externalLink.split("/");
-                let strippedLink = array[array.length - 1] === "" ? array[array.length - 2] : array[array.length - 1];
-                widgetLink = widgetLink + strippedLink + "%2F";
 
+            if(passFilter) {
                 this.setState({
                     externalLink: nextProps.externalLink,
-                    externalWidgetLink: widgetLink,
                     isPlaying: false,
                 });
+
+                this.audioPlayer.current.audioEl.pause();
+            } else {
+                this.onExternalQuit();
             }
         }
     }
@@ -67,12 +65,18 @@ export default class RadioBox extends Component {
             console.log('uh oh');
             console.log(e);
             this.setState({isPlaying: false});
+            this.audioPlayer.current.audioEl.pause();
         });
 
         this.fetchData();
     }
 
     togglePlay() {
+        let isExternalLink = this.state.externalLink && this.state.externalWidgetLink;
+        if(isExternalLink) {
+            return;
+        }
+
         if(this.state.isPlaying) {
             this.audioPlayer.current.audioEl.pause();
         } else {
@@ -88,9 +92,11 @@ export default class RadioBox extends Component {
     onExternalQuit() {
         this.setState({
             externalLink: "",
-            externalWidgetLink: "",
             isPlaying: false,
         });
+
+        this.audioPlayer.current.audioEl.pause();
+
         this.props.onEmissionClear();
     }
 
@@ -134,30 +140,7 @@ export default class RadioBox extends Component {
     render() {
         let currentSong = this.state.currentSong;
         let formattedCurrentSong = currentSong ? currentSong.artist + ' - '+ currentSong.title : '';
-        let isExternalLink = this.state.externalLink && this.state.externalWidgetLink;
-
-        if (isExternalLink) {
-            return (
-                <div className={'RadioBox'}>
-                    <h3 className={'RadioBox__head'}>
-                        Emission
-                        <button
-                            className={'RadioBox__head-close'}
-                            onClick={this.onExternalQuit}
-                        >
-                            X
-                        </button>
-                    </h3>
-                    <div className={'RadioBox__external-box'}>
-                        <iframe
-                            className={'RadioBox__external-player'}
-                            src={this.state.externalWidgetLink}
-                                frameBorder="0">
-                        </iframe>
-                    </div>
-                </div>
-            );
-        }
+        let isExternalLink = !!this.state.externalLink;
 
         return (
             <div className={'RadioBox'}>
@@ -192,7 +175,7 @@ export default class RadioBox extends Component {
 
                 <div className={'RadioBox__player'}>
                     <button
-                        className={'RadioBox__control'}
+                        className={'RadioBox__control ' + (isExternalLink ? 'RadioBox__control--disabled' : '')}
                         onClick={this.togglePlay}
                     >
                         {

@@ -42,6 +42,11 @@
     background: none;
 }
 
+.RadioBox__control--disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
 .RadioBox .Emission__title {
     flex: 0 0 25px;
     width: 100%;
@@ -93,4 +98,57 @@
 
 .RadioBox__external-player {
     width: 100%;
+}
+
+.ExternalPlayer {
+    position: absolute;
+    z-index: 10;
+    width: 100%;
+    background: white;
+    text-align: center;
+    bottom: 0;
+    left: 0;
+    border-top: 8px solid black;
+    font-size: 14px;
+    font-weight: bold;
+    display: flex;
+    overflow: hidden;
+}
+
+.AppContainer--mobile .ExternalPlayer {
+    height: 100px;
+    border-bottom: 8px solid black;
+}
+
+.ExternalPlayer--hidden {
+    display: none;
+}
+
+.ExternalPlayer__external-box {
+    flex: 1;
+}
+
+.ExternalPlayer__head{
+    flex: 0 0 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ExternalPlayer__head-close{
+    flex: 1;
+    height: 100%;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.ExternalPlayer--mixcloud {
+    height: 68px;
+}
+
+.ExternalPlayer--soundcloud {
+    height: 108px;
 }

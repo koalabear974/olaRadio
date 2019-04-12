@@ -33,6 +33,7 @@ import Logo from "./components/Logo";
 import CookieWarning from "./common/CookieWarning";
 import MobileNavigator from "./common/MobileNavigator";
 import NavLink from "react-router-dom/es/NavLink";
+import ExternalPlayer from "./components/ExternalPlayer";
 import Footer from "./components/Footer";
 
 const PAGES = [
@@ -194,6 +195,8 @@ class App extends Component {
                 <div className={'AppContainer' + (isMobile ? ' AppContainer--mobile' : '')}>
                     {sideBar}
                     {appBody}
+
+                    <ExternalPlayer externalLink={this.state.currentEmissionLink} onEmissionClear={this.onEmissionClear} />
                     <CookieWarning/>
                 </div>
             </Router>
