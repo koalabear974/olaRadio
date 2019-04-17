@@ -17,6 +17,10 @@
     -webkit-overflow-scrolling: touch;
 }
 
+.AppContainer.AppContainer--mobile {
+    flex-wrap: unset;
+}
+
 .AppContainer__footer--login {
     flex: 0 0 15px;
     text-align: left;
@@ -42,6 +46,8 @@
 
 .AppContainer__body--mobile {
     width: 100vw;
+    overflow-y: unset;
+    max-height: unset;
 }
 
 .AppContainer__body--mobile > * {
@@ -144,7 +150,7 @@
     text-align: center;
     bottom: 0;
     left: 0;
-    height: 50px;
+    height: 55px;
     padding-top: 5px;
     border-top: 8px solid black;
     font-size: 14px;
@@ -152,8 +158,16 @@
 }
 
 .AppContainer--mobile .CookieWarning {
-    height: 100px;
+    height: 102px;
     border-bottom: 8px solid black;
+    position: sticky;
+    flex: 0;
+}
+
+@supports (-webkit-overflow-scrolling: touch) {
+    .AppContainer--mobile .CookieWarning {
+        bottom: 74px;
+    }
 }
 
 .CookieWarning a {
@@ -162,7 +176,7 @@
 }
 
 .CookieWarning button {
-    margin-left: 20px;
+    margin: 5px 20px;
     background: black;
     color: white;
     text-transform: uppercase;

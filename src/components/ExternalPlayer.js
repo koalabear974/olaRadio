@@ -1,9 +1,6 @@
 import React, {Component} from "react";
 import PropTypes from "prop-types";
 
-import ReactAudioPlayer from 'react-audio-player';
-import moment from 'moment';
-
 import "./../styles/components/RadioBox.css";
 import _ from "lodash";
 

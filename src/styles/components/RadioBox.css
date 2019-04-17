@@ -152,3 +152,22 @@
 .ExternalPlayer--soundcloud {
     height: 108px;
 }
+
+.AppContainer--mobile .ExternalPlayer {
+    position: sticky;
+    flex: 0 0 76px;
+}
+
+.AppContainer--mobile .ExternalPlayer--soundcloud {
+    flex: 0 0 115px;
+}
+
+.AppContainer--mobile .ExternalPlayer__head {
+    flex: 0 0 32px;
+}
+
+/*@supports (-webkit-overflow-scrolling: touch) {*/
+    /*.AppContainer--mobile .ExternalPlayer {*/
+        /*bottom: 74px;*/
+    /*}*/
+/*}*/
