@@ -42,6 +42,10 @@ export default class EmissionCalendar extends Component {
             }
         });
 
+        todayEmissions = _.sortBy(todayEmissions, [function(o) { return o.datetime; }], ["desc"]);
+        tommorrowEmissions = _.sortBy(tommorrowEmissions, [function(o) { return o.datetime; }], ["desc"]);
+        dayAfterEmissions = _.sortBy(dayAfterEmissions, [function(o) { return o.datetime; }], ["desc"]);
+
         return {
             todayEmissions: todayEmissions,
             tommorrowEmissions: tommorrowEmissions,
