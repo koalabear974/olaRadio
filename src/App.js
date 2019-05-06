@@ -35,6 +35,7 @@ import MobileNavigator from "./common/MobileNavigator";
 import NavLink from "react-router-dom/es/NavLink";
 import ExternalPlayer from "./components/ExternalPlayer";
 import Footer from "./components/Footer";
+import InformationPanel from "./containers/InformationPanel";
 
 const PAGES = [
     {path: "Podcasts", text: "Podcasts"},
@@ -163,7 +164,6 @@ class App extends Component {
                     pageArray={PAGES}
                     currentPage={this.state.currentPage}
                 />
-                <Footer/>
             </div> : <div className={'AppContainer__sideBar'}>
                 <Logo/>
                 <RadioBox externalLink={this.state.currentEmissionLink} onEmissionClear={onEmissionClearFunc} />
@@ -172,7 +172,6 @@ class App extends Component {
                     currentPage={this.state.currentPage}
                     setCurrentPage={this.setCurrentPage}
                 />
-                <Footer/>
             </div>);
 
         let appBody = (isMobile ?
@@ -188,6 +187,7 @@ class App extends Component {
                 </div> :
                 <div className={'AppContainer__body'}>
                     {switchRoutes}
+                    <InformationPanel />
                 </div>
         );
 

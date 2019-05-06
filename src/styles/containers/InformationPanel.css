@@ -1,0 +1,11 @@
+.InformationPanel {
+    position: sticky;
+    flex: 0 0 60px;
+    height: 100%;
+    top: 0;
+    right: 0;
+    background: white;
+    padding-bottom: 1px;
+    border: solid 8px black;
+    display: flex;
+}
