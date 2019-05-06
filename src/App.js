@@ -33,15 +33,14 @@ import Logo from "./components/Logo";
 import CookieWarning from "./common/CookieWarning";
 import MobileNavigator from "./common/MobileNavigator";
 import NavLink from "react-router-dom/es/NavLink";
+import ExternalPlayer from "./components/ExternalPlayer";
+import Footer from "./components/Footer";
 
 const PAGES = [
-    {path: "Prog", text: "Prog"},
-    {path: "Archives", text: "Archives"},
-    {path: "About", text: "À propos"},
-    {path: "Support", text: "Soutenir"},
+    {path: "Podcasts", text: "Podcasts"},
     // {path: "Shop", text: "Shop"},
 ];
-const NAVBARHEIGHT = 400;
+const NAVBARHEIGHT = 220;
 const history = createBrowserHistory();
 
 function simple_easing(how_much_time_has_passed) {
@@ -53,6 +52,7 @@ class App extends Component {
         super(props);
         this.state = {
             currentPage: "Home",
+            currentEmissionLink: "",
             isMobile: false,
             isVerified: false,
             navBarHeight: 0,
@@ -61,6 +61,8 @@ class App extends Component {
 
 
         this.animateNav = this.animateNav.bind(this);
+        this.onEmissionClick = this.onEmissionClick.bind(this);
+        this.onEmissionClear = this.onEmissionClear.bind(this);
         this.toggleMenu = this.toggleMenu.bind(this);
     }
 
@@ -100,6 +102,14 @@ class App extends Component {
         });
     }
 
+    onEmissionClick(link) {
+        this.setState({currentEmissionLink: link});
+    }
+
+    onEmissionClear() {
+        this.setState({currentEmissionLink: ""});
+    }
+
     animateNav(isOpen, start) {
         let duration = 600;
         let now = Date.now();
@@ -126,6 +136,21 @@ class App extends Component {
 
     render() {
         const {isMobile} = this.state;
+        let onEmissionClearFunc = this.onEmissionClear;
+
+        let switchRoutes = (
+            <Switch>
+                <Redirect exact from="/" to="Home"/>
+                <Route exact path="/Home" render={() => <Home onEmissionClick={this.onEmissionClick} />} />
+                <Route path="/Podcasts" render={() => <Archives onEmissionClick={this.onEmissionClick} />}  />
+                {/*<Route path="/Shop" component={Shop}/>*/}
+                <Route path="/Support" component={Support}/>
+                <Route path="/About" component={About}/>
+                <Route path="/Legal" component={Legal}/>
+                <Route path="/Admin" component={Admin}/>
+                <Route component={NotFoundPage}/>
+            </Switch>
+        );
 
         let sideBar = (isMobile ?
             <div
@@ -138,36 +163,17 @@ class App extends Component {
                     pageArray={PAGES}
                     currentPage={this.state.currentPage}
                 />
-                <footer className={'AppContainer__footer--login'}>
-                    © Ola Radio 2019, <NavLink className={'AppContainer__legal'} to={'/Legal'}>mentions légales</NavLink>.
-                </footer>
+                <Footer/>
             </div> : <div className={'AppContainer__sideBar'}>
                 <Logo/>
-                <RadioBox/>
+                <RadioBox externalLink={this.state.currentEmissionLink} onEmissionClear={onEmissionClearFunc} />
                 <Navigation
                     pageArray={PAGES}
                     currentPage={this.state.currentPage}
                     setCurrentPage={this.setCurrentPage}
                 />
-                <footer className={'AppContainer__footer--login'}>
-                    © Ola Radio 2019, <NavLink className={'AppContainer__legal'} to={'/Legal'}>mentions légales</NavLink>.
-                </footer>
+                <Footer/>
             </div>);
-
-        let switchRoutes = (
-            <Switch>
-                <Redirect exact from="/" to="Home"/>
-                <Route exact path="/Home" component={Home}/>
-                <Route path="/Prog" component={Home}/>
-                <Route path="/Archives" component={Archives}/>
-                {/*<Route path="/Shop" component={Shop}/>*/}
-                <Route path="/Support" component={Support}/>
-                <Route path="/About" component={About}/>
-                <Route path="/Legal" component={Legal}/>
-                <Route path="/Admin" component={Admin}/>
-                <Route component={NotFoundPage}/>
-            </Switch>
-        );
 
         let appBody = (isMobile ?
                 <div className={'AppContainer__body AppContainer__body--mobile'}>
@@ -177,7 +183,7 @@ class App extends Component {
                         curHeight={this.state.navBarHeight}
                     />
                     <Logo/>
-                    <RadioBox/>
+                    <RadioBox externalLink={this.state.currentEmissionLink} />
                     {switchRoutes}
                 </div> :
                 <div className={'AppContainer__body'}>
@@ -190,6 +196,8 @@ class App extends Component {
                 <div className={'AppContainer' + (isMobile ? ' AppContainer--mobile' : '')}>
                     {sideBar}
                     {appBody}
+
+                    <ExternalPlayer externalLink={this.state.currentEmissionLink} onEmissionClear={onEmissionClearFunc} />
                     <CookieWarning/>
                 </div>
             </Router>

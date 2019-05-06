@@ -82,6 +82,7 @@ export default class HomePage extends Component {
                     categories={this.state.categories}
                     curQuestion={this.state.curQuestion}
                     curPage={this.state.curPage}
+                    onEmissionClick={this.props.onEmissionClick}
                 />
                 <div className={'Home__bottom'}>
                     <h2 className={'Home__secondTitle'}>
@@ -90,6 +91,7 @@ export default class HomePage extends Component {
                     <EmissionList
                         className={'Home__EmissionList'}
                         emissions={latestEmissions}
+                        onEmissionClick={this.props.onEmissionClick}
                     />
                 </div>
             </div>

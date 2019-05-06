@@ -5,7 +5,7 @@
 
 .AppContainer {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     flex-wrap: wrap;
     flex: 1 1 auto;
     position: relative;
@@ -15,6 +15,10 @@
     scroll-behavior: smooth;
     overflow-y: scroll; /* has to be scroll, not auto */
     -webkit-overflow-scrolling: touch;
+}
+
+.AppContainer.AppContainer--mobile {
+    flex-wrap: unset;
 }
 
 .AppContainer__footer--login {
@@ -42,6 +46,8 @@
 
 .AppContainer__body--mobile {
     width: 100vw;
+    overflow-y: unset;
+    max-height: unset;
 }
 
 .AppContainer__body--mobile > * {
@@ -53,7 +59,7 @@
     flex: 1 0 auto;
     min-height: 100vh;
     width: 26vw;
-    max-width: 320px;
+    max-width: 26vw;
     display: flex;
     flex-direction: column;
     margin: 0 2vw;
@@ -138,12 +144,13 @@
 
 .CookieWarning {
     position: absolute;
+    z-index: 11;
     width: 100%;
     background: white;
     text-align: center;
     bottom: 0;
     left: 0;
-    height: 50px;
+    height: 55px;
     padding-top: 5px;
     border-top: 8px solid black;
     font-size: 14px;
@@ -151,12 +158,16 @@
 }
 
 .AppContainer--mobile .CookieWarning {
-    height: 100px;
+    height: 102px;
     border-bottom: 8px solid black;
+    position: sticky;
+    flex: 0;
 }
 
-.CookieWarning--hidden {
-    display: none;
+@supports (-webkit-overflow-scrolling: touch) {
+    .AppContainer--mobile .CookieWarning {
+        bottom: 74px;
+    }
 }
 
 .CookieWarning a {
@@ -165,7 +176,7 @@
 }
 
 .CookieWarning button {
-    margin-left: 20px;
+    margin: 5px 20px;
     background: black;
     color: white;
     text-transform: uppercase;
@@ -282,3 +293,8 @@
 .file-upload #file {
     margin-left: 0;
 }
+
+.hidden {
+    display: none !important;
+}
+
