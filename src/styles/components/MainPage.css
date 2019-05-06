@@ -4,6 +4,7 @@
     flex-direction: column;
     border: 8px solid black;
     padding: 20px 15px;
+    margin-right: 1em;
 }
 
 .MainPage__main-article {

@@ -187,7 +187,6 @@ class App extends Component {
                 </div> :
                 <div className={'AppContainer__body'}>
                     {switchRoutes}
-                    <InformationPanel />
                 </div>
         );
 
@@ -199,6 +198,7 @@ class App extends Component {
 
                     <ExternalPlayer externalLink={this.state.currentEmissionLink} onEmissionClear={onEmissionClearFunc} />
                     <CookieWarning/>
+                    <InformationPanel />
                 </div>
             </Router>
         );

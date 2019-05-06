@@ -15,12 +15,16 @@
 .NavigationBar__link {
     color: black;
     text-decoration: none;
-    margin: 15px 0;
+    margin: 0;
+    border: 8px solid black;
+    padding-bottom: 5px;
+    text-align: center;
 }
 
+.NavigationBar__link:hover,
 .NavigationBar__link--active {
-    transform: rotate(-20deg);
-    transform-origin: bottom left;
+    background: black;
+    color: white;
 }
 
 .NavigationBar__social {
