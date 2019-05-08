@@ -36,6 +36,7 @@ import NavLink from "react-router-dom/es/NavLink";
 import ExternalPlayer from "./components/ExternalPlayer";
 import Footer from "./components/Footer";
 import InformationPanel from "./containers/InformationPanel";
+import MobileHome from "./containers/MobileHome";
 
 const PAGES = [
     {path: "Podcasts", text: "Podcasts"},
@@ -154,17 +155,7 @@ class App extends Component {
         );
 
         let sideBar = (isMobile ?
-            <div
-                className={'AppContainer__sideBar AppContainer__sideBar--mobile'}
-                style={{
-                    height: this.state.navBarHeight + 'px',
-                }}
-            >
-                <Navigation
-                    pageArray={PAGES}
-                    currentPage={this.state.currentPage}
-                />
-            </div> : <div className={'AppContainer__sideBar'}>
+            "" : <div className={'AppContainer__sideBar'}>
                 <Logo/>
                 <RadioBox externalLink={this.state.currentEmissionLink} onEmissionClear={onEmissionClearFunc} />
                 <Navigation
@@ -174,16 +165,14 @@ class App extends Component {
                 />
             </div>);
 
+        let informationPanel = (isMobile ?
+            "" : <InformationPanel />);
+
         let appBody = (isMobile ?
                 <div className={'AppContainer__body AppContainer__body--mobile'}>
-                    <MobileNavigator
-                        toggleMenu={this.toggleMenu}
-                        isOpen={this.state.isNavBarOpen}
-                        curHeight={this.state.navBarHeight}
-                    />
                     <Logo/>
                     <RadioBox externalLink={this.state.currentEmissionLink} />
-                    {switchRoutes}
+                    <MobileHome onEmissionClick={this.onEmissionClick} />
                 </div> :
                 <div className={'AppContainer__body'}>
                     {switchRoutes}
@@ -198,7 +187,7 @@ class App extends Component {
 
                     <ExternalPlayer externalLink={this.state.currentEmissionLink} onEmissionClear={onEmissionClearFunc} />
                     <CookieWarning/>
-                    <InformationPanel />
+                    {informationPanel}
                 </div>
             </Router>
         );
