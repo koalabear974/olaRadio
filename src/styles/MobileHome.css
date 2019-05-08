@@ -1,0 +1,46 @@
+.MobileHome {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.MobileHome__secondTitle {
+    text-transform: uppercase;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.MobileHome__mainPage {
+    flex: 1 1 100%;
+}
+
+.MobileHome__bottom {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1;
+    margin: 1em 0 0;
+    padding: 0 0 0 1em;
+}
+
+.MobileHome__navigator {
+    margin-top: 1em;
+    display: flex;
+    flex-direction: column;
+    border: 8px solid black;
+    border-bottom: 0;
+}
+
+.MobileNavigator__item {
+}
+
+.MobileNavigator__title {
+    font-size: 18px;
+    font-weight: bold;
+    text-transform: uppercase;
+    justify-content: space-between !important;
+}
+
+.MobileNavigator__content .EmissionCalendar__title {
+    display: none;
+}
