@@ -4,7 +4,7 @@ import base from "../db/config";
 
 import "../styles/containers/InformationPanel.css"
 
-export default class About extends Component {
+export default class InformationPanel extends Component {
     constructor(props) {
         super(props);
         this.state = {
