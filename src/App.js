@@ -42,7 +42,6 @@ const PAGES = [
     {path: "Podcasts", text: "Podcasts"},
     // {path: "Shop", text: "Shop"},
 ];
-const NAVBARHEIGHT = 220;
 const history = createBrowserHistory();
 
 class App extends Component {
@@ -59,7 +58,6 @@ class App extends Component {
 
         this.onEmissionClick = this.onEmissionClick.bind(this);
         this.onEmissionClear = this.onEmissionClear.bind(this);
-        this.toggleMenu = this.toggleMenu.bind(this);
     }
 
     componentWillMount() {
@@ -81,21 +79,10 @@ class App extends Component {
                 this.setState({isVerified: !!user, errors: ""})
             }
         );
-        history.listen((location, action) => {
-            this.toggleMenu(false);
-        })
     }
 
     componentWillUnmount() {
         this.unregisterAuthObserver();
-    }
-
-    toggleMenu(isOpen) {
-        let start = Date.now();
-        this.setState({isNavBarOpen: isOpen});
-        requestAnimationFrame(() => {
-            this.animateNav(isOpen, start);
-        });
     }
 
     onEmissionClick(link) {

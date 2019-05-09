@@ -103,7 +103,7 @@
 .ExternalPlayer {
     position: absolute;
     z-index: 10;
-    width: 100%;
+    width: 94vw;
     background: white;
     text-align: center;
     bottom: 0;
