@@ -20,6 +20,7 @@
 .Admin__navbar {
     z-index: 10;
     background: white;
+    flex: 0 0 auto;
 }
 
 .Admin__current {

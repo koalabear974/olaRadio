@@ -18,7 +18,8 @@
 }
 
 .AppContainer.AppContainer--mobile {
-    flex-wrap: unset;
+    flex-wrap: nowrap;
+    /*flex-direction: column;*/
 }
 
 .AppContainer__footer--login {
@@ -44,6 +45,7 @@
 
 .AppContainer__body--mobile {
     width: 100vw;
+    height: 100%;
     overflow-y: unset;
     max-height: unset;
 }

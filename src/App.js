@@ -45,10 +45,6 @@ const PAGES = [
 const NAVBARHEIGHT = 220;
 const history = createBrowserHistory();
 
-function simple_easing(how_much_time_has_passed) {
-    return (1 - Math.cos(how_much_time_has_passed * Math.PI)) / 2;
-}
-
 class App extends Component {
     constructor(props) {
         super(props);
@@ -57,12 +53,10 @@ class App extends Component {
             currentEmissionLink: "",
             isMobile: false,
             isVerified: false,
-            navBarHeight: 0,
             isNavBarOpen: false,
         };
 
 
-        this.animateNav = this.animateNav.bind(this);
         this.onEmissionClick = this.onEmissionClick.bind(this);
         this.onEmissionClear = this.onEmissionClear.bind(this);
         this.toggleMenu = this.toggleMenu.bind(this);
@@ -112,30 +106,6 @@ class App extends Component {
         this.setState({currentEmissionLink: ""});
     }
 
-    animateNav(isOpen, start) {
-        let duration = 600;
-        let now = Date.now();
-        if (now - start >= duration) return;
-        if (this.state.navBarHeight <= 0 && !isOpen) return;
-        let p = (now - start) / duration;
-        if (isOpen) {
-            let navBarHeight = Math.round(NAVBARHEIGHT * simple_easing(p));
-            this.setState({navBarHeight: navBarHeight});
-            if (navBarHeight >= NAVBARHEIGHT) return;
-            requestAnimationFrame(() => {
-                this.animateNav(isOpen, start);
-            });
-        } else {
-            let navBarHeight = Math.round(NAVBARHEIGHT - (NAVBARHEIGHT * simple_easing(p)));
-            this.setState({navBarHeight: navBarHeight});
-            if (navBarHeight <= 0) return;
-            requestAnimationFrame(() => {
-                this.animateNav(isOpen, start);
-            });
-        }
-
-    }
-
     render() {
         const {isMobile} = this.state;
         let onEmissionClearFunc = this.onEmissionClear;
@@ -167,12 +137,20 @@ class App extends Component {
 
         let informationPanel = (isMobile ?
             "" : <InformationPanel />);
+        let externalPlayer = (isMobile ?
+            "" :  <ExternalPlayer externalLink={this.state.currentEmissionLink} onEmissionClear={onEmissionClearFunc} />);
+        let cookieWorning = (isMobile ?
+            "" : <CookieWarning />);
+
+
 
         let appBody = (isMobile ?
                 <div className={'AppContainer__body AppContainer__body--mobile'}>
                     <Logo/>
                     <RadioBox externalLink={this.state.currentEmissionLink} />
                     <MobileHome onEmissionClick={this.onEmissionClick} />
+                    <ExternalPlayer externalLink={this.state.currentEmissionLink} onEmissionClear={onEmissionClearFunc} />
+                    <CookieWarning/>
                 </div> :
                 <div className={'AppContainer__body'}>
                     {switchRoutes}
@@ -184,9 +162,8 @@ class App extends Component {
                 <div className={'AppContainer' + (isMobile ? ' AppContainer--mobile' : '')}>
                     {sideBar}
                     {appBody}
-
-                    <ExternalPlayer externalLink={this.state.currentEmissionLink} onEmissionClear={onEmissionClearFunc} />
-                    <CookieWarning/>
+                    {externalPlayer}
+                    {cookieWorning}
                     {informationPanel}
                 </div>
             </Router>
