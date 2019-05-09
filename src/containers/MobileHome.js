@@ -12,6 +12,7 @@ import AccordionHeader from "react-accordion-with-header/es/AccordionHeader";
 import AccordionPanel from "react-accordion-with-header/es/AccordionPanel";
 import InformationPanel from "./InformationPanel";
 import Archives from "./Archives";
+import Information from "./Information";
 
 export default class MobileHome extends Component {
   constructor(props) {
@@ -21,6 +22,7 @@ export default class MobileHome extends Component {
             categories: {},
             emissions: {},
             homePage: {},
+            infoPage: {},
             curQuestion: {},
             currentPageState: {},
         };
@@ -58,8 +60,12 @@ export default class MobileHome extends Component {
                 let homePage = _.find(data, (v) => {
                     return v.slug === 'home';
                 });
+                let infoPage = _.find(data, (v) => {
+                    return v.slug === 'infos';
+                });
                 this.setState({
                     homePage: homePage,
+                    infoPage: infoPage,
                 });
             }
         });
@@ -73,7 +79,6 @@ export default class MobileHome extends Component {
     }
 
     actionCallback(panels) {
-        console.log('panels', panels);
         this.setState({currentPageState: panels})
     }
 
@@ -96,6 +101,7 @@ export default class MobileHome extends Component {
         let latestEmissions = _.filter(this.state.emissions, (o) => {return new Date(o.datetime) < new Date()});
         latestEmissions = (_.sortBy(latestEmissions, (o) => { return (o['datetime'] || 0)})).reverse().slice(0, 10);
         let homePage = this.state.homePage;
+        let infoPage = this.state.infoPage;
 
         return (
             <div className={'MobileHome'}>
@@ -146,7 +152,7 @@ export default class MobileHome extends Component {
                             { this.isActivePage(2) ? <FaAngleUp /> : <FaAngleDown /> }
                         </AccordionHeader>
                         <AccordionPanel className={'MobileNavigator__content'}>
-                            <InformationPanel />
+                            <Information infoPage={infoPage}/>
                         </AccordionPanel>
                     </AccordionNode>
                     <AccordionNode className={'MobileNavigator__item'} key={3}>

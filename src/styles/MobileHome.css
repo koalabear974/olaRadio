@@ -71,3 +71,11 @@
 .MobileNavigator__content .Archive__section {
     padding: 0;
 }
+
+.MobileNavigator__content .NewsBox {
+    padding-bottom: 1em;
+}
+
+.MobileNavigator__content .Information {
+    padding-bottom: 1em;
+}
