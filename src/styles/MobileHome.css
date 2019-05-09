@@ -29,9 +29,8 @@
     flex-direction: column;
     border: 8px solid black;
     border-bottom: 0;
-}
-
-.MobileNavigator__item {
+    box-shadow: unset !important;
+    border-radius: unset !important;
 }
 
 .MobileNavigator__title {
@@ -39,8 +38,36 @@
     font-weight: bold;
     text-transform: uppercase;
     justify-content: space-between !important;
+    padding: 10px 1em !important;
+    box-shadow: unset !important;
+    border-radius: unset !important;
 }
 
 .MobileNavigator__content .EmissionCalendar__title {
     display: none;
+}
+
+.NewsBox__header {
+    text-transform: uppercase;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    flex: 0 0 auto;
+}
+
+.MobileNavigator__content {
+    margin: 0 1em;
+    padding: 10px 0;
+}
+
+.MobileNavigator__item {
+    border-bottom: 8px solid black;
+}
+
+.MobileNavigator__content .Archive {
+    margin: 0;
+}
+
+.MobileNavigator__content .Archive__section {
+    padding: 0;
 }
