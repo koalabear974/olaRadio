@@ -6,7 +6,7 @@ import "../styles/containers/InformationPanel.css"
 import Information from "./Information";
 
 const PANEL_WIDTH_ZERO = 8;
-const PANEL_WIDTH_OPEN = 540;
+const PANEL_WIDTH_OPEN = 440;
 function simple_easing(how_much_time_has_passed) {
     return (1 - Math.cos(how_much_time_has_passed * Math.PI)) / 2;
 }
@@ -38,10 +38,10 @@ export default class InformationPanel extends Component {
     }
 
     animatePanel(isOpen, start) {
-        let duration = 600;
+        let duration = 550;
         let now = Date.now();
         if (now - start >= duration) return;
-        if (this.state.panelOpenPx <= PANEL_WIDTH_ZERO && !isOpen) return;
+        if (this.state.panelOpenPx <= 0 && !isOpen) return;
         let p = (now - start) / duration;
         if (isOpen) {
             let panelOpenPx = Math.round(PANEL_WIDTH_OPEN * simple_easing(p));
@@ -53,7 +53,7 @@ export default class InformationPanel extends Component {
         } else {
             let panelOpenPx = Math.round(PANEL_WIDTH_OPEN - (PANEL_WIDTH_OPEN * simple_easing(p)));
             this.setState({panelOpenPx: panelOpenPx});
-            if (panelOpenPx <= PANEL_WIDTH_ZERO) return;
+            if (panelOpenPx <= 0) return;
             requestAnimationFrame(() => {
                 this.animatePanel(isOpen, start);
             });

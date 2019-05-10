@@ -117,6 +117,7 @@
 
 .AppContainer--mobile .ExternalPlayer {
     height: 100px;
+    width: 100vw;
     border-bottom: 8px solid black;
 }
 
