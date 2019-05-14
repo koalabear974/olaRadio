@@ -1,0 +1,81 @@
+.MobileHome {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.MobileHome__secondTitle {
+    text-transform: uppercase;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.MobileHome__mainPage {
+    flex: 1 1 100%;
+}
+
+.MobileHome__bottom {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1;
+    margin: 1em 0 0;
+    padding: 0 0 0 1em;
+}
+
+.MobileHome__navigator {
+    margin-top: 1em;
+    display: flex;
+    flex-direction: column;
+    border: 8px solid black;
+    border-bottom: 0;
+    box-shadow: unset !important;
+    border-radius: unset !important;
+}
+
+.MobileNavigator__title {
+    font-size: 18px;
+    font-weight: bold;
+    text-transform: uppercase;
+    justify-content: space-between !important;
+    padding: 10px 1em !important;
+    box-shadow: unset !important;
+    border-radius: unset !important;
+}
+
+.MobileNavigator__content .EmissionCalendar__title {
+    display: none;
+}
+
+.NewsBox__header {
+    text-transform: uppercase;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    flex: 0 0 auto;
+}
+
+.MobileNavigator__content {
+    margin: 0 1em;
+    padding: 10px 0;
+}
+
+.MobileNavigator__item {
+    border-bottom: 8px solid black;
+}
+
+.MobileNavigator__content .Archive {
+    margin: 0;
+}
+
+.MobileNavigator__content .Archive__section {
+    padding: 0;
+}
+
+.MobileNavigator__content .NewsBox {
+    padding-bottom: 1em;
+}
+
+.MobileNavigator__content .Information {
+    padding-bottom: 1em;
+}

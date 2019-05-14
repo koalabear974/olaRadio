@@ -33,35 +33,31 @@ import Logo from "./components/Logo";
 import CookieWarning from "./common/CookieWarning";
 import MobileNavigator from "./common/MobileNavigator";
 import NavLink from "react-router-dom/es/NavLink";
+import ExternalPlayer from "./components/ExternalPlayer";
+import Footer from "./components/Footer";
+import InformationPanel from "./containers/InformationPanel";
+import MobileHome from "./containers/MobileHome";
 
 const PAGES = [
-    {path: "Prog", text: "Prog"},
-    {path: "Archives", text: "Archives"},
-    {path: "About", text: "À propos"},
-    {path: "Support", text: "Soutenir"},
+    {path: "Podcasts", text: "Podcasts"},
     // {path: "Shop", text: "Shop"},
 ];
-const NAVBARHEIGHT = 400;
 const history = createBrowserHistory();
-
-function simple_easing(how_much_time_has_passed) {
-    return (1 - Math.cos(how_much_time_has_passed * Math.PI)) / 2;
-}
 
 class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
             currentPage: "Home",
+            currentEmissionLink: "",
             isMobile: false,
             isVerified: false,
-            navBarHeight: 0,
             isNavBarOpen: false,
         };
 
 
-        this.animateNav = this.animateNav.bind(this);
-        this.toggleMenu = this.toggleMenu.bind(this);
+        this.onEmissionClick = this.onEmissionClick.bind(this);
+        this.onEmissionClear = this.onEmissionClear.bind(this);
     }
 
     componentWillMount() {
@@ -83,83 +79,29 @@ class App extends Component {
                 this.setState({isVerified: !!user, errors: ""})
             }
         );
-        history.listen((location, action) => {
-            this.toggleMenu(false);
-        })
     }
 
     componentWillUnmount() {
         this.unregisterAuthObserver();
     }
 
-    toggleMenu(isOpen) {
-        let start = Date.now();
-        this.setState({isNavBarOpen: isOpen});
-        requestAnimationFrame(() => {
-            this.animateNav(isOpen, start);
-        });
+    onEmissionClick(link) {
+        this.setState({currentEmissionLink: link});
     }
 
-    animateNav(isOpen, start) {
-        let duration = 600;
-        let now = Date.now();
-        if (now - start >= duration) return;
-        if (this.state.navBarHeight <= 0 && !isOpen) return;
-        let p = (now - start) / duration;
-        if (isOpen) {
-            let navBarHeight = Math.round(NAVBARHEIGHT * simple_easing(p));
-            this.setState({navBarHeight: navBarHeight});
-            if (navBarHeight >= NAVBARHEIGHT) return;
-            requestAnimationFrame(() => {
-                this.animateNav(isOpen, start);
-            });
-        } else {
-            let navBarHeight = Math.round(NAVBARHEIGHT - (NAVBARHEIGHT * simple_easing(p)));
-            this.setState({navBarHeight: navBarHeight});
-            if (navBarHeight <= 0) return;
-            requestAnimationFrame(() => {
-                this.animateNav(isOpen, start);
-            });
-        }
-
+    onEmissionClear() {
+        this.setState({currentEmissionLink: ""});
     }
 
     render() {
         const {isMobile} = this.state;
-
-        let sideBar = (isMobile ?
-            <div
-                className={'AppContainer__sideBar AppContainer__sideBar--mobile'}
-                style={{
-                    height: this.state.navBarHeight + 'px',
-                }}
-            >
-                <Navigation
-                    pageArray={PAGES}
-                    currentPage={this.state.currentPage}
-                />
-                <footer className={'AppContainer__footer--login'}>
-                    © Ola Radio 2019, <NavLink className={'AppContainer__legal'} to={'/Legal'}>mentions légales</NavLink>.
-                </footer>
-            </div> : <div className={'AppContainer__sideBar'}>
-                <Logo/>
-                <RadioBox/>
-                <Navigation
-                    pageArray={PAGES}
-                    currentPage={this.state.currentPage}
-                    setCurrentPage={this.setCurrentPage}
-                />
-                <footer className={'AppContainer__footer--login'}>
-                    © Ola Radio 2019, <NavLink className={'AppContainer__legal'} to={'/Legal'}>mentions légales</NavLink>.
-                </footer>
-            </div>);
+        let onEmissionClearFunc = this.onEmissionClear;
 
         let switchRoutes = (
             <Switch>
                 <Redirect exact from="/" to="Home"/>
-                <Route exact path="/Home" component={Home}/>
-                <Route path="/Prog" component={Home}/>
-                <Route path="/Archives" component={Archives}/>
+                <Route exact path="/Home" render={() => <Home onEmissionClick={this.onEmissionClick} />} />
+                <Route path="/Podcasts" render={() => <Archives onEmissionClick={this.onEmissionClick} />}  />
                 {/*<Route path="/Shop" component={Shop}/>*/}
                 <Route path="/Support" component={Support}/>
                 <Route path="/About" component={About}/>
@@ -169,16 +111,33 @@ class App extends Component {
             </Switch>
         );
 
+        let sideBar = (isMobile ?
+            "" : <div className={'AppContainer__sideBar'}>
+                <Logo/>
+                <RadioBox externalLink={this.state.currentEmissionLink} onEmissionClear={onEmissionClearFunc} />
+                <Navigation
+                    pageArray={PAGES}
+                    currentPage={this.state.currentPage}
+                    setCurrentPage={this.setCurrentPage}
+                />
+            </div>);
+
+        let informationPanel = (isMobile ?
+            "" : <InformationPanel />);
+        let externalPlayer = (isMobile ?
+            "" :  <ExternalPlayer externalLink={this.state.currentEmissionLink} onEmissionClear={onEmissionClearFunc} />);
+        let cookieWorning = (isMobile ?
+            "" : <CookieWarning />);
+
+
+
         let appBody = (isMobile ?
                 <div className={'AppContainer__body AppContainer__body--mobile'}>
-                    <MobileNavigator
-                        toggleMenu={this.toggleMenu}
-                        isOpen={this.state.isNavBarOpen}
-                        curHeight={this.state.navBarHeight}
-                    />
                     <Logo/>
-                    <RadioBox/>
-                    {switchRoutes}
+                    <RadioBox externalLink={this.state.currentEmissionLink} />
+                    <MobileHome onEmissionClick={this.onEmissionClick} />
+                    <ExternalPlayer externalLink={this.state.currentEmissionLink} onEmissionClear={onEmissionClearFunc} />
+                    <CookieWarning/>
                 </div> :
                 <div className={'AppContainer__body'}>
                     {switchRoutes}
@@ -190,7 +149,9 @@ class App extends Component {
                 <div className={'AppContainer' + (isMobile ? ' AppContainer--mobile' : '')}>
                     {sideBar}
                     {appBody}
-                    <CookieWarning/>
+                    {externalPlayer}
+                    {cookieWorning}
+                    {informationPanel}
                 </div>
             </Router>
         );

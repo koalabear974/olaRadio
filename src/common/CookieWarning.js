@@ -20,13 +20,15 @@ export default class CookieWarning extends Component {
     acceptCookie(e) {
         e.preventDefault();
 
-        this.cookies.set('cookieAccepted', true, { path: '/' });
+        this.cookies.set( 'cookieAccepted', true, { path: '/', expires: (new Date(2030, 0)) });
+
+
         this.setState({cookieAccepted: true})
     }
 
     render() {
         return (
-            <div className={'CookieWarning '+(this.state.cookieAccepted ? 'CookieWarning--hidden' : '')}>
+            <div className={'CookieWarning '+(this.state.cookieAccepted ? 'hidden' : '')}>
                 Ce site utilise des cookies à des fins analytiques.
                 <NavLink to={'/Legal'}> En lire plus.</NavLink>
                 <button onClick={this.acceptCookie}>

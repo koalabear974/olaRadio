@@ -1,0 +1,62 @@
+.InformationPanel {
+    display: flex;
+    flex: 0 0 6vw;
+    background: white;
+    flex-direction: row-reverse;
+    max-height: 100vh;
+    position: relative;
+    text-align: justify;
+}
+
+.InformationPanel__panel {
+    overflow: hidden;
+    position: absolute;
+    top: 0px;
+    left: -8px;
+    width: 458px;
+    min-height: 100vh;
+    max-height: 100vh;
+    border-left: 8px solid black;
+    padding: 1em;
+    background: white;
+    z-index: 10;
+    overflow-y: scroll;
+    border-top: 8px solid black;
+    border-bottom: 8px solid black;
+}
+
+.InformationPanel__title {
+    display: flex;
+    flex: 1;
+    transform: rotate(90deg);
+    font-size: 20px;
+    text-transform: uppercase;
+}
+
+.InformationPanel__title-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    border: 8px solid;
+    border-left: 0;
+    z-index: 11;
+    background: white;
+}
+
+.Information__title {
+    text-transform: uppercase;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.Information__social {
+    margin: 1em 0;
+}

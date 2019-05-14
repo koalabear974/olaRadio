@@ -1,16 +1,24 @@
 import React, {Component} from "react";
+import PropTypes from "prop-types";
 
 import ReactAudioPlayer from 'react-audio-player';
 import moment from 'moment';
 
 import "./../styles/components/RadioBox.css";
 import {FaPause, FaPlay} from "react-icons/fa/index";
+import _ from "lodash";
 
 const CurrentSongUrl = "https://www.radioking.com/widgets/currenttrack.php?radio=190519&format=json";
 const PlayerUrl = "https://www.radioking.com/play/ola-radio";
 
+const sourceFilter = [
+    "mixcloud",
+    "soundcloud"
+];
+
 export default class RadioBox extends Component {
     static propTypes = {
+        externalLink: PropTypes.string,
     };
 
     constructor(props) {
@@ -20,12 +28,36 @@ export default class RadioBox extends Component {
             isPlaying: false,
             currentSong: null,
             marqueeLoop: false,
+            externalLink: this.props.externalLink,
         };
 
         this.togglePlay = this.togglePlay.bind(this);
+        this.onExternalQuit = this.onExternalQuit.bind(this);
         this.onCanPlay = this.onCanPlay.bind(this);
         this.fetchData = this.fetchData.bind(this);
         this.audioPlayer = React.createRef();
+    }
+
+    componentWillUpdate(nextProps){
+        if(nextProps.externalLink !== this.state.externalLink) {
+            let passFilter = false;
+            _.forEach(sourceFilter, (source) => {
+                if(nextProps.externalLink.match(source)) {
+                    passFilter = true;
+                }
+            });
+
+            if(passFilter) {
+                this.setState({
+                    externalLink: nextProps.externalLink,
+                    isPlaying: false,
+                });
+
+                this.audioPlayer.current.audioEl.pause();
+            } else {
+                this.onExternalQuit();
+            }
+        }
     }
 
     componentDidMount(){
@@ -33,12 +65,18 @@ export default class RadioBox extends Component {
             console.log('uh oh');
             console.log(e);
             this.setState({isPlaying: false});
+            this.audioPlayer.current.audioEl.pause();
         });
 
         this.fetchData();
     }
 
     togglePlay() {
+        let isExternalLink = !!this.state.externalLink;
+        if(isExternalLink) {
+            return;
+        }
+
         if(this.state.isPlaying) {
             this.audioPlayer.current.audioEl.pause();
         } else {
@@ -49,6 +87,19 @@ export default class RadioBox extends Component {
             }
         }
         this.setState({isPlaying: !this.state.isPlaying});
+    }
+
+    onExternalQuit() {
+        this.setState({
+            externalLink: "",
+            isPlaying: false,
+        });
+
+        this.audioPlayer.current.audioEl.pause();
+
+        if(this.props.onEmissionClear) {
+            this.props.onEmissionClear();
+        };
     }
 
     onCanPlay() {
@@ -91,6 +142,7 @@ export default class RadioBox extends Component {
     render() {
         let currentSong = this.state.currentSong;
         let formattedCurrentSong = currentSong ? currentSong.artist + ' - '+ currentSong.title : '';
+        let isExternalLink = !!this.state.externalLink;
 
         return (
             <div className={'RadioBox'}>
@@ -125,7 +177,7 @@ export default class RadioBox extends Component {
 
                 <div className={'RadioBox__player'}>
                     <button
-                        className={'RadioBox__control'}
+                        className={'RadioBox__control ' + (isExternalLink ? 'RadioBox__control--disabled' : '')}
                         onClick={this.togglePlay}
                     >
                         {

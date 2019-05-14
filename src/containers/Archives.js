@@ -9,8 +9,8 @@ export default class Archives extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            categories: {},
-            emissions: {},
+            categories: this.props.categories || {},
+            emissions: this.props.emissions || {},
         };
 
 
@@ -48,6 +48,7 @@ export default class Archives extends Component {
                       <EmissionList
                           className={'Archive__EmissionList'}
                           emissions={section.emissions}
+                          onEmissionClick={this.props.onEmissionClick}
                       />
                       : "À venir"
               }

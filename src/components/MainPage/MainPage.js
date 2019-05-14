@@ -12,6 +12,7 @@ export default class MainPage extends Component {
         emissions: PropTypes.object,
         questions: PropTypes.object,
         curPage: PropTypes.object,
+        onEmissionClick: PropTypes.func,
     };
 
     constructor(props) {
@@ -32,6 +33,7 @@ export default class MainPage extends Component {
                 <article className={'MainPage__main-article'}>
                     <EmissionCalendar
                         emissions={this.props.emissions}
+                        onEmissionClick={this.props.onEmissionClick}
                     />
                     <aside className={'MainPage__aside'}>
                         <header className={'MainPageAside__header'}>

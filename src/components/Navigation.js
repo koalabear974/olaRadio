@@ -27,7 +27,7 @@ export default class Navigation extends Component {
                         <span>{page.text}</span>
                     </NavLink>
                 ))}
-                <li className={'NavigationBar__social'} >
+                <li className={'NavigationBar__social hidden'} >
                     <a className={'Social__link'} target={'blank'} href="https://www.facebook.com/Ola-Radio-2003400579719885/">
                         <FaFacebook className="Teaser__icon Teaser__links-fb"/>
                     </a>
