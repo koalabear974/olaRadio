@@ -1,6 +1,6 @@
 .InformationPanel {
     display: flex;
-    flex: 0 0 6vw;
+    flex: 0 0 5vw;
     background: white;
     flex-direction: row-reverse;
     max-height: 100vh;
@@ -12,8 +12,9 @@
     overflow: hidden;
     position: absolute;
     top: 0px;
-    left: -8px;
-    width: 458px;
+    left: 0vw;
+    margin-left: -6px;
+    width: 41vw;
     min-height: 100vh;
     max-height: 100vh;
     border-left: 6px solid black;
@@ -59,4 +60,12 @@
 
 .Information__social {
     margin: 1em 0;
+    display: flex;
+    flex-wrap: nowrap;
+    font-size: 11px;
+    justify-content: space-between;
+}
+
+.Information__first-text {
+    margin-bottom: 25px;
 }
