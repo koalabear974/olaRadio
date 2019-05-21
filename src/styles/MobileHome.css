@@ -27,7 +27,7 @@
     margin-top: 1em;
     display: flex;
     flex-direction: column;
-    border: 8px solid black;
+    border: 6px solid black;
     border-bottom: 0;
     box-shadow: unset !important;
     border-radius: unset !important;
@@ -61,7 +61,7 @@
 }
 
 .MobileNavigator__item {
-    border-bottom: 8px solid black;
+    border-bottom: 6px solid black;
 }
 
 .MobileNavigator__content .Archive {
