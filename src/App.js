@@ -147,11 +147,16 @@ class App extends Component {
         return (
             <Router history={history}>
                 <div className={'AppContainer' + (isMobile ? ' AppContainer--mobile' : '')}>
-                    {sideBar}
-                    {appBody}
-                    {externalPlayer}
-                    {cookieWorning}
-                    {informationPanel}
+                    <div className={'AppContainer__container AppContainer__top'}>
+                        <AdvertisementBar />
+                    </div>
+                    <div className={'AppContainer__container AppContainer__bottom'}>
+                        {sideBar}
+                        {appBody}
+                        {externalPlayer}
+                        {cookieWorning}
+                        {informationPanel}
+                    </div>
                 </div>
             </Router>
         );

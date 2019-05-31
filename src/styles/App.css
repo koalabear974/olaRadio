@@ -6,7 +6,7 @@
 .AppContainer {
     display: flex;
     flex-direction: row;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     flex: 1 1 auto;
     position: relative;
     color: black;
@@ -18,9 +18,24 @@
     -webkit-overflow-scrolling: touch;
 }
 
+.AppContainer__container {
+    display: flex;
+    flex: 0 0 100%;
+}
+
+.AppContainer--mobile .AppContainer__top {
+    flex: 0 0 30px;
+    height: 30px;
+}
+
+.AppContainer--mobile .AppContainer__bottom {
+    flex: 1;
+    display: flex;
+}
+
 .AppContainer.AppContainer--mobile {
     flex-wrap: nowrap;
-    /*flex-direction: column;*/
+    flex-direction: column;
 }
 
 .AppContainer__footer--login {
@@ -240,6 +255,9 @@
     overflow: hidden;
 
     animation: marquee 8s linear infinite;
+}
+.marquee.marquee--slow div {
+    animation: marquee 20s linear infinite;
 }
 
 .marquee span {
