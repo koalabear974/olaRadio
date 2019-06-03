@@ -46,9 +46,9 @@ export default class AdvertisementBar extends Component {
 
         return (
             <div className={'AdvertisementBar'}>
-                <marquee className="AdvertisementBar__marquee" behavior="scroll" direction="left">
+                <span className="AdvertisementBar__marquee">
                     {this.state.curTexts.map((i) => {return i;})}
-                </marquee>
+                </span>
             </div>
         );
     }
