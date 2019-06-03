@@ -1,0 +1,14 @@
+.AdvertisementBar {
+    display: flex;
+    flex: 1;
+    color: white;
+    background-color: black;
+    height: 30px;
+    align-items: center;
+    font-size: 13px;
+}
+
+.AdvertisementBar__marquee {
+    line-height: 30px;
+    height: 30px;
+}

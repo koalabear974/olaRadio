@@ -1,6 +1,6 @@
 .InformationPanel {
     display: flex;
-    flex: 0 0 6vw;
+    flex: 0 0 5vw;
     background: white;
     flex-direction: row-reverse;
     max-height: 100vh;
@@ -12,17 +12,18 @@
     overflow: hidden;
     position: absolute;
     top: 0px;
-    left: -8px;
-    width: 458px;
+    left: 0vw;
+    margin-left: -6px;
+    width: 41vw;
     min-height: 100vh;
     max-height: 100vh;
-    border-left: 8px solid black;
+    border-left: 6px solid black;
     padding: 1em;
     background: white;
     z-index: 10;
     overflow-y: scroll;
-    border-top: 8px solid black;
-    border-bottom: 8px solid black;
+    border-top: 6px solid black;
+    border-bottom: 6px solid black;
 }
 
 .InformationPanel__title {
@@ -44,7 +45,7 @@
     height: 100%;
     top: 0;
     left: 0;
-    border: 8px solid;
+    border: 6px solid;
     border-left: 0;
     z-index: 11;
     background: white;
@@ -59,4 +60,12 @@
 
 .Information__social {
     margin: 1em 0;
+    display: flex;
+    flex-wrap: nowrap;
+    font-size: 11px;
+    justify-content: space-between;
+}
+
+.Information__first-text {
+    margin-bottom: 25px;
 }

@@ -47,14 +47,25 @@ export default class Information extends Component {
                     })}
                 </div>
                 <div className="Information__social">
-                    <a className={'Social__link'} target={'blank'} href="https://www.facebook.com/Ola-Radio-2003400579719885/">
-                        <FaFacebook className="Teaser__icon Teaser__links-fb"/>
+                    <a target='_blank' href='https://www.helloasso.com/associations/ola-radio/formulaires/1/widget'
+                        className="Social__link"
+                    >
+                        Nous soutenir
                     </a>
-                    <a className={'Social__link'} target={'blank'} href="https://www.instagram.com/ola_radio/">
-                        <FaInstagram className="Teaser__icon Teaser__links-ig"/>
+                    <a className='Social__link' target='blank' href="https://www.instagram.com/ola_radio/">
+                        Instagram
                     </a>
-                    <Footer />
+                    <a className='Social__link' target='blank' href="https://www.facebook.com/Ola-Radio-2003400579719885/">
+                        Facebook
+                    </a>
+                    <a className='Social__link' target='blank' href="https://soundcloud.com/ola_radio">
+                        Soundcloud
+                    </a>
+                    <a className='Social__link' target='blank' href="https://www.mixcloud.com/ola_radio/">
+                        Mixcloud
+                    </a>
                 </div>
+                <Footer />
             </div>
         );
     }

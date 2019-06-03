@@ -18,7 +18,6 @@ import 'firebase/auth';
 
 import Home from "./containers/Home";
 import Navigation from "./components/Navigation";
-// import Shop from "./containers/Shop"
 import Support from "./containers/Support"
 import About from "./containers/About"
 import Legal from "./containers/Legal"
@@ -31,16 +30,13 @@ import "./styles/App.css";
 import RadioBox from "./components/RadioBox";
 import Logo from "./components/Logo";
 import CookieWarning from "./common/CookieWarning";
-import MobileNavigator from "./common/MobileNavigator";
-import NavLink from "react-router-dom/es/NavLink";
 import ExternalPlayer from "./components/ExternalPlayer";
-import Footer from "./components/Footer";
 import InformationPanel from "./containers/InformationPanel";
 import MobileHome from "./containers/MobileHome";
+import AdvertisementBar from "./components/AdvertisementBar";
 
 const PAGES = [
     {path: "Podcasts", text: "Podcasts"},
-    // {path: "Shop", text: "Shop"},
 ];
 const history = createBrowserHistory();
 
@@ -102,7 +98,6 @@ class App extends Component {
                 <Redirect exact from="/" to="Home"/>
                 <Route exact path="/Home" render={() => <Home onEmissionClick={this.onEmissionClick} />} />
                 <Route path="/Podcasts" render={() => <Archives onEmissionClick={this.onEmissionClick} />}  />
-                {/*<Route path="/Shop" component={Shop}/>*/}
                 <Route path="/Support" component={Support}/>
                 <Route path="/About" component={About}/>
                 <Route path="/Legal" component={Legal}/>
@@ -147,11 +142,16 @@ class App extends Component {
         return (
             <Router history={history}>
                 <div className={'AppContainer' + (isMobile ? ' AppContainer--mobile' : '')}>
-                    {sideBar}
-                    {appBody}
-                    {externalPlayer}
-                    {cookieWorning}
-                    {informationPanel}
+                    <div className={'AppContainer__container AppContainer__top'}>
+                        <AdvertisementBar />
+                    </div>
+                    <div className={'AppContainer__container AppContainer__bottom'}>
+                        {sideBar}
+                        {appBody}
+                        {externalPlayer}
+                        {cookieWorning}
+                        {informationPanel}
+                    </div>
                 </div>
             </Router>
         );

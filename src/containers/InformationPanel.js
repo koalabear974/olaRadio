@@ -5,8 +5,8 @@ import base from "../db/config";
 import "../styles/containers/InformationPanel.css"
 import Information from "./Information";
 
-const PANEL_WIDTH_ZERO = 8;
-const PANEL_WIDTH_OPEN = 440;
+const PANEL_WIDTH_ZERO = 0;
+const PANEL_WIDTH_OPEN = 40;
 function simple_easing(how_much_time_has_passed) {
     return (1 - Math.cos(how_much_time_has_passed * Math.PI)) / 2;
 }
@@ -96,7 +96,7 @@ export default class InformationPanel extends Component {
                         "InformationPanel__panel "
                     }
                     style={{
-                        left: -(this.state.panelOpenPx + PANEL_WIDTH_ZERO) + 'px',
+                        left: -(this.state.panelOpenPx + PANEL_WIDTH_ZERO) + 'vw',
                     }}
                 >
                     <Information infoPage={curPage} infoImage={curImages} />
