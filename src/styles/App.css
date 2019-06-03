@@ -21,6 +21,7 @@
 .AppContainer__container {
     display: flex;
     flex: 0 0 100%;
+    max-width: 100%;
 }
 
 .AppContainer--mobile .AppContainer__top {

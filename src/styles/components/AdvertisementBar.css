@@ -10,11 +10,18 @@
     position: relative;
 }
 
+.AppContainer__top {
+    position: sticky;
+    top: 0;
+    z-index: 9;
+}
+
 .AdvertisementBar__marquee {
     line-height: 30px;
     height: 30px;
     position: absolute;
-    width: 100%;
+    white-space: nowrap;
+    width: auto;
     margin: 0;
     text-align: center;
     /* Starting position */
@@ -22,9 +29,9 @@
     -webkit-transform:translateX(100%);
     transform:translateX(100%);
     /* Apply animation to this element */
-    -moz-animation: marquee2 20s linear infinite;
-    -webkit-animation: marquee2 20s linear infinite;
-    animation: marquee2 20s linear infinite;
+    -moz-animation: marquee2 25s linear infinite;
+    -webkit-animation: marquee2 25s linear infinite;
+    animation: marquee2 25s linear infinite;
 }
 /* Move it (define the animation) */
 @-moz-keyframes marquee2 {

@@ -31,6 +31,26 @@ export default class AdvertisementBar extends Component {
                     return !(el == null || el.trim() === "");
                 });
 
+                // BAD
+                // BAD
+                // BAD
+                // BAD
+                // BAD
+                if(curTexts.length >= 1){
+                    let el = document.getElementById("InformationPanel__title-container");
+                    if(el !== null) {
+                        el.style.borderTop = "0px solid black";
+                    }
+                    el = document.getElementById("InformationPanel__panel");
+                    if(el !== null) {
+                        el.style.borderTop = "0px solid black";
+                    }
+                    el = document.getElementById("RadioBox");
+                    if(el !== null) {
+                        el.style.top = "30px";
+                    }
+                }
+
                 this.setState({
                     curPage: curPage,
                     curTexts: curTexts,

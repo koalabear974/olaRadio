@@ -86,15 +86,16 @@ export default class InformationPanel extends Component {
 
         return (
             <div className={'InformationPanel'}>
-                <div className="InformationPanel__title-container" onClick={this.onOpenClick}>
+                <div className="InformationPanel__title-container"
+                     id={"InformationPanel__title-container"}
+                     onClick={this.onOpenClick}>
                     <div className="InformationPanel__title">
                         Informations
                     </div>
                 </div>
                 <div
-                    className={
-                        "InformationPanel__panel "
-                    }
+                    className={"InformationPanel__panel"}
+                    id={"InformationPanel__panel"}
                     style={{
                         left: -(this.state.panelOpenPx + PANEL_WIDTH_ZERO) + 'vw',
                     }}

@@ -145,7 +145,10 @@ export default class RadioBox extends Component {
         let isExternalLink = !!this.state.externalLink;
 
         return (
-            <div className={'RadioBox'}>
+            <div
+                className={'RadioBox'}
+                id={'RadioBox'}
+            >
                 <h3 className={'RadioBox__head'}>
                     Direct
                     {this.state.isPlaying && <div className={'RadioBox__redDot blink'}></div>}
