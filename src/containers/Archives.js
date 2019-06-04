@@ -19,18 +19,20 @@ export default class Archives extends Component {
     }
 
     componentDidMount() {
-        base.fetch('emissions', {
-            context: this,
-            then(data) {
-                this.setState({emissions: data});
-            }
-        });
-        base.fetch('categories', {
-            context: this,
-            then(data) {
-                this.setState({categories: data});
-            }
-        });
+        if(this.props.emissions === undefined && this.props.categories === undefined ) {
+            base.fetch('emissions', {
+                context: this,
+                then(data) {
+                    this.setState({emissions: data});
+                }
+            });
+            base.fetch('categories', {
+                context: this,
+                then(data) {
+                    this.setState({categories: data});
+                }
+            });
+        }
     }
 
     isLoading() {
