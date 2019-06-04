@@ -13,7 +13,6 @@ import AccordionPanel from "react-accordion-with-header/es/AccordionPanel";
 import InformationPanel from "./InformationPanel";
 import Archives from "./Archives";
 import Information from "./Information";
-import Loading from "../components/Loading";
 
 export default class MobileHome extends Component {
   constructor(props) {
@@ -91,7 +90,13 @@ export default class MobileHome extends Component {
 
     render() {
         if (this.isLoading()) {
-            return (<Loading />);
+            return <div className={'Loading'}>
+                <img
+                    className={'Loading__logo'}
+                    src={'images/logo_black.svg'}
+                    alt={'Olaradio logo'}
+                />
+            </div>
         }
         let latestEmissions = _.filter(this.state.emissions, (o) => {return new Date(o.datetime) < new Date()});
         latestEmissions = (_.sortBy(latestEmissions, (o) => { return (o['datetime'] || 0)})).reverse().slice(0, 10);

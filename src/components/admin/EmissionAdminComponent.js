@@ -3,7 +3,6 @@ import base from "../../db/config";
 import _ from "lodash";
 import EmissionForm from "./common/Emission/EmissionForm";
 import EmissionList from "./common/Emission/EmissionList";
-import Loading from "../Loading";
 
 export default class EmissionAdminComponent extends Component {
     constructor(props) {
@@ -72,7 +71,13 @@ export default class EmissionAdminComponent extends Component {
         const editEmission = this.state.editEmission;
 
         if (_.isEmpty(categoriesArray) || _.isEmpty(emissionsArray)) {
-            return <Loading />;
+            return <div className={'Loading'}>
+                <img
+                    className={'Loading__logo'}
+                    src={'images/logo_black.svg'}
+                    alt={'Olaradio logo'}
+                />
+            </div>;
         }
 
         return (

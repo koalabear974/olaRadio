@@ -4,7 +4,6 @@ import base from "../db/config";
 import EmissionList from "../components/Emission/EmissionList";
 
 import "../styles/Archive.css"
-import Loading from "../components/Loading";
 
 export default class Archives extends Component {
     constructor(props) {
@@ -62,7 +61,13 @@ export default class Archives extends Component {
 
     render() {
         if (this.isLoading()) {
-            return <Loading />
+            return <div className={'Loading'}>
+                <img
+                    className={'Loading__logo'}
+                    src={'images/logo_black.svg'}
+                    alt={'Olaradio logo'}
+                />
+            </div>
         }
         let categories = this.state.categories;
         let emissions = this.state.emissions;

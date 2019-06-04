@@ -4,7 +4,6 @@ import "../styles/containers/InformationPanel.css"
 import _ from "lodash";
 import {FaFacebook, FaInstagram} from "react-icons/fa/index";
 import Footer from "../components/Footer";
-import Loading from "../components/Loading";
 
 export default class Information extends Component {
     constructor(props) {
@@ -20,7 +19,13 @@ export default class Information extends Component {
         if (_.isEmpty(curPage) || _.size(curPage.texts)<1) {
             return (
                 <div className="Information">
-                    <Loading />
+                    <div className={'Loading'}>
+                        <img
+                            className={'Loading__logo'}
+                            src={'images/logo_black.svg'}
+                            alt={'Olaradio logo'}
+                        />
+                    </div>
                 </div>
             );
         }
