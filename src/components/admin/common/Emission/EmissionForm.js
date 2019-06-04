@@ -27,7 +27,7 @@ export default class EmissionForm extends Component {
         super(props);
 
         this.state = {
-            emission: EMISSIONEMPTY,
+            emission: {...EMISSIONEMPTY},
             isEdit: false,
         };
 
@@ -48,9 +48,10 @@ export default class EmissionForm extends Component {
 
     handleSubmit(event) {
         event.preventDefault();
-        this.props.handleSubmit(this.state.emission);
+        let tempEmission = this.state.emission;
+        this.props.handleSubmit(tempEmission);
         this.setState({
-            emission: EMISSIONEMPTY,
+            emission: {...EMISSIONEMPTY},
             isEdit: false,
         });
     }
