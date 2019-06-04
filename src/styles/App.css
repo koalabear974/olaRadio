@@ -283,6 +283,14 @@
     flex-direction: column-reverse;
 }
 
+.Loading__videoContainer {
+    overflow: hidden;
+}
+
+.Loading__videoContainer video {
+    height: 103%;
+}
+
 .Loading__logo {
     width: 10vw;
     margin-top: 10px;
