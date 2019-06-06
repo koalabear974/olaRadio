@@ -180,7 +180,10 @@ export default class RadioBox extends Component {
 
                 <div className={'RadioBox__player'}>
                     <button
-                        className={'RadioBox__control ' + (isExternalLink ? 'RadioBox__control--disabled' : '')}
+                        className={'RadioBox__control '
+                        + (isExternalLink ? 'RadioBox__control--disabled' : '')
+                        + (this.state.isPlaying ? 'RadioBox__control--playing' : '')
+                        }
                         onClick={this.togglePlay}
                     >
                         {
