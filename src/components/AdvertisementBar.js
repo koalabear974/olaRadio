@@ -39,11 +39,11 @@ export default class AdvertisementBar extends Component {
                 if(curTexts.length >= 1){
                     let el = document.getElementById("InformationPanel__title-container");
                     if(el !== null) {
-                        el.style.borderTop = "0px solid black";
+                        // el.style.borderTop = "0px solid black";
                     }
                     el = document.getElementById("InformationPanel__panel");
                     if(el !== null) {
-                        el.style.borderTop = "0px solid black";
+                        // el.style.borderTop = "0px solid black";
                     }
                     el = document.getElementById("RadioBox");
                     if(el !== null) {

@@ -7,6 +7,31 @@ export default class Logo extends Component {
     static propTypes = {
     };
 
+    constructor(props) {
+        super(props);
+
+        this.state = {
+        };
+
+        this.logoPlayer = React.createRef();
+    }
+
+    componentDidMount() {
+        let that = this;
+
+        this.logoPlayer.current.addEventListener("canplay", function() {
+            setTimeout(function() {
+                that.logoPlayer.current.play();
+            }, 1000);
+        });
+
+        this.logoPlayer.current.addEventListener("ended", function() {
+            setTimeout(function() {
+                that.logoPlayer.current.play();
+            }, 1000);
+        });
+    }
+
     render() {
         return (
             <div className={'LogoContainer'}>
@@ -14,11 +39,13 @@ export default class Logo extends Component {
                     className={'LogoContainer__link'}
                     to={'/'}
                 >
-                    <img
+                    <video
                         className={'LogoContainer__logo'}
-                        src={'images/logo_black.svg'}
-                        alt={'Logo of the website'}
-                    />
+                        muted
+                        ref={this.logoPlayer}
+                    >
+                        <source src={'images/animatedLogo2.mp4'} type="video/mp4" />
+                    </video>
                 </Link>
             </div>
         );
