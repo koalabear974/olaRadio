@@ -16,6 +16,15 @@ const sourceFilter = [
     "soundcloud"
 ];
 
+function timeout(ms, promise) {
+    return new Promise(function(resolve, reject) {
+        setTimeout(function() {
+            reject(new Error("timeout"))
+        }, ms)
+        promise.then(resolve, reject)
+    })
+}
+
 export default class RadioBox extends Component {
     static propTypes = {
         externalLink: PropTypes.string,
@@ -108,7 +117,7 @@ export default class RadioBox extends Component {
     }
 
     fetchData() {
-        fetch(CurrentSongUrl)
+        timeout(5000, fetch(CurrentSongUrl))
             .then(response => response.json())
             .then(json => {
                 console.log("Fetching new current song.");
