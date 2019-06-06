@@ -13,6 +13,7 @@
 }
 
 .NavigationBar__link {
+    background-color: #f190bc;
     color: black;
     text-decoration: none;
     margin: 0;
@@ -23,8 +24,8 @@
 
 .NavigationBar__link:hover,
 .NavigationBar__link--active {
-    background: black;
     color: white;
+    background-color: #273583;
 }
 
 .NavigationBar__social {

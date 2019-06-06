@@ -106,7 +106,7 @@ export default class MobileHome extends Component {
         return (
             <div className={'MobileHome'}>
                 <AccordionWithHeader className={"MobileHome__navigator"} actionCallback={this.actionCallback}>
-                    <AccordionNode className={'MobileNavigator__item'} key={0}>
+                    <AccordionNode className={'MobileNavigator__item MobileNavigator__item--yellow'} key={0}>
                         <AccordionHeader
                             className={'MobileNavigator__title'}
                             horizontalAlignment="left"
@@ -122,7 +122,7 @@ export default class MobileHome extends Component {
                             />
                         </AccordionPanel>
                     </AccordionNode>
-                    <AccordionNode className={'MobileNavigator__item'} key={1}>
+                    <AccordionNode className={'MobileNavigator__item MobileNavigator__item--blue'} key={1}>
                         <AccordionHeader
                             className={'MobileNavigator__title'}
                             horizontalAlignment="left"
@@ -142,7 +142,7 @@ export default class MobileHome extends Component {
                             </aside>
                         </AccordionPanel>
                     </AccordionNode>
-                    <AccordionNode className={'MobileNavigator__item'} key={2}>
+                    <AccordionNode className={'MobileNavigator__item MobileNavigator__item--pink'} key={2}>
                         <AccordionHeader
                             className={'MobileNavigator__title'}
                             horizontalAlignment="left"
@@ -155,7 +155,7 @@ export default class MobileHome extends Component {
                             <Information infoPage={infoPage}/>
                         </AccordionPanel>
                     </AccordionNode>
-                    <AccordionNode className={'MobileNavigator__item'} key={3}>
+                    <AccordionNode className={'MobileNavigator__item MobileNavigator__item--yellow'} key={3}>
                         <AccordionHeader
                             className={'MobileNavigator__title'}
                             horizontalAlignment="left"

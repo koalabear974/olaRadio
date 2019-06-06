@@ -40,6 +40,11 @@
     border: 0;
     cursor: pointer;
     background: none;
+    color: #273583;
+}
+
+.RadioBox__control--playing {
+    color: #ffed00;
 }
 
 .RadioBox__control--disabled {
@@ -74,7 +79,7 @@
     display: inline-block;
     width: 20px;
     height: 20px;
-    background: red;
+    background: #f190bc;
     border-radius: 20px;
     margin-left: 10px;
 }
