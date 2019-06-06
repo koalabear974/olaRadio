@@ -10,8 +10,8 @@ export default class Loading extends Component {
         return (
             <div className={'Loading'}>
                 <div className="Loading__videoContainer">
-                    <video width="320" height="240" autoPlay={"autoPlay"} loop>
-                        <source src={'images/loading.mp4'} type="video/mp4" />
+                    <video width="320" height="240" autoPlay loop muted>
+                        <source src={'images/radioAnimated2.mp4'} type="video/mp4" />
                     </video>
                 </div>
             </div>
