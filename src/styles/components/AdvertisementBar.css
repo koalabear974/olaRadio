@@ -35,18 +35,18 @@
 }
 /* Move it (define the animation) */
 @-moz-keyframes marquee2 {
-    0%   { -moz-transform: translateX(100%); }
+    0%   { -moz-transform: translateX(75%); }
     100% { -moz-transform: translateX(-100%); }
 }
 @-webkit-keyframes marquee2 {
-    0%   { -webkit-transform: translateX(100%); }
+    0%   { -webkit-transform: translateX(75%); }
     100% { -webkit-transform: translateX(-100%); }
 }
 @keyframes marquee2 {
     0%   {
-        -moz-transform: translateX(100%); /* Firefox bug fix */
-        -webkit-transform: translateX(100%); /* Firefox bug fix */
-        transform: translateX(100%);
+        -moz-transform: translateX(75%); /* Firefox bug fix */
+        -webkit-transform: translateX(75%); /* Firefox bug fix */
+        transform: translateX(75%);
     }
     100% {
         -moz-transform: translateX(-100%); /* Firefox bug fix */

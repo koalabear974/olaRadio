@@ -64,10 +64,20 @@ export default class AdvertisementBar extends Component {
             return "";
         }
 
+        let curTexts = this.state.curTexts;
+        let speed = curTexts.length >= 1 ? curTexts[0].length/4.5 : 0 ;
+        // let el = document.getElementById("AdvertisementBar__marquee");
+        let style = {
+            "MozAnimationDuration": speed+"s",
+            "WebkitAnimationDuration": speed+"s",
+            "animationDuration": speed+"s"
+        };
+
+
         return (
             <div className={'AdvertisementBar'}>
-                <span className="AdvertisementBar__marquee">
-                    {this.state.curTexts.map((i) => {return i;})}
+                <span id="AdvertisementBar__marquee" className="AdvertisementBar__marquee" style={style}>
+                    {curTexts.map((i) => {return i;})}
                 </span>
             </div>
         );
