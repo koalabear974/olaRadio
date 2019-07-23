@@ -6,6 +6,7 @@
     max-height: 100vh;
     position: relative;
     text-align: justify;
+    z-index: 11;
 }
 
 .InformationPanel__panel {

@@ -70,11 +70,12 @@ export default class RadioBox extends Component {
     }
 
     componentDidMount(){
+        let that = this;
         this.audioPlayer.current.audioEl.addEventListener('error', function(e) {
             console.log('uh oh');
             console.log(e);
-            this.setState({isPlaying: false});
-            this.audioPlayer.current.audioEl.pause();
+            that.setState({isPlaying: false});
+            that.audioPlayer.current.audioEl.pause();
         });
 
         this.fetchData();

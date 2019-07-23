@@ -112,10 +112,16 @@ export default class ExternalPlayer extends Component {
 
     render() {
         let isExternalLink = this.state.externalLink && this.state.externalWidgetLink;
+        let styleOffset = document.getElementById("AdvertisementBar--present") === null ?
+            "0px" : "25px" ;
 
         if (isExternalLink) {
             return (
-                <div className={'ExternalPlayer ' + ('ExternalPlayer--' + this.state.moduleType)}>
+                <div
+                    id="ExternalPlayer"
+                    className={'ExternalPlayer ' + ('ExternalPlayer--' + this.state.moduleType)}
+                    style={{"bottom": styleOffset}}
+                >
                     <div className={'ExternalPlayer__external-box'}>
                         { this.generateExternalIframe() }
                     </div>

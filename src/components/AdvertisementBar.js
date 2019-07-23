@@ -37,18 +37,7 @@ export default class AdvertisementBar extends Component {
                 // BAD
                 // BAD
                 if(curTexts.length >= 1){
-                    let el = document.getElementById("InformationPanel__title-container");
-                    if(el !== null) {
-                        // el.style.borderTop = "0px solid black";
-                    }
-                    el = document.getElementById("InformationPanel__panel");
-                    if(el !== null) {
-                        // el.style.borderTop = "0px solid black";
-                    }
-                    el = document.getElementById("RadioBox");
-                    if(el !== null) {
-                        el.style.top = "30px";
-                    }
+                    this.moveStyling();
                 }
 
                 this.setState({
@@ -57,6 +46,25 @@ export default class AdvertisementBar extends Component {
                 });
             }
         });
+    }
+
+    moveStyling() {
+        let el = document.getElementById("InformationPanel__title-container");
+        if(el !== null) {
+            // el.style.borderTop = "0px solid black";
+        }
+        el = document.getElementById("InformationPanel__panel");
+        if(el !== null) {
+            // el.style.borderTop = "0px solid black";
+        }
+        el = document.getElementById("RadioBox");
+        if(el !== null) {
+            el.style.top = "30px";
+        }
+        el = document.getElementById("CookieWarning");
+        if(el !== null) {
+            el.style.bottom = "30px";
+        }
     }
 
     render() {
@@ -75,7 +83,7 @@ export default class AdvertisementBar extends Component {
 
 
         return (
-            <div className={'AdvertisementBar'}>
+            <div id="AdvertisementBar--present" className={'AdvertisementBar'}>
                 <span id="AdvertisementBar__marquee" className="AdvertisementBar__marquee" style={style}>
                     {curTexts.map((i) => {return i;})}
                 </span>
