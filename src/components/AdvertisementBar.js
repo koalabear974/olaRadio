@@ -27,9 +27,9 @@ export default class AdvertisementBar extends Component {
                     return v.slug === 'pub';
                 });
 
-                let curTexts = curPage.texts.filter(function (el) {
+                let curTexts = curPage.texts ? curPage.texts.filter(function (el) {
                     return !(el == null || el.trim() === "");
-                });
+                }) : [];
 
                 // BAD
                 // BAD
