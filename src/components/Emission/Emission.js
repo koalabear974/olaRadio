@@ -1,10 +1,11 @@
 import React, {Component} from "react";
 import PropTypes from "prop-types";
 import moment from 'moment';
+import handleViewport from 'react-in-viewport';
 
 import "../../styles/components/Emission.css"
 
-export default class Emission extends Component {
+class Emission extends Component {
     static propTypes = {
         emission: PropTypes.object,
         onEmissionClick: PropTypes.func.isRequired,
@@ -13,8 +14,6 @@ export default class Emission extends Component {
     constructor(props) {
         super(props);
 
-        this.state = {
-        };
         this.onEmissionClick = this.onEmissionClick.bind(this);
     }
 
@@ -24,6 +23,7 @@ export default class Emission extends Component {
     }
 
     render() {
+        const { inViewport, enterCount } = this.props;
         let emission = this.props.emission;
         //TODO change to proper verification
         let isFeatured = (this.props.emission.categories || []).includes("1539086792337");
@@ -51,17 +51,12 @@ export default class Emission extends Component {
             <article className={"Emission"}>
                 <div className="Emission__imageContainer">
                     {
-                        (emission.link && emission.link !== "") ?
+                        (inViewport || (!inViewport && enterCount > 1)) && 
                             <a target={'_blank'} onClick={this.onEmissionClick} href={emission.link}><img
                                 className={'Emission__image'}
                                 src={emission.image}
                                 alt={emission.name}
-                            /></a> :
-                            <img
-                                className={'Emission__image'}
-                                src={emission.image}
-                                alt={emission.name}
-                            />
+                            /></a>
                     }
                 </div>
                 {
@@ -78,3 +73,5 @@ export default class Emission extends Component {
         );
     }
 }
+
+export default handleViewport(Emission);
