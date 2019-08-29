@@ -13,3 +13,10 @@
     width: 20vw;
     max-width: 200px;
 }
+
+.AppContainer--mobile .LogoContainer {
+    padding: 1vh 0;
+}
+.AppContainer--mobile .LogoContainer__logo {
+    width: 50vw;
+}

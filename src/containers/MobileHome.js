@@ -13,6 +13,7 @@ import AccordionPanel from "react-accordion-with-header/es/AccordionPanel";
 import InformationPanel from "./InformationPanel";
 import Archives from "./Archives";
 import Information from "./Information";
+import Loading from "../components/Loading";
 
 export default class MobileHome extends Component {
   constructor(props) {
@@ -90,13 +91,7 @@ export default class MobileHome extends Component {
 
     render() {
         if (this.isLoading()) {
-            return <div className={'Loading'}>
-                <img
-                    className={'Loading__logo'}
-                    src={'images/logo_black.svg'}
-                    alt={'Olaradio logo'}
-                />
-            </div>
+            return (<Loading />);
         }
         let latestEmissions = _.filter(this.state.emissions, (o) => {return new Date(o.datetime) < new Date()});
         latestEmissions = (_.sortBy(latestEmissions, (o) => { return (o['datetime'] || 0)})).reverse().slice(0, 10);
@@ -106,7 +101,7 @@ export default class MobileHome extends Component {
         return (
             <div className={'MobileHome'}>
                 <AccordionWithHeader className={"MobileHome__navigator"} actionCallback={this.actionCallback}>
-                    <AccordionNode className={'MobileNavigator__item'} key={0}>
+                    <AccordionNode className={'MobileNavigator__item MobileNavigator__item--yellow'} key={0}>
                         <AccordionHeader
                             className={'MobileNavigator__title'}
                             horizontalAlignment="left"
@@ -122,7 +117,7 @@ export default class MobileHome extends Component {
                             />
                         </AccordionPanel>
                     </AccordionNode>
-                    <AccordionNode className={'MobileNavigator__item'} key={1}>
+                    <AccordionNode className={'MobileNavigator__item MobileNavigator__item--blue'} key={1}>
                         <AccordionHeader
                             className={'MobileNavigator__title'}
                             horizontalAlignment="left"
@@ -142,7 +137,7 @@ export default class MobileHome extends Component {
                             </aside>
                         </AccordionPanel>
                     </AccordionNode>
-                    <AccordionNode className={'MobileNavigator__item'} key={2}>
+                    <AccordionNode className={'MobileNavigator__item MobileNavigator__item--pink'} key={2}>
                         <AccordionHeader
                             className={'MobileNavigator__title'}
                             horizontalAlignment="left"
@@ -155,7 +150,7 @@ export default class MobileHome extends Component {
                             <Information infoPage={infoPage}/>
                         </AccordionPanel>
                     </AccordionNode>
-                    <AccordionNode className={'MobileNavigator__item'} key={3}>
+                    <AccordionNode className={'MobileNavigator__item MobileNavigator__item--yellow'} key={3}>
                         <AccordionHeader
                             className={'MobileNavigator__title'}
                             horizontalAlignment="left"

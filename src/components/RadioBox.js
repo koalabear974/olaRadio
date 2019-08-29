@@ -16,6 +16,15 @@ const sourceFilter = [
     "soundcloud"
 ];
 
+function timeout(ms, promise) {
+    return new Promise(function(resolve, reject) {
+        setTimeout(function() {
+            reject(new Error("timeout"))
+        }, ms)
+        promise.then(resolve, reject)
+    })
+}
+
 export default class RadioBox extends Component {
     static propTypes = {
         externalLink: PropTypes.string,
@@ -61,11 +70,12 @@ export default class RadioBox extends Component {
     }
 
     componentDidMount(){
+        let that = this;
         this.audioPlayer.current.audioEl.addEventListener('error', function(e) {
             console.log('uh oh');
             console.log(e);
-            this.setState({isPlaying: false});
-            this.audioPlayer.current.audioEl.pause();
+            that.setState({isPlaying: false});
+            that.audioPlayer.current.audioEl.pause();
         });
 
         this.fetchData();
@@ -108,7 +118,7 @@ export default class RadioBox extends Component {
     }
 
     fetchData() {
-        fetch(CurrentSongUrl)
+        timeout(5000, fetch(CurrentSongUrl))
             .then(response => response.json())
             .then(json => {
                 console.log("Fetching new current song.");
@@ -145,7 +155,10 @@ export default class RadioBox extends Component {
         let isExternalLink = !!this.state.externalLink;
 
         return (
-            <div className={'RadioBox'}>
+            <div
+                className={'RadioBox'}
+                id={'RadioBox'}
+            >
                 <h3 className={'RadioBox__head'}>
                     Direct
                     {this.state.isPlaying && <div className={'RadioBox__redDot blink'}></div>}
@@ -177,7 +190,10 @@ export default class RadioBox extends Component {
 
                 <div className={'RadioBox__player'}>
                     <button
-                        className={'RadioBox__control ' + (isExternalLink ? 'RadioBox__control--disabled' : '')}
+                        className={'RadioBox__control '
+                        + (isExternalLink ? 'RadioBox__control--disabled' : '')
+                        + (this.state.isPlaying ? 'RadioBox__control--playing' : '')
+                        }
                         onClick={this.togglePlay}
                     >
                         {

@@ -10,7 +10,8 @@ export default class EmissionList extends Component {
 
     static propTypes = {
         categories: PropTypes.object,
-        handleEditClick: PropTypes.func
+        handleEditClick: PropTypes.func,
+        handleDeleteClick: PropTypes.func
     };
 
     constructor(props) {
@@ -30,7 +31,7 @@ export default class EmissionList extends Component {
 
     onDeleteClick(id){
         if(window.confirm("Supprimer l'emission?")) {
-            this.props.onDeleteClick(id);
+            this.props.handleDeleteClick(id);
         }
     }
 

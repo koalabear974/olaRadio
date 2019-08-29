@@ -27,7 +27,7 @@ export default class EmissionForm extends Component {
         super(props);
 
         this.state = {
-            emission: EMISSIONEMPTY,
+            emission: {...EMISSIONEMPTY},
             isEdit: false,
         };
 
@@ -48,9 +48,10 @@ export default class EmissionForm extends Component {
 
     handleSubmit(event) {
         event.preventDefault();
-        this.props.handleSubmit(this.state.emission);
+        let tempEmission = this.state.emission;
+        this.props.handleSubmit(tempEmission);
         this.setState({
-            emission: EMISSIONEMPTY,
+            emission: {...EMISSIONEMPTY},
             isEdit: false,
         });
     }
@@ -90,7 +91,7 @@ export default class EmissionForm extends Component {
         let curFile = file[0];
         let that = this;
 
-        curFile.resizeImage(540, function (result) {
+        curFile.resizeImage(200, function (result) {
             let newFileRef = that.storageRef.child(curFile.name);
             newFileRef.putString(result, 'data_url').then(function(snap) {
                 console.log("File uploaded.");

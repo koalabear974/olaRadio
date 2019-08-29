@@ -17,11 +17,12 @@
 .Emission__imageContainer {
     flex: 0 0 200px;
     height: 200px;
-    border: 6px solid black;
+    border: 4px solid black;
 }
 
 .Emission__image {
-
+    width: 100%;
+    height: 100%;
 }
 
 .Emission--featured .Emission__name {
@@ -71,7 +72,7 @@
 }
 
 .EmissionCalendar__date > span {
-    border-bottom: 5px solid black;
+    border-bottom: 3px solid black;
     padding-bottom: 4px;
 }
 

@@ -3,6 +3,7 @@ import _ from 'lodash';
 import base from "../db/config";
 
 import "../styles/containers/About.css"
+import Loading from "../components/Loading";
 
 export default class About extends Component {
     constructor(props) {
@@ -39,13 +40,7 @@ export default class About extends Component {
         let curImages = this.state.curImages;
 
         if (_.isEmpty(curPage) || _.size(curPage.texts)<3) {
-            return <div className={'Loading'}>
-                <img
-                    className={'Loading__logo'}
-                    src={'images/logo_black.svg'}
-                    alt={'Olaradio logo'}
-                />
-            </div>
+            return <Loading />
         }
         return (
             <div className={'About'}>

@@ -4,6 +4,7 @@ import base from "../db/config";
 import EmissionList from "../components/Emission/EmissionList";
 
 import "../styles/Archive.css"
+import Loading from "../components/Loading";
 
 export default class Archives extends Component {
     constructor(props) {
@@ -19,18 +20,20 @@ export default class Archives extends Component {
     }
 
     componentDidMount() {
-        base.fetch('emissions', {
-            context: this,
-            then(data) {
-                this.setState({emissions: data});
-            }
-        });
-        base.fetch('categories', {
-            context: this,
-            then(data) {
-                this.setState({categories: data});
-            }
-        });
+        if(this.props.emissions === undefined && this.props.categories === undefined ) {
+            base.fetch('emissions', {
+                context: this,
+                then(data) {
+                    this.setState({emissions: data});
+                }
+            });
+            base.fetch('categories', {
+                context: this,
+                then(data) {
+                    this.setState({categories: data});
+                }
+            });
+        }
     }
 
     isLoading() {
@@ -39,7 +42,10 @@ export default class Archives extends Component {
     }
 
     displaySection(section) {
-        section.emissions = (_.sortBy(section.emissions, (o) => { return (o['datetime'] || 0)})).reverse();
+        section.emissions = (_.sortBy(section.emissions, (o) => { return (o['datetime'] || 0)}))
+            .filter(emission => emission.link != false)
+            .reverse();
+
         return (
           <div className={'Archive__section'} key={section.category.id}>
               <h2 className={'Archive__section-title'}>{section.category.name}</h2>
@@ -59,13 +65,7 @@ export default class Archives extends Component {
 
     render() {
         if (this.isLoading()) {
-            return <div className={'Loading'}>
-                <img
-                    className={'Loading__logo'}
-                    src={'images/logo_black.svg'}
-                    alt={'Olaradio logo'}
-                />
-            </div>
+            return <Loading />
         }
         let categories = this.state.categories;
         let emissions = this.state.emissions;
