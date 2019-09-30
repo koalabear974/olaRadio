@@ -64,18 +64,17 @@
     border-bottom: 4px solid black;
 }
 
-.MobileNavigator__item--blue {
-    background-color: #273583;
-    color: white;
+.MobileNavigator__item--black {
+    background-color: black;
 }
-.MobileNavigator__item--blue * {
+
+.MobileNavigator__item--black * {
     color: white !important;
 }
-.MobileNavigator__item--pink {
-    background-color: #f190bc;
-}
-.MobileNavigator__item--yellow {
-    background-color: #ffed00;
+
+.MobileNavigator__item--white {
+    background-color: white;
+    color: black;
 }
 
 .MobileNavigator__content .Archive {

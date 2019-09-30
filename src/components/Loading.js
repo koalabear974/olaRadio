@@ -25,10 +25,8 @@ export default class Loading extends Component {
 
         return (
             <div className={'Loading'}>
-                <div className="Loading__videoContainer">
-                    <video width="320" height="240" autoPlay loop muted playsinline preload="yes">
-                        <source src={'images/radioAnimated2.mp4'} type="video/mp4" />
-                    </video>
+                <div className="Loading__container">
+                    <img src={"images/logo_white_text.svg"} alt="Radio loading"/>
                 </div>
             </div>
         );

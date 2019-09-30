@@ -41,6 +41,12 @@ const PAGES = [
 const history = createBrowserHistory();
 
 class App extends Component {
+    getRandomInt(min, max) {
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min)) + min;
+    }
+
     constructor(props) {
         super(props);
         this.state = {
@@ -75,6 +81,8 @@ class App extends Component {
                 this.setState({isVerified: !!user, errors: ""})
             }
         );
+
+        this.randomBackgroundId = this.getRandomInt(1, 5);
     }
 
     componentWillUnmount() {
@@ -124,8 +132,6 @@ class App extends Component {
         let cookieWorning = (isMobile ?
             "" : <CookieWarning />);
 
-
-
         let appBody = (isMobile ?
                 <div className={'AppContainer__body AppContainer__body--mobile'}>
                     <Logo/>
@@ -141,7 +147,7 @@ class App extends Component {
 
         return (
             <Router history={history}>
-                <div className={'AppContainer' + (isMobile ? ' AppContainer--mobile' : '')}>
+                <div className={'AppContainer AppContainer-' + this.randomBackgroundId + (isMobile ? ' AppContainer--mobile' : '')}>
                     <div className={'AppContainer__container AppContainer__top'}>
                         <AdvertisementBar />
                     </div>

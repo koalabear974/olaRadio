@@ -24,7 +24,7 @@
     overflow-y: scroll;
     border-top: 4px solid black;
     border-bottom: 4px solid black;
-    background-color: #f190bc;
+    background-color: white;
 }
 
 .InformationPanel__title {
@@ -49,7 +49,7 @@
     border: 4px solid;
     border-left: 0;
     z-index: 11;
-    background-color: #f190bc;
+    background-color: white;
 }
 
 .Information__title {

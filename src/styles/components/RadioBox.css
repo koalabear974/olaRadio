@@ -4,6 +4,7 @@
     border: 4px solid black;
     flex-wrap: wrap;
     flex-direction: column;
+    background-color: white;
 }
 
 .AppContainer--mobile .RadioBox {
@@ -40,11 +41,11 @@
     border: 0;
     cursor: pointer;
     background: none;
-    color: #273583;
+    color: black;
 }
 
 .RadioBox__control--playing {
-    color: #ffed00;
+    color: black;
 }
 
 .RadioBox__control--disabled {
@@ -75,11 +76,11 @@
     padding-left: 5px;
 }
 
-.RadioBox__redDot {
+.RadioBox__blackDot {
     display: inline-block;
     width: 20px;
     height: 20px;
-    background: #f190bc;
+    background: black;
     border-radius: 20px;
     margin-left: 10px;
 }

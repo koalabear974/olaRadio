@@ -161,7 +161,7 @@ export default class RadioBox extends Component {
             >
                 <h3 className={'RadioBox__head'}>
                     Direct
-                    {this.state.isPlaying && <div className={'RadioBox__redDot blink'}></div>}
+                    {this.state.isPlaying && <div className={'RadioBox__blackDot blink'}></div>}
                 </h3>
 
                 <ReactAudioPlayer
