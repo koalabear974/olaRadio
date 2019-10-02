@@ -34,6 +34,7 @@ import ExternalPlayer from "./components/ExternalPlayer";
 import InformationPanel from "./containers/InformationPanel";
 import MobileHome from "./containers/MobileHome";
 import AdvertisementBar from "./components/AdvertisementBar";
+import SoundCloudPlayer from "./components/SoundCloudPlayer";
 
 const PAGES = [
     {path: "Podcasts", text: "Podcasts"},
@@ -125,10 +126,13 @@ class App extends Component {
                 />
             </div>);
 
+        sideBar = "";
+
         let informationPanel = (isMobile ?
             "" : <InformationPanel />);
         let externalPlayer = (isMobile ?
             "" :  <ExternalPlayer externalLink={this.state.currentEmissionLink} onEmissionClear={onEmissionClearFunc} />);
+
         let cookieWorning = (isMobile ?
             "" : <CookieWarning />);
 
@@ -157,6 +161,7 @@ class App extends Component {
                         {externalPlayer}
                         {cookieWorning}
                         {informationPanel}
+                        <SoundCloudPlayer externalLink={this.state.currentEmissionLink}/>;
                     </div>
                 </div>
             </Router>
