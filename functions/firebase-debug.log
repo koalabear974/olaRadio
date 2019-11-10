@@ -1,0 +1,48 @@
+[debug] [2019-10-04T16:59:41.028Z] ----------------------------------------------------------------------
+[debug] [2019-10-04T16:59:41.029Z] Command:       /Users/remi/.nvm/versions/node/v8.9.4/bin/node /Users/remi/.nvm/versions/node/v8.9.4/bin/firebase emulators:start --only functions
+[debug] [2019-10-04T16:59:41.029Z] CLI Version:   7.4.0
+[debug] [2019-10-04T16:59:41.029Z] Platform:      darwin
+[debug] [2019-10-04T16:59:41.029Z] Node Version:  v8.9.4
+[debug] [2019-10-04T16:59:41.030Z] Time:          Fri Oct 04 2019 18:59:41 GMT+0200 (CEST)
+[debug] [2019-10-04T16:59:41.030Z] ----------------------------------------------------------------------
+[debug] 
+[info] i  Starting emulators: ["functions"]
+[info] ✔  functions: Using node@8 from host.
+[info] ✔  functions: Emulator started at http://localhost:5001
+[info] i  functions: Watching "/Users/remi/workspace/olaRadio/functions" for Cloud Functions...
+[debug] [2019-10-04T16:59:41.565Z] [runtime-status] Functions runtime initialized. {"cwd":"/Users/remi/workspace/olaRadio/functions","node_version":"8.9.4"}
+[debug] [2019-10-04T16:59:41.566Z] [runtime-status] Disabled runtime features: undefined {}
+[warn] ⚠  The Cloud Functions emulator requires the module "firebase-admin" to be installed. This package is in your package.json, but it's not available. You probably need to run "npm install" in your functions directory.
+[info] i  functions: Your functions could not be parsed due to an issue with your node_modules (see above)
+[debug] [2019-10-04T16:59:52.436Z] ----------------------------------------------------------------------
+[debug] [2019-10-04T16:59:52.438Z] Command:       /Users/remi/.nvm/versions/node/v8.9.4/bin/node /Users/remi/.nvm/versions/node/v8.9.4/bin/firebase emulators:start --only functions
+[debug] [2019-10-04T16:59:52.438Z] CLI Version:   7.4.0
+[debug] [2019-10-04T16:59:52.438Z] Platform:      darwin
+[debug] [2019-10-04T16:59:52.438Z] Node Version:  v8.9.4
+[debug] [2019-10-04T16:59:52.439Z] Time:          Fri Oct 04 2019 18:59:52 GMT+0200 (CEST)
+[debug] [2019-10-04T16:59:52.439Z] ----------------------------------------------------------------------
+[debug] 
+[info] i  Starting emulators: ["functions"]
+[info] ✔  functions: Using node@8 from host.
+[info] ✔  functions: Emulator started at http://localhost:5001
+[info] i  functions: Watching "/Users/remi/workspace/olaRadio/functions" for Cloud Functions...
+[debug] [2019-10-04T16:59:52.975Z] [runtime-status] Functions runtime initialized. {"cwd":"/Users/remi/workspace/olaRadio/functions","node_version":"8.9.4"}
+[debug] [2019-10-04T16:59:52.975Z] [runtime-status] Disabled runtime features: undefined {}
+[warn] ⚠  The Cloud Functions emulator requires the module "firebase-admin" to be installed. This package is in your package.json, but it's not available. You probably need to run "npm install" in your functions directory.
+[info] i  functions: Your functions could not be parsed due to an issue with your node_modules (see above)
+[debug] [2019-10-04T17:00:22.323Z] ----------------------------------------------------------------------
+[debug] [2019-10-04T17:00:22.324Z] Command:       /Users/remi/.nvm/versions/node/v8.9.4/bin/node /Users/remi/.nvm/versions/node/v8.9.4/bin/firebase emulators:start --only functions
+[debug] [2019-10-04T17:00:22.324Z] CLI Version:   7.4.0
+[debug] [2019-10-04T17:00:22.324Z] Platform:      darwin
+[debug] [2019-10-04T17:00:22.324Z] Node Version:  v8.9.4
+[debug] [2019-10-04T17:00:22.325Z] Time:          Fri Oct 04 2019 19:00:22 GMT+0200 (CEST)
+[debug] [2019-10-04T17:00:22.325Z] ----------------------------------------------------------------------
+[debug] 
+[info] i  Starting emulators: ["functions"]
+[info] ✔  functions: Using node@8 from host.
+[info] ✔  functions: Emulator started at http://localhost:5001
+[info] i  functions: Watching "/Users/remi/workspace/olaRadio/functions" for Cloud Functions...
+[debug] [2019-10-04T17:00:22.862Z] [runtime-status] Functions runtime initialized. {"cwd":"/Users/remi/workspace/olaRadio/functions","node_version":"8.9.4"}
+[debug] [2019-10-04T17:00:22.862Z] [runtime-status] Disabled runtime features: undefined {}
+[warn] ⚠  The Cloud Functions emulator requires the module "firebase-admin" to be installed. This package is in your package.json, but it's not available. You probably need to run "npm install" in your functions directory.
+[info] i  functions: Your functions could not be parsed due to an issue with your node_modules (see above)

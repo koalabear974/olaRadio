@@ -4,15 +4,16 @@ import PropTypes from "prop-types";
 import "./../styles/components/RadioBox.css";
 import _ from "lodash";
 import SoundCloudAudio from 'soundcloud-audio';
+import * as http from "stream-http";
 
 const sourceFilter = [
     "mixcloud",
     "soundcloud"
 ];
 
-export default class SoundCloudPlayer extends Component {
+export default class NewPlayer extends Component {
     static propTypes = {
-        externalLink: PropTypes.string,
+        emission: PropTypes.object,
     };
 
     constructor(props) {
@@ -22,17 +23,17 @@ export default class SoundCloudPlayer extends Component {
             isPlaying: false,
             moduleType: "",
             externalWidgetLink: "",
-            externalLink: this.props.externalLink,
+            emission: this.props.emission,
         };
 
         this.onExternalQuit = this.onExternalQuit.bind(this);
     }
 
     componentWillUpdate(nextProps){
-        if(nextProps.externalLink !== this.state.externalLink) {
+        if(nextProps.emission && nextProps.emission.link !== this.state.emission.link) {
             let passFilter = false;
             _.forEach(sourceFilter, (source) => {
-                if(nextProps.externalLink.match(source)) {
+                if(nextProps.emission.link.match(source)) {
                     passFilter = source;
                 }
             });
@@ -44,13 +45,13 @@ export default class SoundCloudPlayer extends Component {
                     case "mixcloud":
                         widgetLink = "https://www.mixcloud.com/widget/iframe/?hide_cover=1&mini=1&light=1&feed=%2Fola_radio%2F";
 
-                        let array = nextProps.externalLink.split("/");
+                        let array = nextProps.emission.link.split("/");
                         let strippedLink = array[array.length - 1] === "" ? array[array.length - 2] : array[array.length - 1];
                         widgetLink = widgetLink + strippedLink + "%2F";
                         break;
                     case "soundcloud":
                         widgetLink = "https://w.soundcloud.com/player/?url=" +
-                            encodeURI(nextProps.externalLink) + "&" +
+                            encodeURI(nextProps.emission.link) + "&" +
                             "color=%23ff5500&inverse=false&auto_play=false&show_user=true";
                         break;
                     default:
@@ -58,7 +59,7 @@ export default class SoundCloudPlayer extends Component {
                 }
                 this.setState({
                     moduleType: passFilter,
-                    externalLink: nextProps.externalLink,
+                    emission: nextProps.emission,
                     externalWidgetLink: widgetLink,
                     isPlaying: false,
                 });
@@ -98,7 +99,6 @@ export default class SoundCloudPlayer extends Component {
     soundcloudUrl(externalLink) {
         // create new instance of audio
         // clientId is optional but without it you cannot play tracks directly from SoundCloud API
-        const SoundCloudAudio = require('soundcloud-audio');
         const scPlayer = new SoundCloudAudio('32cf5214879b701f8572959b0a0ab630');
         //b5e21578d92314bc753b90ea7c971c1e
         //95f22ed54a5c297b1c41f72d713623ef
@@ -129,10 +129,41 @@ export default class SoundCloudPlayer extends Component {
         });
     }
 
+    async mixcloudUrl(externalLink) {
+        const options = {
+            method: 'GET',
+            headers: {
+                "Access-Control-Allow-Origin": "*",
+                "Access-Control-Allow-Methods": "*",
+                "Access-Control-Allow-Headers": "*"
+            },
+            followRedirect: false
+        };
+
+        //externalLink = 'https://cas.univ-tln.fr/cas/login?service=https%3A%2F%2Fidp.univ-tln.fr%2Fidp%2FAuthn%2FExtCas%3Fconversation%3De1s1&entityId=https%3A%2F%2Fsp.partage.renater.fr%2Funiv-tln'
+
+        var name = "codemzy";
+        //var url = "http://anyorigin.com/go?url=" + encodeURIComponent(externalLink) + name + "&callback=?";
+        var url = "http://www.whateverorigin.org/" + encodeURIComponent("https://audio12.mixcloud.com/secure/dash2/6/6/f/0/6bcc-0944-460e-b7bf-dc5e5ed7f3f9.m4a/manifest.mpd")+ '&callback=?';
+        //request.get(url, function(response) {  console.log(response);});
+        //var url = "https://crossorigin.me/" + ("https://audio12.mixcloud.com/secure/dash2/6/6/f/0/6bcc-0944-460e-b7bf-dc5e5ed7f3f9.m4a/manifest.mpd")
+        
+        http.get(url, function (res) {
+            var div = document.getElementById('result');
+            div.innerHTML += 'GET /beep<br>';
+
+            res.on('data', function (buf) {
+                div.innerHTML += buf;
+            });
+
+            res.on('end', function () {
+                div.innerHTML += '<br>__END__';
+            });
+        })
+    }
+
     render() {
         let isExternalLink = this.state.externalLink && this.state.externalWidgetLink;
-        this.soundcloudUrl(this.props.externalLink);
-
         return (
             <div className={'ExternalPlayer'}>
                 aa

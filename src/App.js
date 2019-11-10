@@ -34,7 +34,7 @@ import ExternalPlayer from "./components/ExternalPlayer";
 import InformationPanel from "./containers/InformationPanel";
 import MobileHome from "./containers/MobileHome";
 import AdvertisementBar from "./components/AdvertisementBar";
-import SoundCloudPlayer from "./components/SoundCloudPlayer";
+import NewPlayer from "./components/NewPlayer";
 
 const PAGES = [
     {path: "Podcasts", text: "Podcasts"},
@@ -90,12 +90,13 @@ class App extends Component {
         this.unregisterAuthObserver();
     }
 
-    onEmissionClick(link) {
-        this.setState({currentEmissionLink: link});
+    onEmissionClick(emission) {
+        console.log(emission)
+        this.setState({currentEmission: emission});
     }
 
     onEmissionClear() {
-        this.setState({currentEmissionLink: ""});
+        this.setState({currentEmission: ""});
     }
 
     render() {
@@ -118,7 +119,6 @@ class App extends Component {
         let sideBar = (isMobile ?
             "" : <div className={'AppContainer__sideBar'}>
                 <Logo/>
-                <RadioBox externalLink={this.state.currentEmissionLink} onEmissionClear={onEmissionClearFunc} />
                 <Navigation
                     pageArray={PAGES}
                     currentPage={this.state.currentPage}
@@ -131,7 +131,7 @@ class App extends Component {
         let informationPanel = (isMobile ?
             "" : <InformationPanel />);
         let externalPlayer = (isMobile ?
-            "" :  <ExternalPlayer externalLink={this.state.currentEmissionLink} onEmissionClear={onEmissionClearFunc} />);
+            "" :  <ExternalPlayer emission={this.state.currentEmission} onEmissionClear={onEmissionClearFunc} />);
 
         let cookieWorning = (isMobile ?
             "" : <CookieWarning />);
@@ -139,9 +139,8 @@ class App extends Component {
         let appBody = (isMobile ?
                 <div className={'AppContainer__body AppContainer__body--mobile'}>
                     <Logo/>
-                    <RadioBox externalLink={this.state.currentEmissionLink} />
                     <MobileHome onEmissionClick={this.onEmissionClick} />
-                    <ExternalPlayer externalLink={this.state.currentEmissionLink} onEmissionClear={onEmissionClearFunc} />
+                    <ExternalPlayer emission={this.state.currentEmission} onEmissionClear={onEmissionClearFunc} />
                     <CookieWarning/>
                 </div> :
                 <div className={'AppContainer__body'}>
@@ -161,7 +160,7 @@ class App extends Component {
                         {externalPlayer}
                         {cookieWorning}
                         {informationPanel}
-                        <SoundCloudPlayer externalLink={this.state.currentEmissionLink}/>;
+                        <NewPlayer externalLink={this.state.currentEmissionLink}/>;
                     </div>
                 </div>
             </Router>

@@ -19,7 +19,7 @@ class Emission extends Component {
 
     onEmissionClick(e) {
         e.preventDefault();
-        this.props.onEmissionClick(this.props.emission.link);
+        this.props.onEmissionClick(this.props.emission);
     }
 
     render() {
