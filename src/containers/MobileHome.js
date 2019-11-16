@@ -93,7 +93,7 @@ export default class MobileHome extends Component {
         if (this.isLoading()) {
             return (<Loading />);
         }
-        let latestEmissions = _.filter(this.state.emissions, (o) => {return new Date(o.datetime) < new Date()});
+        let latestEmissions = _.filter(this.state.emissions, (o) => {return (new Date(o.datetime) < new Date()) && (o.link != false)});
         latestEmissions = (_.sortBy(latestEmissions, (o) => { return (o['datetime'] || 0)})).reverse().slice(0, 10);
         let homePage = this.state.homePage;
         let infoPage = this.state.infoPage;
