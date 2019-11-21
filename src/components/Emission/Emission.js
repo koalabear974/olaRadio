@@ -51,7 +51,7 @@ class Emission extends Component {
             <article className={"Emission"}>
                 <div className="Emission__imageContainer">
                     {
-                        (inViewport || (!inViewport && enterCount > 1)) && 
+                        (inViewport || (!inViewport && enterCount > 0)) &&
                             <a target={'_blank'} onClick={this.onEmissionClick} href={emission.link}><img
                                 className={'Emission__image'}
                                 src={emission.image}
