@@ -62,7 +62,7 @@
 
 .AppContainer__body--mobile {
     width: 100vw;
-    height: 100%;
+    height: 100vh;
     overflow-y: unset;
     max-height: unset;
 }
@@ -282,11 +282,15 @@
 }
 
 .Loading__container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     overflow: hidden;
+    width: 30%;
 }
 
 .Loading__container img {
-    width: 50%;
+    width: 100%;
 }
 
 .Loading__logo {
