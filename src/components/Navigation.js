@@ -27,6 +27,12 @@ export default class Navigation extends Component {
                         <span>{page.text}</span>
                     </NavLink>
                 ))}
+                <a
+                    href='https://www.helloasso.com/associations/ola-radio/formulaires/1/widget'
+                    target='_blank'
+                    className={'NavigationBar__link'}>
+                    <span>Donate</span>
+                </a>
                 <li className={'NavigationBar__social hidden'} >
                     <a className={'Social__link'} target={'blank'} href="https://www.facebook.com/Ola-Radio-2003400579719885/">
                         <FaFacebook className="Teaser__icon Teaser__links-fb"/>
