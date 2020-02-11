@@ -167,6 +167,13 @@ export default class MobileHome extends Component {
                             />
                         </AccordionPanel>
                     </AccordionNode>
+                    <div className={'MobileNavigator__item MobileNavigator__item--black'} key={3}>
+                        <a href='https://www.helloasso.com/associations/ola-radio/formulaires/1/widget' target='_blank'>
+                            <div className={'MobileNavigator__title'}>
+                                <h3>Donate</h3>
+                            </div>
+                        </a>
+                    </div>
                 </AccordionWithHeader>
 
                 <div className={'MobileHome__bottom'}>
