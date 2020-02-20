@@ -9,7 +9,6 @@
     flex-wrap: wrap;
     flex: 1 1 auto;
     position: relative;
-    color: black;
     font-family: Companion, serif;
 
     scroll-behavior: smooth;
@@ -43,10 +42,6 @@
     flex: 0 0 15px;
     text-align: left;
     font-size: 0.6em;
-}
-
-.AppContainer__legal {
-    color: black;
 }
 
 .AppContainer__body {
@@ -90,7 +85,8 @@
     margin: 0;
     position: absolute;
     top: -8px;
-    border-bottom: 4px solid black;
+    border-bottom-style: solid;
+    border-bottom-width: 4px;
     left: 0;
     max-width: 100vw;
     width: 100vw;
@@ -162,20 +158,21 @@
     position: absolute;
     z-index: 11;
     width: 100%;
-    background: white;
     text-align: center;
     bottom: 0;
     left: 0;
     height: 55px;
     padding-top: 5px;
-    border-top: 4px solid black;
+    border-top-style: solid;
+    border-top-width: 4px;
     font-size: 14px;
     font-weight: bold;
 }
 
 .AppContainer--mobile .CookieWarning {
     height: 102px;
-    border-bottom: 4px solid black;
+    border-bottom-style: solid;
+    border-bottom-width: 4px;
     position: sticky;
     flex: 0;
 }
@@ -187,14 +184,11 @@
 }
 
 .CookieWarning a {
-    color: black;
     font-style: italic;
 }
 
 .CookieWarning button {
     margin: 5px 20px;
-    background: black;
-    color: white;
     text-transform: uppercase;
     border: 0;
     font-weight: bold;
@@ -210,12 +204,10 @@
 }
 
 .MobileNavigator__button {
-    color: black;
     border-radius: 80px;
 }
 
 .MobileNavigator__button:hover {
-    color: black;
     background-color: transparent;
 }
 

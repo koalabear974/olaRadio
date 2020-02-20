@@ -67,7 +67,8 @@
     width: 200vw;
     margin-left: -20vw;
     margin-top: -11.5vw;
-    border: 1.5vw solid black;
+    border-width: 1.5vw;
+    border-style: solid;
 }
 
 .Teaser__links {

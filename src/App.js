@@ -1,21 +1,10 @@
 import React, {Component} from "react";
 import Responsive from 'react-responsive-decorator';
-import {
-    Router,
-    Switch,
-    Route,
-    Redirect
-} from "react-router-dom";
+import {Router, Switch, Route, Redirect} from "react-router-dom";
 import {createBrowserHistory} from 'history';
-
-import "typeface-open-sans";
-
-import "./styles/Teaser.css";
-import * as utils from './common/util';
-
 import firebase from 'firebase/app';
 import 'firebase/auth';
-
+import * as utils from './common/util';
 import Home from "./containers/Home";
 import Navigation from "./components/Navigation";
 import Support from "./containers/Support"
@@ -24,9 +13,6 @@ import Legal from "./containers/Legal"
 import Archives from "./containers/Archives"
 import Admin from "./containers/Admin"
 import NotFoundPage from "./containers/NotFoundPage";
-
-import "./styles/App.css";
-
 import RadioBox from "./components/RadioBox";
 import Logo from "./components/Logo";
 import CookieWarning from "./common/CookieWarning";
@@ -34,9 +20,25 @@ import ExternalPlayer from "./components/ExternalPlayer";
 import InformationPanel from "./containers/InformationPanel";
 import MobileHome from "./containers/MobileHome";
 import AdvertisementBar from "./components/AdvertisementBar";
+import "typeface-open-sans";
+import "./styles/Teaser.css";
+import "./styles/App.css";
+import "./styles/theme-light.css";
+import "./styles/theme-dark.css";
+import {
+    ABOUT_PATH,
+    ADMIN_PATH, BOOKING_PATH,
+    HOME_PATH,
+    LEGAL_PATH,
+    PODCASTS_PATH,
+    ROOT_PATH,
+    SUPPORT_PATH
+} from "./common/app-route-paths";
+import Booking from "./containers/Booking";
 
 const PAGES = [
-    {path: "Podcasts", text: "Podcasts"},
+    {path: PODCASTS_PATH, text: "Podcasts"},
+    {path: BOOKING_PATH, text: "Booking"},
 ];
 const history = createBrowserHistory();
 
@@ -76,10 +78,17 @@ class App extends Component {
                 this.setState({isVerified: !!user, errors: ""})
             }
         );
+
+        this.changeDarkThemeState(history.location);
+
+        this.unregisterListenHistoryChange = history.listen( location =>  {
+            this.changeDarkThemeState(location);
+        })
     }
 
     componentWillUnmount() {
         this.unregisterAuthObserver();
+        this.unregisterListenHistoryChange();
     }
 
     onEmissionClick(link) {
@@ -90,19 +99,30 @@ class App extends Component {
         this.setState({currentEmissionLink: ""});
     }
 
+    changeDarkThemeState(location) {
+        const darkThemePages = [BOOKING_PATH];
+
+        this.setState({
+            darkTheme: darkThemePages.includes(location.pathname)
+        });
+    }
+
     render() {
         const {isMobile} = this.state;
+        const { darkTheme } = this.state;
+
         let onEmissionClearFunc = this.onEmissionClear;
 
         let switchRoutes = (
             <Switch>
-                <Redirect exact from="/" to="Home"/>
-                <Route exact path="/Home" render={() => <Home onEmissionClick={this.onEmissionClick} />} />
-                <Route path="/Podcasts" render={() => <Archives onEmissionClick={this.onEmissionClick} />}  />
-                <Route path="/Support" component={Support}/>
-                <Route path="/About" component={About}/>
-                <Route path="/Legal" component={Legal}/>
-                <Route path="/Admin" component={Admin}/>
+                <Redirect exact from={ROOT_PATH} to="Home"/>
+                <Route exact path={HOME_PATH} render={() => {return <Home onEmissionClick={this.onEmissionClick} />;}} />
+                <Route path={PODCASTS_PATH} render={() => <Archives onEmissionClick={this.onEmissionClick} />}  />
+                <Route path={SUPPORT_PATH} component={Support}/>
+                <Route path={ABOUT_PATH} component={About}/>
+                <Route path={LEGAL_PATH} component={Legal}/>
+                <Route path={ADMIN_PATH} component={Admin}/>
+                <Route path={BOOKING_PATH} component={Booking}/>
                 <Route component={NotFoundPage}/>
             </Switch>
         );
@@ -138,9 +158,12 @@ class App extends Component {
                 </div>
         );
 
+        const appContainerMobile = (isMobile ? ' AppContainer--mobile' : '');
+        const appContainerTheme = (darkTheme ? ' AppContainer--dark' : ' AppContainer--light');
+
         return (
             <Router history={history}>
-                <div className={'AppContainer' + (isMobile ? ' AppContainer--mobile' : '')}>
+                <div className={'AppContainer' + appContainerMobile + appContainerTheme}>
                     <div className={'AppContainer__container AppContainer__top'}>
                         <AdvertisementBar />
                     </div>

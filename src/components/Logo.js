@@ -41,7 +41,8 @@ export default class Logo extends Component {
                     className={'LogoContainer__link'}
                     to={'/'}
                 >
-                    <img className={'LogoContainer__logo'} src={"images/logo_black_text.svg"} alt="Logo Ola Radio"/>
+                    <svg className={'LogoContainer__logo'}>
+                    </svg>
                 </Link>
             </div>
         );

@@ -2,7 +2,8 @@
     display: flex;
     flex: 0 0 40px;
     align-items: center;
-    border-bottom: 2px solid black;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
 }
 
 .SearchBar__input {

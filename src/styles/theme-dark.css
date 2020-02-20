@@ -1,0 +1,186 @@
+/*--- dark theme ---*/
+.AppContainer--dark {
+
+}
+
+/* App.css */
+.AppContainer--dark.AppContainer {
+    color: white;
+    background-color: black;
+}
+
+.AppContainer--dark .AppContainer__legal {
+    color: white;
+}
+
+.AppContainer--dark .AppContainer__sideBar--mobile {
+    border-bottom-color: white;
+}
+
+.AppContainer--dark .CookieWarning {
+    background: black;
+    border-top-color: white;
+}
+
+.AppContainer--dark .AppContainer--mobile .CookieWarning {
+    border-top-color: white;
+}
+
+.AppContainer--dark .CookieWarning a {
+    color: white;
+}
+
+.AppContainer--dark .CookieWarning button {
+    background: white;
+    color: black;
+}
+
+.AppContainer--dark .MobileNavigator__button {
+    color: white;
+}
+
+.AppContainer--dark .MobileNavigator__button:hover {
+    color: white;
+}
+
+/* MobileHome.css */
+.AppContainer--dark .MobileHome__navigator {
+    border-color: white;
+}
+
+.AppContainer--dark .MobileNavigator__item {
+    border-bottom-color: white;
+}
+
+.AppContainer--dark .MobileNavigator__item--black {
+    background-color: white;
+}
+
+.AppContainer--dark .MobileNavigator__item--black * {
+    color: black !important;
+}
+
+.AppContainer--dark .MobileNavigator__item--white {
+    background-color: black;
+    color: white;
+}
+
+/* Teaser.css */
+.AppContainer--dark .TurnTable__disk {
+    border-color: white;
+}
+
+/* common/SearchBar.css */
+.AppContainer--dark .SearchBar {
+    border-bottom-color: white;
+}
+
+/* components/AdvertisementBar.css */
+.AppContainer--dark .AdvertisementBar {
+    color: black;
+    background-color: white;
+}
+
+/* components/Emission.css */
+.AppContainer--dark .Emission__imageContainer {
+    border-color: white;
+    background-color: #d1d1d1;
+}
+
+.AppContainer--dark .Emission__name a {
+    color: white;
+}
+
+.AppContainer--dark .EmissionCalendar__date > span {
+    border-bottom-color: white;
+}
+
+/* components/Logo.css */
+.AppContainer--dark .LogoContainer__logo {
+    background-image: url('/images/logo_white_text.svg');
+}
+
+/* components/MainPage.css */
+.AppContainer--dark .MainPage {
+    border-color: white;
+    background-color: black;
+}
+
+/* components/Navigation.css */
+.AppContainer--dark .NavigationBar__link {
+    background-color: black;
+    color: white;
+    border-color: white;
+}
+
+.AppContainer--dark .NavigationBar__link:hover,
+.AppContainer--dark .NavigationBar__link--active {
+    color: black;
+    background-color: white;
+}
+
+/* components/RadioBox.css */
+.AppContainer--dark .RadioBox {
+    border-color: white;
+    background-color: black;
+}
+
+.AppContainer--dark.AppContainer--mobile .RadioBox {
+    background: black;
+}
+
+.AppContainer--dark .RadioBox__control {
+    color: white;
+}
+
+.AppContainer--dark .RadioBox__control--playing {
+    color: white;
+}
+
+.AppContainer--dark .RadioBox__blackDot {
+    background: white;
+}
+
+.AppContainer--dark .RadioBox__head-close {
+    color: #cccccc;
+}
+
+.AppContainer--dark .ExternalPlayer {
+    border-top-color: white;
+}
+
+.AppContainer--dark.AppContainer--mobile .ExternalPlayer {
+    border-top-color: white;
+}
+
+/* containers/About.css */
+.AppContainer--dark .About__articleBorder {
+    border-color: white;
+}
+
+/* containers/InformationPanel.css */
+.AppContainer--dark .InformationPanel {
+    background: black;
+}
+
+.AppContainer--dark .InformationPanel__panel {
+    border-top-color: white;
+    border-bottom-color: white;
+    border-left-color: white;
+    background-color: black;
+}
+
+.AppContainer--dark .InformationPanel__title-container {
+    background-color: black;
+}
+
+/* containers/Support.css */
+.AppContainer--dark .Support__cta {
+    color: white;
+    border-color: white;
+    background: black;
+}
+
+
+
+

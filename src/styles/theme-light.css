@@ -1,0 +1,184 @@
+/*--- light theme ---*/
+.AppContainer--light {
+
+}
+
+/* App.css */
+.AppContainer--light.AppContainer {
+    color: black;
+    background-color: white;
+}
+
+.AppContainer--light .AppContainer__legal {
+    color: black;
+}
+
+.AppContainer--light .AppContainer__sideBar--mobile {
+    border-bottom-color: black;
+}
+
+.AppContainer--light .CookieWarning {
+    background: white;
+    border-top-color: black;
+}
+
+.AppContainer--light .AppContainer--mobile .CookieWarning {
+    border-top-color: black;
+}
+
+.AppContainer--light .CookieWarning a {
+    color: black;
+}
+
+.AppContainer--light .CookieWarning button {
+    background: black;
+    color: white;
+}
+
+.AppContainer--light .MobileNavigator__button {
+    color: black;
+}
+
+.AppContainer--light .MobileNavigator__button:hover {
+    color: black;
+}
+
+/* MobileHome.css */
+.AppContainer--light .MobileHome__navigator {
+    border-color: black;
+}
+
+.AppContainer--light .MobileNavigator__item {
+    border-bottom-color: black;
+}
+
+.AppContainer--light .MobileNavigator__item--black {
+    background-color: black;
+}
+
+.AppContainer--light .MobileNavigator__item--black * {
+    color: white !important;
+}
+
+.AppContainer--light .MobileNavigator__item--white {
+    background-color: white;
+    color: black;
+}
+
+/* Teaser.css */
+.AppContainer--light .TurnTable__disk {
+    border-color: black;
+}
+
+/* common/SearchBar.css */
+.AppContainer--light .SearchBar {
+    border-bottom-color: black;
+}
+
+/* components/AdvertisementBar.css */
+.AppContainer--light .AdvertisementBar {
+    color: white;
+    background-color: black;
+}
+
+/* components/Emission.css */
+.AppContainer--light .Emission__imageContainer {
+    border-color: black;
+    background-color: #616161;
+}
+
+.AppContainer--light .Emission__name a {
+    color: black;
+}
+
+.AppContainer--light .EmissionCalendar__date > span {
+    border-bottom-color: black;
+}
+
+/* components/Logo.css */
+.AppContainer--light .LogoContainer__logo {
+    background-image: url('/images/logo_black_text.svg');
+}
+
+/* components/MainPage.css */
+.AppContainer--light .MainPage {
+    border-color: black;
+    background-color: white;
+}
+
+/* components/Navigation.css */
+.AppContainer--light .NavigationBar__link {
+    background-color: white;
+    color: black;
+    border-color: black;
+}
+
+.AppContainer--light .NavigationBar__link:hover,
+.AppContainer--light .NavigationBar__link--active {
+    color: white;
+    background-color: black;
+}
+
+/* components/RadioBox.css */
+.AppContainer--light .RadioBox {
+    border-color: black;
+    background-color: white;
+}
+
+.AppContainer--light.AppContainer--mobile .RadioBox {
+    background: white;
+}
+
+.AppContainer--light .RadioBox__control {
+    color: black;
+}
+
+.AppContainer--light .RadioBox__control--playing {
+    color: black;
+}
+
+.AppContainer--light .RadioBox__blackDot {
+    background: black;
+}
+
+.AppContainer--light .RadioBox__head-close {
+    color: grey;
+}
+
+.AppContainer--light .ExternalPlayer {
+    border-top-color: black;
+}
+
+.AppContainer--light.AppContainer--mobile .ExternalPlayer {
+    border-top-color: black;
+}
+
+/* containers/About.css */
+.AppContainer--light .About__articleBorder {
+    border-color: black;
+}
+
+/* containers/InformationPanel.css */
+.AppContainer--light .InformationPanel {
+    background: white;
+}
+
+.AppContainer--light .InformationPanel__panel {
+    border-top-color: black;
+    border-bottom-color: black;
+    border-left-color: black;
+    background-color: white;
+}
+
+.AppContainer--light .InformationPanel__title-container {
+    background-color: white;
+}
+
+/* containers/Support.css */
+.AppContainer--light .Support__cta {
+    color: black;
+    border-color: black;
+    background: white;
+}
+
+
