@@ -170,6 +170,7 @@ export default class RadioBox extends Component {
                     ref={this.audioPlayer}
                     title={'Ola Radio | ' + formattedCurrentSong}
                     poster={'images/logo_black.svg'}
+                    preload={'none'}
                 />
 
                 {
