@@ -1,5 +1,5 @@
 Date.prototype.startOfDay = function () {
-    return this.setHours(0,0,0,0);
+    return this.setHours(1,0,0,0); // day starts at 1am
 };
 
 Date.prototype.addDays = function (days) {

@@ -21,23 +21,24 @@ export default class EmissionCalendar extends Component {
         let dayAfter = new Date(today).addDays(2).getTime();
         let dayMax = new Date(today).addDays(3).getTime();
         let todayEmissions = [];
+        // display the shows from 1:01am to 1am the other day
         _.map(emissions, (object) => {
             let date = new Date(object.datetime);
-            if (today < date && tomorrow > date) {
+            if (today < date && tomorrow >= date) {
                 todayEmissions.push(object);
             }
         });
         let tommorrowEmissions = [];
         _.map(emissions, (object) => {
             let date = new Date(object.datetime);
-            if (tomorrow < date && dayAfter > date) {
+            if (tomorrow < date && dayAfter >= date) {
                 tommorrowEmissions.push(object);
             }
         });
         let dayAfterEmissions = [];
         _.map(emissions, (object) => {
             let date = new Date(object.datetime);
-            if (dayAfter < date && dayMax > date) {
+            if (dayAfter < date && dayMax >= date) {
                 dayAfterEmissions.push(object);
             }
         });
@@ -64,12 +65,12 @@ export default class EmissionCalendar extends Component {
             emissions = emissionsArray.todayEmissions
         } else if (date === "tomorrow") {
             let tomorrow = new Date(this.state.fromDate).addDays(1);
-            headerText = tomorrow.getDayOfWeek() + " " + tomorrow.getFormated();
+            headerText = tomorrow.getDayOfWeek();
             headerClass = "EmissionCalendar__tomorrow";
             emissions = emissionsArray.tommorrowEmissions;
         } else if (date === "dayAfter") {
             let dayAfter = new Date(this.state.fromDate).addDays(2);
-            headerText = dayAfter.getDayOfWeek() + " " + dayAfter.getFormated();
+            headerText = dayAfter.getDayOfWeek();
             headerClass = "EmissionCalendar__dayAfter";
             emissions = emissionsArray.dayAfterEmissions;
         }
