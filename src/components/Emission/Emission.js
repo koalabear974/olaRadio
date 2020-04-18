@@ -4,6 +4,7 @@ import moment from 'moment';
 import handleViewport from 'react-in-viewport';
 
 import "../../styles/components/Emission.css"
+import {parseDate} from "../../common/util";
 
 class Emission extends Component {
     static propTypes = {
@@ -67,7 +68,7 @@ class Emission extends Component {
                 <footer
                     className={'Emission__date'}
                 >
-                    {(new Date(emission.datetime)).getFormated()}
+                    {(parseDate(emission.datetime)).getFormated()}
                 </footer>
             </article>
         );

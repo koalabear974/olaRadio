@@ -6,6 +6,7 @@ import "../styles/Home.css"
 import MainPage from "../components/MainPage/MainPage";
 import EmissionList from "../components/Emission/EmissionList";
 import Loading from "../components/Loading";
+import {parseDate} from "../common/util";
 
 export default class HomePage extends Component {
   constructor(props) {
@@ -66,7 +67,7 @@ export default class HomePage extends Component {
         if (this.isLoading()) {
             return <Loading />
         }
-        let latestEmissions = _.filter(this.state.emissions, (o) => {return (new Date(o.datetime) < new Date()) && (o.link != false)});
+        let latestEmissions = _.filter(this.state.emissions, (o) => {return (parseDate(o.datetime) < new Date()) && (o.link != false)});
         latestEmissions = (_.sortBy(latestEmissions, (o) => { return (o['datetime'] || 0)})).reverse().slice(0, 10);
         return (
             <div className={'Home'}>

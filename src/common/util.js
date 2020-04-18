@@ -1,3 +1,5 @@
+import moment from "moment";
+
 Date.prototype.startOfDay = function () {
     return this.setHours(1,0,0,0); // day starts at 1am
 };
@@ -36,6 +38,10 @@ Date.prototype.utcDate = function(){
 
     return new Date(now_utc);
 };
+
+export function parseDate(dateString) {
+    return moment(dateString, "YYYY-MM-DDTHH:mm").toDate();
+}
 
 function getBase64(file, callback) {
     var reader = new FileReader();

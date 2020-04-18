@@ -1,8 +1,9 @@
 import React, {Component} from "react";
 import Emission from "./Emission";
 import _ from 'lodash';
+import {parseDate} from "../../common/util";
 
-import "../../styles/components/Emission.css"
+import "../../styles/components/Emission.css";
 
 export default class EmissionCalendar extends Component {
     constructor(props) {
@@ -23,21 +24,21 @@ export default class EmissionCalendar extends Component {
         let todayEmissions = [];
         // display the shows from 1:01am to 1am the other day
         _.map(emissions, (object) => {
-            let date = new Date(object.datetime);
+            let date = parseDate(object.datetime);
             if (today < date && tomorrow >= date) {
                 todayEmissions.push(object);
             }
         });
         let tommorrowEmissions = [];
         _.map(emissions, (object) => {
-            let date = new Date(object.datetime);
+            let date = parseDate(object.datetime);
             if (tomorrow < date && dayAfter >= date) {
                 tommorrowEmissions.push(object);
             }
         });
         let dayAfterEmissions = [];
         _.map(emissions, (object) => {
-            let date = new Date(object.datetime);
+            let date = parseDate(object.datetime);
             if (dayAfter < date && dayMax >= date) {
                 dayAfterEmissions.push(object);
             }
