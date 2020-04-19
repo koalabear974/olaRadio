@@ -1,6 +1,5 @@
 .EmissionList {
     display: flex;
-    flex: 0 0 290px;
     overflow-x: scroll;
 }
 

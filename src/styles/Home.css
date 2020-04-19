@@ -17,8 +17,5 @@
 }
 
 .Home__bottom {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
     margin: 1em 0 0;
 }
