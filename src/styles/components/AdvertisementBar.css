@@ -11,9 +11,10 @@
 }
 
 .AppContainer__top {
-    position: sticky;
+    position: absolute;
     top: 0;
     z-index: 9;
+    width: 100%;
 }
 
 .AdvertisementBar__marquee {

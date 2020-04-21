@@ -2,7 +2,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 5vh 0;
+    padding: 6vh 0;
 }
 
 .LogoContainer__link {
@@ -15,7 +15,7 @@
 }
 
 .AppContainer--mobile .LogoContainer {
-    padding: 1vh 0;
+    padding: 2vh 0;
 }
 .AppContainer--mobile .LogoContainer__logo {
     width: 50vw;
