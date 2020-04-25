@@ -149,9 +149,33 @@ export default class RadioBox extends Component {
             });
     }
 
+    computeFormattedCurrentSong(currentSong) {
+        if (!currentSong) {
+            return ''
+        }
+
+        if (currentSong.album) {
+            return currentSong.album;
+        }
+
+        if (currentSong.artist && currentSong.title) {
+            return currentSong.artist + ' - '+ currentSong.title;
+        }
+
+        if (currentSong.artist) {
+            return currentSong.artist;
+        }
+
+        if (currentSong.title)  {
+            return currentSong.title;
+        }
+
+        return '';
+    }
+
     render() {
         let currentSong = this.state.currentSong;
-        let formattedCurrentSong = currentSong ? currentSong.artist + ' - '+ currentSong.title : '';
+        let formattedCurrentSong = this.computeFormattedCurrentSong(currentSong);
         let isExternalLink = !!this.state.externalLink;
 
         return (
