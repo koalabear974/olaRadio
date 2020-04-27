@@ -98,7 +98,7 @@ export default class ExternalPlayer extends Component {
                 return (
                     <iframe
                         className={'ExternalPlayer__external-player'}
-                        width="100%" height="100"
+                        width="100%" height="20"
                         scrolling="no" frameBorder="no"
                         src={this.state.externalWidgetLink}
                         >

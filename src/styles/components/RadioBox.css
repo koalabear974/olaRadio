@@ -156,8 +156,8 @@
     height: 68px;
 }
 
-.ExternalPlayer--soundcloud {
-    height: 108px;
+.ExternalPlayer--soundcloud .ExternalPlayer__external-box {
+    padding: 10px;
 }
 
 .AppContainer--mobile .ExternalPlayer {
