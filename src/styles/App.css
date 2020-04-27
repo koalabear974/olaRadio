@@ -27,6 +27,8 @@
 .AppContainer--mobile .AppContainer__top {
     flex: 0 0 30px;
     height: 30px;
+    position: sticky;
+    top: 0px;
 }
 
 .AppContainer--mobile .AppContainer__bottom {

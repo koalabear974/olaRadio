@@ -122,7 +122,6 @@
 }
 
 .AppContainer--mobile .ExternalPlayer {
-    height: 100px;
     width: 100vw;
     border-bottom: 4px solid black;
 }
@@ -162,11 +161,6 @@
 
 .AppContainer--mobile .ExternalPlayer {
     position: sticky;
-    flex: 0 0 76px;
-}
-
-.AppContainer--mobile .ExternalPlayer--soundcloud {
-    flex: 0 0 115px;
 }
 
 .AppContainer--mobile .ExternalPlayer__head {
