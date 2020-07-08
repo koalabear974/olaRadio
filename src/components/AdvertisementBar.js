@@ -77,7 +77,7 @@ export default class AdvertisementBar extends Component {
 
         return (
             <div id="AdvertisementBar--present" className={'AdvertisementBar'}>
-                <Marquee direction={'left'} childMargin={'200'} >
+                <Marquee direction={'left'} childMargin={'200'} w>
                     {curTexts.map((i) => {return i;})}
                 </Marquee>
             </div>

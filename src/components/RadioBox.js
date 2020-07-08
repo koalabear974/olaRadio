@@ -37,7 +37,6 @@ export default class RadioBox extends Component {
         this.state = {
             isPlaying: false,
             currentSong: null,
-            marqueeLoop: false,
             externalLink: this.props.externalLink,
         };
 
