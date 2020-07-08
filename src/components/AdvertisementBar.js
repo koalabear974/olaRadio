@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import "./../styles/components/AdvertisementBar.css";
 import base from "../db/config";
 import _ from "lodash";
+import Marquee from "react-double-marquee";
 
 export default class AdvertisementBar extends Component {
     static propTypes = {
@@ -73,20 +74,12 @@ export default class AdvertisementBar extends Component {
         }
 
         let curTexts = this.state.curTexts;
-        let speed = curTexts.length >= 1 ? curTexts[0].length/4.5 : 0 ;
-        // let el = document.getElementById("AdvertisementBar__marquee");
-        let style = {
-            "MozAnimationDuration": speed+"s",
-            "WebkitAnimationDuration": speed+"s",
-            "animationDuration": speed+"s"
-        };
-
 
         return (
             <div id="AdvertisementBar--present" className={'AdvertisementBar'}>
-                <span id="AdvertisementBar__marquee" className="AdvertisementBar__marquee" style={style}>
+                <Marquee direction={'left'} childMargin={'200'} >
                     {curTexts.map((i) => {return i;})}
-                </span>
+                </Marquee>
             </div>
         );
     }
