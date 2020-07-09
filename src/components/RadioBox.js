@@ -158,8 +158,10 @@ export default class RadioBox extends Component {
         // Otherwise unknown
         let f = '';
         f += currentSong.title ? currentSong.title : 'Unknown';
-        f += ' - ';
-        f += currentSong.artist ? currentSong.artist : 'Unknown';
+        
+        if (currentSong.artist) {
+            f += ' - ' + currentSong.artist;
+        }
         if (currentSong.album) {
             f += ' - ' + currentSong.album;
         }
