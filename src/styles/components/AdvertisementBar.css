@@ -1,13 +1,17 @@
 .AdvertisementBar {
     display: flex;
     flex: 1;
+    width: 100%;
+    height: 30px;
     color: white;
     background-color: black;
-    height: 30px;
     align-items: center;
     font-size: 13px;
-    overflow: hidden;
-    position: relative;
+    white-space: nowrap;
+}
+
+.AdvertisementBar span {
+    padding-left: 20px;
 }
 
 .AppContainer__top {
@@ -15,43 +19,4 @@
     top: 0;
     z-index: 9;
     width: 100%;
-}
-
-.AdvertisementBar__marquee {
-    line-height: 30px;
-    height: 30px;
-    position: absolute;
-    white-space: nowrap;
-    width: auto;
-    margin: 0;
-    text-align: center;
-    /* Starting position */
-    -moz-transform:translateX(100%);
-    -webkit-transform:translateX(100%);
-    transform:translateX(100%);
-    /* Apply animation to this element */
-    -moz-animation: marquee2 25s linear infinite;
-    -webkit-animation: marquee2 25s linear infinite;
-    animation: marquee2 25s linear infinite;
-}
-/* Move it (define the animation) */
-@-moz-keyframes marquee2 {
-    0%   { -moz-transform: translateX(75%); }
-    100% { -moz-transform: translateX(-100%); }
-}
-@-webkit-keyframes marquee2 {
-    0%   { -webkit-transform: translateX(75%); }
-    100% { -webkit-transform: translateX(-100%); }
-}
-@keyframes marquee2 {
-    0%   {
-        -moz-transform: translateX(75%); /* Firefox bug fix */
-        -webkit-transform: translateX(75%); /* Firefox bug fix */
-        transform: translateX(75%);
-    }
-    100% {
-        -moz-transform: translateX(-100%); /* Firefox bug fix */
-        -webkit-transform: translateX(-100%); /* Firefox bug fix */
-        transform: translateX(-100%);
-    }
 }

@@ -239,43 +239,6 @@
     }
 }
 
-.marquee {
-    height: 25px;
-    width: 420px;
-    max-width: 100%;
-
-    overflow: hidden;
-    position: relative;
-}
-
-.marquee div {
-    display: block;
-    width: 300%;
-    height: 30px;
-
-    position: absolute;
-    overflow: hidden;
-
-    animation: marquee 8s linear infinite;
-}
-.marquee.marquee--slow div {
-    animation: marquee 20s linear infinite;
-}
-
-.marquee span {
-    float: left;
-    width: 50%;
-}
-
-@keyframes marquee {
-    0% {
-        left: 0;
-    }
-    100% {
-        left: -150%;
-    }
-}
-
 .Loading {
     flex: 1;
     display: flex;

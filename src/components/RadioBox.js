@@ -6,6 +6,7 @@ import moment from 'moment';
 
 import "./../styles/components/RadioBox.css";
 import {FaPause, FaPlay} from "react-icons/fa/index";
+import Marquee from "react-double-marquee";
 import _ from "lodash";
 
 const CurrentSongUrl = "https://www.radioking.com/widgets/currenttrack.php?radio=190519&format=json";
@@ -36,7 +37,6 @@ export default class RadioBox extends Component {
         this.state = {
             isPlaying: false,
             currentSong: null,
-            marqueeLoop: false,
             externalLink: this.props.externalLink,
         };
 
@@ -154,23 +154,19 @@ export default class RadioBox extends Component {
             return ''
         }
 
-        if (currentSong.album) {
-            return currentSong.album;
-        }
-
-        if (currentSong.artist && currentSong.title) {
-            return currentSong.artist + ' - '+ currentSong.title;
-        }
-
+        // nom de la track + nom de l'artiste + playlist
+        // Otherwise unknown
+        let f = '';
+        f += currentSong.title ? currentSong.title : 'Unknown';
+        
         if (currentSong.artist) {
-            return currentSong.artist;
+            f += ' - ' + currentSong.artist;
+        }
+        if (currentSong.album) {
+            f += ' - ' + currentSong.album;
         }
 
-        if (currentSong.title)  {
-            return currentSong.title;
-        }
-
-        return '';
+        return f;
     }
 
     render() {
@@ -200,15 +196,10 @@ export default class RadioBox extends Component {
                 {
                     currentSong &&
                     <article className={'RadioBox__emission'}>
-                        <header className={'Emission__title marquee'}>
-                            <div>
-                                <span className={'marquee__text'}>
-                                    {formattedCurrentSong}
-                                </span>
-                                <span className={'marquee__text'}>
-                                    {formattedCurrentSong}
-                                </span>
-                            </div>
+                        <header className={'Emission__title'}>
+                            <Marquee direction={'left'} childMargin={'50'}>
+                                {formattedCurrentSong}
+                            </Marquee>
                         </header>
                     </article>
                 }
