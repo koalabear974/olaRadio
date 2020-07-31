@@ -15,6 +15,8 @@ import Archives from "./Archives";
 import Information from "./Information";
 import Loading from "../components/Loading";
 import {parseDate} from "../common/util";
+import Shop from "./Shop";
+import {getProductList} from "../api/big-cartel.api";
 
 export default class MobileHome extends Component {
   constructor(props) {
@@ -70,6 +72,12 @@ export default class MobileHome extends Component {
                     infoPage: infoPage,
                 });
             }
+        });
+        getProductList().then(response => {
+            this.setState({
+                shopItemsArray: response.data
+            })
+            this.render()
         });
     }
 
@@ -168,7 +176,20 @@ export default class MobileHome extends Component {
                             />
                         </AccordionPanel>
                     </AccordionNode>
-                    <div className={'MobileNavigator__item MobileNavigator__item--black'} key={3}>
+                    <AccordionNode className={'MobileNavigator__item MobileNavigator__item--black'} key={4}>
+                        <AccordionHeader
+                            className={'MobileNavigator__title'}
+                            horizontalAlignment="left"
+                            verticalAlignment="center"
+                        >
+                            <h3>Shop</h3>
+                            { this.isActivePage(4) ? <FaAngleUp /> : <FaAngleDown /> }
+                        </AccordionHeader>
+                        <AccordionPanel className={'MobileNavigator__content MobileNavigator__shop'}>
+                            <Shop shopItemsArray={this.state.shopItemsArray}/>
+                        </AccordionPanel>
+                    </AccordionNode>
+                    <div className={'MobileNavigator__item MobileNavigator__item--white'} key={3}>
                         <a href='https://www.helloasso.com/associations/ola-radio/formulaires/1/widget' target='_blank'>
                             <div className={'MobileNavigator__title'}>
                                 <h3>Donate</h3>
