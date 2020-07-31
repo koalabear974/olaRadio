@@ -22,7 +22,8 @@ export default class Navigation extends Component {
                         className={'NavigationBar__link'}
                         activeClassName={'NavigationBar__link--active'}
                         to={"/" + page.path}
-                        key={uuidv1()}>
+                        key={uuidv1()}
+                    >
                         <span>{page.text}</span>
                     </NavLink>
                 ))}

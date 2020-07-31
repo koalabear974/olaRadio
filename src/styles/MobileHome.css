@@ -72,10 +72,6 @@
     color: black;
 }
 
-.MobileNavigator__item--white a {
-    color: black;
-}
-
 .MobileNavigator__content .Archive {
     margin: 0;
 }
@@ -90,8 +86,4 @@
 
 .MobileNavigator__content .Information {
     padding-bottom: 1em;
-}
-
-.MobileNavigator__content .MobileNavigator__shop {
-    max-height: inherit !important;
 }

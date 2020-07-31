@@ -34,11 +34,9 @@ import ExternalPlayer from "./components/ExternalPlayer";
 import InformationPanel from "./containers/InformationPanel";
 import MobileHome from "./containers/MobileHome";
 import AdvertisementBar from "./components/AdvertisementBar";
-import Shop from "./containers/Shop";
 
 const PAGES = [
     {path: "Podcasts", text: "Podcasts"},
-    {path: "Shop", text: "Shop"}
 ];
 const history = createBrowserHistory();
 
@@ -102,7 +100,6 @@ class App extends Component {
                 <Route exact path="/Home" render={() => <Home onEmissionClick={this.onEmissionClick} />} />
                 <Route path="/Podcasts" render={() => <Archives onEmissionClick={this.onEmissionClick} />}  />
                 <Route path="/Support" component={Support}/>
-                <Route path="/Shop" component={Shop}/>
                 <Route path="/About" component={About}/>
                 <Route path="/Legal" component={Legal}/>
                 <Route path="/Admin" component={Admin}/>
