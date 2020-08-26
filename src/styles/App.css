@@ -3,6 +3,22 @@
     src: url('/fonts/Compagnon-Medium.woff');
 }
 
+@font-face {
+    font-family: "Gangster Grotesk";
+    src: url("/fonts/gangstergrotesk-light.woff");
+    font-weight: normal;
+}
+@font-face {
+    font-family: "Gangster Grotesk";
+    src: url("/fonts/gangstergrotesk-bold.woff");
+    font-weight: bold;
+}
+@font-face {
+    font-family: "Gangster Grotesk";
+    src: url("/fonts/gangstergrotesk-regular.woff");
+    font-weight: lighter;
+}
+
 .AppContainer {
     display: flex;
     flex-direction: row;
@@ -10,7 +26,7 @@
     flex: 1 1 auto;
     position: relative;
     color: black;
-    font-family: Companion, serif;
+    font-family: "Gangster Grotesk", Companion, serif;
 
     scroll-behavior: smooth;
     overflow-y: scroll; /* has to be scroll, not auto */
