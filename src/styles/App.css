@@ -3,6 +3,27 @@
     src: url('/fonts/Compagnon-Medium.woff');
 }
 
+@font-face {
+    font-family: 'Gangster Grotesk';
+       src: url('/fonts/GangsterGrotesk-Light.otf');
+    font-weight: thin;
+    font-style: normal;
+ }
+
+@font-face {
+    font-family: 'Gangster Grotesk';
+       src: url('/fonts/GangsterGrotesk-Regular.otf');
+    font-weight: normal;
+    font-style: normal;
+ }
+
+@font-face {
+    font-family: 'Gangster Grotesk';
+       src: url('/fonts/GangsterGrotesk-Bold.otf');
+    font-weight: bold;
+    font-style: normal;
+ }
+
 .AppContainer {
     display: flex;
     flex-direction: row;
@@ -10,8 +31,7 @@
     flex: 1 1 auto;
     position: relative;
     color: black;
-    font-family: Companion, serif;
-
+    font-family: Gangster Grotesk, Helvetica, Arial, sans-serif;
     scroll-behavior: smooth;
     overflow-y: scroll; /* has to be scroll, not auto */
     overflow-x: hidden;
@@ -61,6 +81,7 @@
     -webkit-overflow-scrolling: touch;
     max-height: 100vh;
     padding-top: 1vh;
+    border-left: 2px solid black;
 }
 
 .AppContainer__body--mobile {
@@ -81,7 +102,7 @@
     max-width: 20vw;
     display: flex;
     flex-direction: column;
-    margin: 0 2vw;
+    margin: 0;
 }
 
 .AppContainer__sideBar--mobile {

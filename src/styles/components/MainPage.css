@@ -2,9 +2,8 @@
     flex: 0 0 auto;
     display: flex;
     flex-direction: column;
-    border: 4px solid black;
-    padding: 20px 15px;
-    margin-right: 1em;
+    border-bottom: 2px solid black;
+    padding: 0 2em;
     background-color: white;
 }
 
@@ -19,13 +18,16 @@
     flex-direction: column;
     flex: 1;
     height: 100%;
+    border-left: 2px solid black;
+    padding: 2em;
+
 }
 
 .MainPageAside__header {
     text-transform: uppercase;
     font-size: 24px;
     font-weight: bold;
-    margin-bottom: 5px;
+    margin-bottom: 0.5em;
     flex: 0 0 auto;
 }
 .MainPageAside__text {

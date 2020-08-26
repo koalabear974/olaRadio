@@ -7,7 +7,7 @@
     display: flex;
     flex: 0 0 220px;
     flex-wrap: wrap;
-    padding-right: 2em;
+    padding-left: 2em;
     font-weight: bold;
     font-size: 0.8em;
     margin-bottom: 20px;
@@ -16,7 +16,7 @@
 .Emission__imageContainer {
     flex: 0 0 200px;
     height: 200px;
-    border: 4px solid black;
+    border: 2px solid black;
     background-color: #616161;
 }
 
@@ -46,7 +46,8 @@
     flex: 1;
     height: 100%;
     flex-direction: column;
-    margin: 0 1em;
+    margin: 0 1em 0 0;
+    padding: 2em 0;
 }
 
 .AppContainer--mobile .EmissionCalendar {
@@ -67,12 +68,13 @@
 .EmissionCalendar__date {
     text-transform: uppercase;
     font-weight: bold;
-    font-size: 26px;
-    margin-bottom: 10px;
+    font-size: 24px;
+    margin-bottom: 1em;
+
 }
 
 .EmissionCalendar__date > span {
-    border-bottom: 3px solid black;
+    border-bottom: 2px solid black;
     padding-bottom: 4px;
 }
 
@@ -91,10 +93,15 @@
 
 .Emission--small .Emission__date {
     flex: 0 0 60px;
+    font-weight: 100;
+    opacity: 0.6;
+
 }
 
 .EmissionCalendar__title {
     font-size: 2.5em;
     text-transform: uppercase;
+    line-height: 1;
+    margin-bottom: 0.5em;
 }
 

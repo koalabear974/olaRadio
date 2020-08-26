@@ -2,7 +2,7 @@
     display: flex;
     flex: 1;
     flex-direction: column;
-    margin: 2em 0 0 1em;
+    padding: 1em 0;
 }
 
 .Home__secondTitle {
@@ -10,7 +10,9 @@
     font-size: 24px;
     font-weight: bold;
     margin-bottom: 5px;
+    margin-left: 1em;
 }
+
 
 .Home__mainPage {
     flex: 1 1 100%;
