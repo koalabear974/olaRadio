@@ -6,10 +6,11 @@
 }
 
 .Archive__section {
-    padding: 0 0 0 1em;
+    margin: 0 0 0 -1em;
 }
 
 .Archive__section-title {
-    font-size: 22px;
-    padding: 1em 0;
+    font-size: 24px;
+    font-weight: bold;
+    padding: 1em 0 0.5em 1em;
 }

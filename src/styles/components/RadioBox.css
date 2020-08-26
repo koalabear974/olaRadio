@@ -120,7 +120,7 @@
     text-align: center;
     bottom: 0 !important;
     left: 0;
-    border-top: 4px solid black;
+    border-top: 2px solid black;
     font-size: 14px;
     font-weight: bold;
     display: flex;
@@ -129,7 +129,7 @@
 
 .AppContainer--mobile .ExternalPlayer {
     width: 100vw;
-    border-bottom: 4px solid black;
+    border-bottom: 2px solid black;
 }
 
 .ExternalPlayer--hidden {
