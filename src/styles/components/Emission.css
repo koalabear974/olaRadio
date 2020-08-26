@@ -31,7 +31,6 @@
 
 .Emission__name {
     flex: 1 1 100%;
-    font-style: italic;
 }
 
 .Emission__name a {
@@ -40,7 +39,6 @@
 
 .Emission__date {
     flex: 1 1 100%;
-    font-weight: lighter;
 }
 
 .EmissionCalendar {
@@ -67,6 +65,8 @@
 }
 
 .EmissionCalendar__date {
+    text-transform: uppercase;
+    font-weight: bold;
     font-size: 26px;
     margin-bottom: 10px;
 }
@@ -96,6 +96,5 @@
 .EmissionCalendar__title {
     font-size: 2.5em;
     text-transform: uppercase;
-    font-weight: bold;
 }
 
