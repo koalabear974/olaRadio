@@ -25,7 +25,8 @@
 
 .MainPageAside__header {
     text-transform: uppercase;
-    font-size: 24px;
+    font-size: 36px;
+    line-height: 1;
     font-weight: bold;
     margin-bottom: 0.5em;
     flex: 0 0 auto;

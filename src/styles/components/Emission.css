@@ -101,7 +101,8 @@
 }
 
 .EmissionCalendar__title {
-    font-size: 2.5em;
+    font-size: 36px;
+    font-weight: bold;
     text-transform: uppercase;
     line-height: 1;
     margin-bottom: 0.5em;

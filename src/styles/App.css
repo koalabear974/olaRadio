@@ -24,6 +24,28 @@
     font-style: normal;
  }
 
+
+@font-face {
+    font-family: 'Bandeins Strange';
+       src: url('/fonts/BandeinsStrangeLight.otf');
+    font-weight: 100;
+    font-style: normal;
+ }
+ 
+ @font-face {
+     font-family: 'Bandeins Strange';
+        src: url('/fonts/BandeinsStrangeRegular.otf');
+     font-weight: normal;
+     font-style: normal;
+  }
+  
+  @font-face {
+      font-family: 'Bandeins Strange';
+         src: url('/fonts/BandeinsStrangeBold.otf');
+      font-weight: bold;
+      font-style: normal;
+   }
+
 .AppContainer {
     display: flex;
     flex-direction: row;
@@ -31,11 +53,12 @@
     flex: 1 1 auto;
     position: relative;
     color: black;
-    font-family: Gangster Grotesk, Helvetica, Arial, sans-serif;
+    font-family: Bandeins Strange, Helvetica, Arial, sans-serif;
     scroll-behavior: smooth;
     overflow-y: scroll; /* has to be scroll, not auto */
     overflow-x: hidden;
     -webkit-overflow-scrolling: touch;
+    line-height: 1.8;
 }
 
 .AppContainer__container {
