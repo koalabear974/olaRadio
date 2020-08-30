@@ -4,28 +4,6 @@
 }
 
 @font-face {
-    font-family: 'Gangster Grotesk';
-       src: url('/fonts/GangsterGrotesk-Light.otf');
-    font-weight: thin;
-    font-style: normal;
- }
-
-@font-face {
-    font-family: 'Gangster Grotesk';
-       src: url('/fonts/GangsterGrotesk-Regular.otf');
-    font-weight: normal;
-    font-style: normal;
- }
-
-@font-face {
-    font-family: 'Gangster Grotesk';
-       src: url('/fonts/GangsterGrotesk-Bold.otf');
-    font-weight: bold;
-    font-style: normal;
- }
-
-
-@font-face {
     font-family: 'Bandeins Strange';
        src: url('/fonts/BandeinsStrangeLight.otf');
     font-weight: 100;
