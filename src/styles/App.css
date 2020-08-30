@@ -46,6 +46,13 @@
       font-style: normal;
    }
 
+
+   @font-face {
+    font-family: 'Bandeins Variable';
+    src: url('/fonts/BandeinsStrangeVariableGX.ttf') format("truetype-variations");
+    font-weight: 1 800;
+  }
+
 .AppContainer {
     display: flex;
     flex-direction: row;

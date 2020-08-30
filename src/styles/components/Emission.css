@@ -71,7 +71,7 @@
     text-transform: uppercase;
     font-weight: bold;
     font-size: 24px;
-    margin-bottom: 1em;
+    margin: 1em 0;
 
 }
 
@@ -106,5 +106,13 @@
     text-transform: uppercase;
     line-height: 1;
     margin-bottom: 0.5em;
+    font-family: Bandeins Variable;
+    font-variation-settings: "wght" 800, "wdth" 400;
+    transition: all 1s ease;
 }
+
+.EmissionCalendar__title:hover {
+    font-variation-settings: "wght" 800, "wdth" 800;
+}
+
 
