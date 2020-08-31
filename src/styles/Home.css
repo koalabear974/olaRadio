@@ -2,20 +2,31 @@
     display: flex;
     flex: 1;
     flex-direction: column;
-    margin: 2em 0 0 1em;
+    padding: 1em 0;
 }
 
 .Home__secondTitle {
+
     text-transform: uppercase;
-    font-size: 24px;
+    font-size: 36px;
     font-weight: bold;
-    margin-bottom: 5px;
+    margin-bottom: 0.5em;
+    margin-left: 1em;
+    font-family: Bandeins Variable;
+    font-variation-settings: "wght"800, "wdth"400;
+    transition: all 1s ease;
+    line-height: 1;
 }
+
+.Home__secondTitle:hover {
+    font-variation-settings: "wght"800, "wdth"600;
+}
+
 
 .Home__mainPage {
     flex: 1 1 100%;
 }
 
 .Home__bottom {
-    margin: 1em 0 0;
+    margin: 1.5em 0 0;
 }

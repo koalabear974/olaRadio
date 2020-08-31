@@ -7,16 +7,16 @@
     display: flex;
     flex: 0 0 220px;
     flex-wrap: wrap;
-    padding-right: 2em;
+    padding-left: 2em;
     font-weight: bold;
-    font-size: 0.8em;
+    font-size: 1em;
     margin-bottom: 20px;
 }
 
 .Emission__imageContainer {
     flex: 0 0 200px;
     height: 200px;
-    border: 4px solid black;
+    border: 2px solid black;
     background-color: #616161;
 }
 
@@ -39,6 +39,8 @@
 
 .Emission__date {
     flex: 1 1 100%;
+    opacity: 0.6;
+    font-weight: 100;
 }
 
 .EmissionCalendar {
@@ -46,7 +48,8 @@
     flex: 1;
     height: 100%;
     flex-direction: column;
-    margin: 0 1em;
+    margin: 0 1em 0 0;
+    padding: 2em 0;
 }
 
 .AppContainer--mobile .EmissionCalendar {
@@ -67,12 +70,13 @@
 .EmissionCalendar__date {
     text-transform: uppercase;
     font-weight: bold;
-    font-size: 26px;
-    margin-bottom: 10px;
+    font-size: 24px;
+    margin: 1em 0;
+
 }
 
 .EmissionCalendar__date > span {
-    border-bottom: 3px solid black;
+    border-bottom: 2px solid black;
     padding-bottom: 4px;
 }
 
@@ -91,10 +95,24 @@
 
 .Emission--small .Emission__date {
     flex: 0 0 60px;
+    font-weight: 100;
+    opacity: 0.6;
+
 }
 
 .EmissionCalendar__title {
-    font-size: 2.5em;
+    font-size: 36px;
+    font-weight: bold;
     text-transform: uppercase;
+    line-height: 1;
+    margin-bottom: 0.5em;
+    font-family: Bandeins Variable;
+    font-variation-settings: "wght" 800, "wdth" 400;
+    transition: all 1s ease;
 }
+
+.EmissionCalendar__title:hover {
+    font-variation-settings: "wght" 800, "wdth" 800;
+}
+
 
