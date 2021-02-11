@@ -189,10 +189,17 @@ export default class MobileHome extends Component {
                             <Shop shopItemsArray={this.state.shopItemsArray}/>
                         </AccordionPanel>
                     </AccordionNode>
-                    <div className={'MobileNavigator__item MobileNavigator__item--white'} key={3}>
+                    <div className={'MobileNavigator__item MobileNavigator__item--white'} key={4}>
+                        <a href='https://www.gofundme.com/f/aidez-ola-radio-rester-indpendante' target='_blank'>
+                            <div className={'MobileNavigator__title'}>
+                                <h3>Cagnotte</h3>
+                            </div>
+                        </a>
+                    </div>
+                    <div className={'MobileNavigator__item MobileNavigator__item--black'} key={5}>
                         <a href='https://www.helloasso.com/associations/ola-radio/formulaires/1/widget' target='_blank'>
                             <div className={'MobileNavigator__title'}>
-                                <h3>Donate</h3>
+                                <h3>Don</h3>
                             </div>
                         </a>
                     </div>

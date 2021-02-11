@@ -27,10 +27,16 @@ export default class Navigation extends Component {
                     </NavLink>
                 ))}
                 <a
+                    href='https://www.gofundme.com/f/aidez-ola-radio-rester-indpendante'
+                    target='_blank'
+                    className={'NavigationBar__link'}>
+                    <span>Cagnotte</span>
+                </a>
+                <a
                     href='https://www.helloasso.com/associations/ola-radio/formulaires/1/widget'
                     target='_blank'
                     className={'NavigationBar__link'}>
-                    <span>Donate</span>
+                    <span>Don</span>
                 </a>
                 <li className={'NavigationBar__social hidden'} >
                     <a className={'Social__link'} target={'blank'} href="https://www.facebook.com/Ola-Radio-2003400579719885/">
