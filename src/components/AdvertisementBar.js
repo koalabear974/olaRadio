@@ -27,6 +27,7 @@ export default class AdvertisementBar extends Component {
                 let curPage = _.find(data, (v) => {
                     return v.slug === 'pub';
                 });
+                if (!curPage) return;
 
                 let curTexts = curPage.texts ? curPage.texts.filter(function (el) {
                     return !(el == null || el.trim() === "");

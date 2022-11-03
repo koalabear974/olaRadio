@@ -30,7 +30,7 @@
     font-weight: bold;
     margin-bottom: 0.5em;
     flex: 0 0 auto;
-    font-family: Bandeins Variable;
+    font-family: Space Mono;
     font-variation-settings: "wght"800, "wdth"400;
     transition: all 1s ease;
 }

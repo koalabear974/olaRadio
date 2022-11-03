@@ -34,7 +34,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "postinstall": "node hack-add-skipWaiting-true-to-react-script.js"
+    "postinstall": "node hack-add-skipWaiting-true-to-react-script.js",
+    "deploy-staging": "firebase use staging &&  firebase deploy",
+    "deploy-prod": "firebase use production &&  firebase deploy"
   },
   "browserslist": [
     ">0.2%",

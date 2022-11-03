@@ -32,7 +32,7 @@
     font-size: 36px;
     text-transform: uppercase;
     font-weight: bold;
-    font-family: Bandeins Variable;
+    font-family: Space Mono;
     font-variation-settings: "wght"800, "wdth"400;
     transition: all 1s ease;
     will-change: auto;
@@ -66,7 +66,7 @@
     font-weight: bold;
     margin-bottom: 5px;
     margin-bottom: 0.5em;
-    font-family: Bandeins Variable;
+    font-family: Space Mono;
     font-variation-settings: "wght"800, "wdth"400;
     transition: all 1s ease;
     will-change: auto;

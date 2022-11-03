@@ -38,7 +38,7 @@ import Shop from "./containers/Shop";
 
 const PAGES = [
     {path: "Podcasts", text: "Podcasts"},
-    {path: "Shop", text: "Shop"}
+    // {path: "Shop", text: "Shop"}
 ];
 const history = createBrowserHistory();
 

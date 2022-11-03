@@ -176,28 +176,28 @@ export default class MobileHome extends Component {
                             />
                         </AccordionPanel>
                     </AccordionNode>
-                    <AccordionNode className={'MobileNavigator__item MobileNavigator__item--black'} key={4}>
-                        <AccordionHeader
-                            className={'MobileNavigator__title'}
-                            horizontalAlignment="left"
-                            verticalAlignment="center"
-                        >
-                            <h3>Shop</h3>
-                            { this.isActivePage(4) ? <FaAngleUp /> : <FaAngleDown /> }
-                        </AccordionHeader>
-                        <AccordionPanel className={'MobileNavigator__content MobileNavigator__shop'}>
-                            <Shop shopItemsArray={this.state.shopItemsArray}/>
-                        </AccordionPanel>
-                    </AccordionNode>
-                    <div className={'MobileNavigator__item MobileNavigator__item--white'} key={4}>
-                        <a href='https://www.gofundme.com/f/aidez-ola-radio-rester-indpendante' target='_blank'>
+                    {/*<AccordionNode className={'MobileNavigator__item MobileNavigator__item--black'} key={4}>*/}
+                    {/*    <AccordionHeader*/}
+                    {/*        className={'MobileNavigator__title'}*/}
+                    {/*        horizontalAlignment="left"*/}
+                    {/*        verticalAlignment="center"*/}
+                    {/*    >*/}
+                    {/*        <h3>Shop</h3>*/}
+                    {/*        { this.isActivePage(4) ? <FaAngleUp /> : <FaAngleDown /> }*/}
+                    {/*    </AccordionHeader>*/}
+                    {/*    <AccordionPanel className={'MobileNavigator__content MobileNavigator__shop'}>*/}
+                    {/*        <Shop shopItemsArray={this.state.shopItemsArray}/>*/}
+                    {/*    </AccordionPanel>*/}
+                    {/*</AccordionNode>*/}
+                    <div className={'MobileNavigator__item MobileNavigator__item--black'} key={4}>
+                        <a href='https://olgaproductions.bandcamp.com' target='_blank'>
                             <div className={'MobileNavigator__title'}>
-                                <h3>Cagnotte</h3>
+                                <h3>OLGA PRODUCTIONS</h3>
                             </div>
                         </a>
                     </div>
-                    <div className={'MobileNavigator__item MobileNavigator__item--black'} key={5}>
-                        <a href='https://www.helloasso.com/associations/ola-radio/formulaires/1/widget' target='_blank'>
+                    <div className={'MobileNavigator__item'} key={5}>
+                        <a href='https://www.helloasso.com/associations/ola-radio/collectes/ola-a-besoin-de-vous/don' target='_blank'>
                             <div className={'MobileNavigator__title'}>
                                 <h3>Don</h3>
                             </div>

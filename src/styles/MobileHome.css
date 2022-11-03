@@ -10,7 +10,7 @@
     font-weight: bold;
     margin-bottom: 5px;
     padding-left: 1em;
-    font-family: Bandeins Variable;
+    font-family: Space Mono;
     font-variation-settings: "wght"800, "wdth"400;
     transition: all 1s ease;
     line-height: 1;
@@ -42,7 +42,7 @@
     padding: 10px 1.4em !important;
     box-shadow: unset !important;
     border-radius: unset !important;
-    font-family: Bandeins Variable;
+    font-family: Space Mono;
     font-variation-settings: "wght"800, "wdth"200;
     transition: all 1s ease;
 }
@@ -66,6 +66,10 @@
 
 .MobileNavigator__item {
     border-bottom: 2px solid black;
+}
+
+.MobileNavigator__item * {
+    color: black !important;
 }
 
 .MobileNavigator__item--black {

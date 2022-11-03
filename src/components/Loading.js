@@ -11,7 +11,7 @@ export default class Loading extends Component {
         return (
             <div className={'Loading'}>
                 <div className="Loading__container">
-                    <img src={"images/logo_black_text.svg"} alt="Radio loading"/>
+                    <img src={"images/logo_ola_noir.png"} alt="Radio loading"/>
                 </div>
             </div>
         );

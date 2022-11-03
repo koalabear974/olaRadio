@@ -5,6 +5,7 @@
 
 .Emission {
     display: flex;
+    flex-direction: column;
     flex: 0 0 220px;
     flex-wrap: wrap;
     padding-left: 2em;
@@ -30,7 +31,7 @@
 }
 
 .Emission__name {
-    flex: 1 1 100%;
+    /*flex: 1 1 100%;*/
 }
 
 .Emission__name a {
@@ -38,7 +39,7 @@
 }
 
 .Emission__date {
-    flex: 1 1 100%;
+    /*flex: 1 1 100%;*/
     opacity: 0.6;
     font-weight: 100;
 }
@@ -106,7 +107,7 @@
     text-transform: uppercase;
     line-height: 1;
     margin-bottom: 0.5em;
-    font-family: Bandeins Variable;
+    font-family: Space Mono;
     font-variation-settings: "wght" 800, "wdth" 400;
     transition: all 1s ease;
 }

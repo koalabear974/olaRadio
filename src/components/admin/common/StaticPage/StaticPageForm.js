@@ -85,7 +85,7 @@ export default class StaticPageForm extends Component {
                     title: this.props.editStatic.title,
                     id: this.props.editStatic.id,
                     slug: this.props.editStatic.slug,
-                    texts: this.props.editStatic.texts,
+                    texts: this.props.editStatic.texts || [],
                 },
                 isEdit: true,
             });
