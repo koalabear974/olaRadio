@@ -61,6 +61,8 @@ export default class Information extends Component {
                     </a>
                 </div>
                 <Footer />
+
+                <img className="Information__service" src={"images/service_civique.jpg"} />
             </div>
         );
     }

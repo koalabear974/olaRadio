@@ -88,3 +88,8 @@
 .Information__first-text {
     margin-bottom: 25px;
 }
+
+.Information__service {
+    width: 200px;
+    margin-top: 1rem;
+}

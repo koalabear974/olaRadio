@@ -8,7 +8,7 @@ export default class Footer extends Component {
     render() {
         return (
             <footer className={'AppContainer__footer--login'}>
-                © Ola Radio 2019, <NavLink className={'AppContainer__legal'} to={'/Legal'}>mentions légales</NavLink>.
+                © Ola Radio 2024, <NavLink className={'AppContainer__legal'} to={'/Legal'}>mentions légales</NavLink>.
             </footer>
         );
     }
